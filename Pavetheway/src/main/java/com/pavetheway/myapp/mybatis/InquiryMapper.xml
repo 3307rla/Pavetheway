@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="inquiry">
+
+	<select id="getList" parameterType="inquiryDto" resultType="inquiryDto">
+		SELECT *
+		FROM
+			(SELECT result1.*, ROWNUM AS rnum
+			FROM
+				(SELECT num,writer,title,content,regdate
+				FROM inquiry_board
+				ORDER BY num DESC) result1)
+		<![CDATA[ 
+		WHERE rnum >= #{startRowNum} AND rnum <= #{endRowNum}
+		]]>
+	</select>
+	
+	<insert id="insert" parameterType="inquiryDto">
+		INSERT INTO inquiry_board
+		(num,writer,title,content,regdate)
+		VALUES(board_inquiry_seq.NEXTVAL, #{writer}, #{title},
+			#{content}, SYSDATE)
+	</insert>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM inquiry_board
+		WHERE num=#{num}
+	</delete>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
