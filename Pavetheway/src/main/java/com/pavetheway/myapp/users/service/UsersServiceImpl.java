@@ -8,11 +8,13 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pavetheway.myapp.users.dao.UsersDao;
 import com.pavetheway.myapp.users.dto.UsersDto;
 
+@Service
 public class UsersServiceImpl implements UsersService{
 	
 	@Autowired
