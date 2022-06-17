@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="inquiryComment">
+	<select id="getList" parameterType="inquiryCommentDto" resultType="inquiryCommentDto">
+		SELECT *
+		FROM
+			(SELECT result1.*, ROWNUM AS rnum
+			FROM
+				(SELECT num, writer, content, target_id, ref_group,
+					comment_group, deleted, inquiry_comment.regdate, profile
+				FROM inquiry_comment
+				INNER JOIN users
+				ON inquiry_comment.writer=users.id
+				WHERE ref_group=#{ref_group}
+				ORDER BY comment_group ASC, num ASC) result1)
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}	
+	</select>
+	<update id="delete" parameterType="int">
+		UPDATE inquiry_comment
+		SET deleted='yes'
+		WHERE num=#{num}
+	</update>
+	<insert id="insert" parameterType="inquiryCommentDto">
+		INSERT INTO inquiry_comment
+		(num, writer, content, target_id, ref_group, comment_group, regdate)
+		VALUES(#{num}, #{writer}, #{content}, #{target_id}, #{ref_group},
+			#{comment_group}, SYSDATE)
+	</insert>
+	<select id="getSequence" resultType="int">
+		SELECT inquiry_comment_seq.NEXTVAL
+		FROM DUAL
+	</select>
+	<update id="update" parameterType="inquiryCommentDto">
+		UPDATE inquiry_comment
+		SET content=#{content}
+		WHERE num=#{num}
+	</update>
+	<select id="getData" parameterType="int" resultType="inquiryCommentDto">
+		SELECT num,writer,content,ref_group,comment_group,deleted,regdate
+		FROM inquiry_comment
+		WHERE num=#{num}
+	</select>
+	<select id="getCount" parameterType="int" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM inquiry_comment
+		WHERE ref_group=#{ref_group}
+	</select>	
+</mapper>
+
+
+
+
+
+

@@ -72,6 +72,7 @@ CREATE SEQUENCE client_order_seq;
 --장바구니
 CREATE TABLE cart(
    num NUMBER PRIMARY KEY,
-   code NUMBER,
-   id VARCHAR2(100)
+   id VARCHAR2(100) NOT NULL,
+   code NUMBER NOT NULL,
+   amount NUMBER DEFAULT 0
 );
