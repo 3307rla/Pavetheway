@@ -5,9 +5,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>/cart/list.jsp</title>
 </head>
 <body>
-
+	<h1>장바구니 확인</h1>
+	<c:choose>
+		<c:when test="${map.count == 0 }">
+			장바구니가 비었습니다.
+		</c:when>
+		<c:otherwise>
+		<form name="form1" id="form1" method="post" action="${pageContext.request.contextPath }/cart/update.do">
+			<table>
+				<tr>
+					<th>상품번호</th>
+					<th>상품코드</th>
+					<th>상품이름</th>
+				</tr>
+			</table>
+		</form>
+		</c:otherwise>
+	</c:choose>
 </body>
 </html>
