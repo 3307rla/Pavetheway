@@ -9,12 +9,14 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pavetheway.myapp.shop.dao.ShopDao;
 import com.pavetheway.myapp.shop.dto.ShopDto;
 
+@Service
 public class ShopServiceImpl implements ShopService{
     
 	@Autowired ShopDao dao;

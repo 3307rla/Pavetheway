@@ -41,7 +41,7 @@ public class ReviewDaoImpl implements ReviewDao {
 	 */
 	@Override
 	public void delete(int num) {
-		session.delete("file.delete", num);
+		session.delete("review.delete", num);
 		
 	}
 	/*
@@ -63,7 +63,6 @@ public class ReviewDaoImpl implements ReviewDao {
 	 */
 	@Override
 	public int getCount(ReviewDto dto) {
-		
 		return session.selectOne("review.getCount", dto);
 	}
 	
