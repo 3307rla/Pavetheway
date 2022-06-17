@@ -1,11 +1,11 @@
-package com.pavetheway.myapp.cart.dao;
+package com.pavetheway.myapp.cart.service;
 
 import java.util.List;
 
 import com.pavetheway.myapp.cart.dto.CartDto;
 
-public interface CartDao {
-	//장바구니 상품목록 조회한 결과
+public interface CartService {
+	
 	public List<CartDto> getList(String id);
 	public List<CartDto> cartMoney();
 	public void update(int num);
