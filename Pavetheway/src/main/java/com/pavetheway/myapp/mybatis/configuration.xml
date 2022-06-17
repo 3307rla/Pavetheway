@@ -10,6 +10,7 @@
 		<typeAlias type="com.pavetheway.myapp.shop.dto.ShopDto" alias="shopDto"/>
 		<typeAlias type="com.pavetheway.myapp.inquiry.dto.InquiryDto" alias="inquiryDto"/>
 		<typeAlias type="com.pavetheway.myapp.inquiry.dto.InquiryCommentDto" alias="inquiryCommentDto"/>
+		<typeAlias type="com.pavetheway.myapp.cart.dto.CartDto" alias="cartDto"/>
 	</typeAliases>
 	
 	<!-- sql 문을 작성한 Mapper xml 문서가 어디에 있는지 목록을 작성해야 한다. -->
@@ -21,6 +22,7 @@
 		<mapper resource="com/pavetheway/myapp/mybatis/ShopMapper.xml"/>
 		<mapper resource="com/pavetheway/myapp/mybatis/InquiryMapper.xml"/>
 		<mapper resource="com/pavetheway/myapp/mybatis/InquiryCommentMapper.xml"/>
+		<mapper resource="com/pavetheway/myapp/mybatis/CartMapper.xml"/>
 	</mappers>
 	
 </configuration>
