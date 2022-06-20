@@ -16,7 +16,7 @@ public class CartController {
 	@Autowired
 	private CartService service;
 	
-	@RequestMapping(value = "/cart/insert")
+	@RequestMapping("/cart/insert")
 	public ModelAndView authInsert(CartDto dto, HttpServletRequest request) {
 
 		service.insert(dto);

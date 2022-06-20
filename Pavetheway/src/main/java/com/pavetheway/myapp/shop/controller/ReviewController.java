@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.pavetheway.myapp.shop.dto.ReviewDto;
 import com.pavetheway.myapp.shop.service.ReviewService;
 
+@Controller
 public class ReviewController {
 	
 	@Autowired

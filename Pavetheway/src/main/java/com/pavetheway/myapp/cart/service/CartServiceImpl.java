@@ -3,10 +3,12 @@ package com.pavetheway.myapp.cart.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.pavetheway.myapp.cart.dao.CartDao;
 import com.pavetheway.myapp.cart.dto.CartDto;
 
+@Service
 public class CartServiceImpl implements CartService {
 
 	@Autowired
