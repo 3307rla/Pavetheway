@@ -6,7 +6,7 @@
 		FROM	
 			(SELECT result1.*, ROWNUM as rnum
 			FROM
-				(SELECT code, name, imagePath
+				(SELECT num, code, name, imagePath
 				FROM shop_list
 				ORDER BY num DESC) result1)
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
@@ -20,7 +20,7 @@
 	<select id="getDetail" parameterType="int" resultType="shopDto">
 		SELECT *
 		FROM
-			(SELECT code, name, imagePath, infoImagePath, 
+			(SELECT num, code, name, imagePath, infoImagePath, 
 				LAG(num, 1, 0) OVER (ORDER BY num DESC) AS prevNum,
 				LEAD(num, 1, 0) OVER (ORDER BY num DESC) AS nextNum
 			FROM shop_list
@@ -52,7 +52,7 @@
 	</select>
 	<insert id="insert" parameterType="ShopDto">
 		INSERT INTO shop_list
-		(code, name, imagePath, infoImagePath)
+		(num, code, name, imagePath, infoImagePath)
 		VALUES(shop_list_seq.NEXTVAL, #{name}, #{imagePath}, #{infoImagePath})
 	</insert>
 </mapper>
