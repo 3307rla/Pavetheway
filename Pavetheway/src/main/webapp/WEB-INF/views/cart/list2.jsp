@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
@@ -6,6 +6,24 @@
 <head>
 <meta charset="UTF-8">
 <title>/cart/list2.jsp</title>
+
+<script>
+$(function(){
+ 
+    $("#btnList").click(function(){
+        location.href="${path}/shop/list.do";
+    });
+ 
+// 아래쪽에서 btnlist를 호출해서 실행되는 function() 함수 구문.
+// list로 가는 링크를 만든다.
+ 
+    $("#btnDelete").click(function(){
+        if(confirm("장바구니를 비우시겠습니까?")){
+            location.href="${path}/shop/cart/deleteAll.do";
+        }
+    });
+});
+</script>
 </head>
 <body>
 <h2>장바구니</h2>
