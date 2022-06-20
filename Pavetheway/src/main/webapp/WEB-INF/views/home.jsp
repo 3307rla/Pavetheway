@@ -28,11 +28,12 @@
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath }/home.do">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Shop</a></li>
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/inquiry/answer_list.do">Q&A</a></li>
+
                     </ul>
                     <c:choose>
                     	<c:when test="${ empty sessionScope.id}">
-                    		<button class="btn btn-outline-dark" href="${pageContext.request.contextPath }/users/loginform.do">Login</a></button>
-                    		<button class="btn btn-outline-dark" style="margin-left:3px" href="${pageContext.request.contextPath }/users/signup_form.do">SignUp</a></button>
+                    		<button class="btn btn-outline-dark">Login</button>
+                    		<button class="btn btn-outline-dark" style="margin-left:3px">SignUp</button>
                     	</c:when>
                     	<c:otherwise>
                     		<form class="d-flex">
