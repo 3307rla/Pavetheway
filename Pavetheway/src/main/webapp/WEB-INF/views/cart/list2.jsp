@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>/cart/list.do</title>
 </head>
 <body>
 <h2>장바구니</h2>
