@@ -82,6 +82,7 @@
         			<h1>내용</h1>
         			<img src="resources/images/main.jpg" width="700" height="500"/>
         			<img src="resources/images/main.jpg" width="700" height="500"/>
+        			<img src="resources/images/qna.jpg" width="700" height="500"/>
         		</div>
         	</div>
         </section>
