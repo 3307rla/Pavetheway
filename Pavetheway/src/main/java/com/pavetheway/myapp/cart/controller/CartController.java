@@ -26,8 +26,7 @@ public class CartController {
 	public ModelAndView authInsert(CartDto dto, HttpSession session, HttpServletRequest request) {
 		
 		String id=(String)session.getAttribute("id");
-		dto.setId(id);
-		
+		dto.setId(id);		
 		service.insert(dto);
 		
 		return new ModelAndView("shop/upload");

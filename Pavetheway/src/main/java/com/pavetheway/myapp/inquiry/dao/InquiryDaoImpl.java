@@ -16,37 +16,36 @@ public class InquiryDaoImpl implements InquiryDao{
 
 	@Override
 	public List<InquiryDto> getList(InquiryDto dto) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return session.selectList("inquiry.getList", dto);
 	}
 
 	@Override
 	public int getCount(InquiryDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return session.selectOne("inquiry.getCount", dto);
 	}
 
 	@Override
 	public void insert(InquiryDto dto) {
-		// TODO Auto-generated method stub
+		session.insert("inquiry.insert", dto);
 		
 	}
 
 	@Override
 	public InquiryDto getData(int num) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return session.selectOne("inquiry.getData", num);
 	}
 
 	@Override
 	public InquiryDto getData(InquiryDto dto) {
-		// TODO Auto-generated method stub
-		return null;
+		return session.selectOne("inquiry.getData2", dto);
 	}
 
 	@Override
 	public void delete(int num) {
-		// TODO Auto-generated method stub
+		session.delete("inquiry.delete", num);
 		
 	}
 
