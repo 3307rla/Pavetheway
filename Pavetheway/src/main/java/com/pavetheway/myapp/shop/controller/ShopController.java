@@ -23,12 +23,12 @@ public class ShopController {
 	private ShopService service;
 	
 	//shop list 페이지로 이동
-	@RequestMapping(value = "/shop/list")
+	@RequestMapping(value = "/shop/shoplist")
 	public String getList(HttpServletRequest request) {
 		//view 페이지에 사용될 데이터는 request 영역에 담는다.
 		service.getList(request);
 		
-		return "shop/list";
+		return "shop/shoplist";
 	}
 	
 	//shop 상품 업로드 form 페이지로 이동
