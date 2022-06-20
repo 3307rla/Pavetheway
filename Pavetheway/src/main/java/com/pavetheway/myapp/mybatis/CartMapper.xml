@@ -38,6 +38,13 @@
 		WHERE id = #{id}
 		AND code = #{code}
 	</select>
+	
+	<update id="updateCart">
+		UPDATE cart
+		SET amount = amount + #{amount}
+		WHERE id = #{id}
+		AND code = #{code} 
+	</update>
 </mapper>
 
 
