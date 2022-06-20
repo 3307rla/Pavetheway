@@ -16,44 +16,46 @@ public class InquiryCommentDaoImpl implements InquiryCommentDao{
 
 	@Override
 	public List<InquiryCommentDto> getList(InquiryCommentDto dto) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return session.selectList("inquiryComment.getList", dto);
 	}
 
 	@Override
 	public void delete(int num) {
-		// TODO Auto-generated method stub
+		session.update("inquiryComment.delete", num);
 		
 	}
 
 	@Override
 	public void insert(InquiryCommentDto dto) {
-		// TODO Auto-generated method stub
+		
+		session.insert("inquiryComment.insert", dto);
 		
 	}
 
 	@Override
 	public int getSequence() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return session.selectOne("inquiryComment.getSequence");
 	}
 
 	@Override
 	public void update(InquiryCommentDto dto) {
-		// TODO Auto-generated method stub
+		
+		session.update("inquiryComment.update", dto);
 		
 	}
 
 	@Override
 	public InquiryCommentDto getData(int num) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return session.selectOne("inquiryComment.getData", num);
 	}
 
 	@Override
 	public int getCount(int ref_group) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return session.selectOne("inquiryComment.getCount", ref_group);
 	}
 	
 	
