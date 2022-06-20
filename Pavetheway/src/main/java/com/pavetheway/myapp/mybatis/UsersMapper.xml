@@ -9,12 +9,12 @@
 	
 	<insert id="insert" parameterType="usersDto">
 		INSERT INTO users
-		(id, pwd, email, addr, regdate)
-		VALUES(#{id }, #{addr }, #{pwd }, #{email }, SYSDATE)
+		(id, pwd, email, postcode, roadAddr, detailAddr, extraAddr, regdate)
+		VALUES(#{id }, #{pwd }, #{email }, #{postcode }, #{roadAddr }, #{detailAddr }, #{extraAddr },  SYSDATE)
 	</insert>
 	
 	<select id="getData" parameterType="string" resultType="usersDto">
-		SELECT id, pwd, addr, email, regdate
+		SELECT id, pwd, email, postcode, roadAddr, detailAddr, extraAddr, regdate
 		FROM users
 		WHERE id=#{id }
 	</select>
@@ -27,7 +27,7 @@
 	
 	<update id="update" parameterType="usersDto">
 		UPDATE users
-		SET email=#{email }, profile=#{profile }
+		SET email=#{email }
 		WHERE id=#{id }
 	</update>
 	
@@ -36,3 +36,9 @@
 		WHERE id=#{id}
 	</delete>
 </mapper>
+
+
+
+
+
+
