@@ -13,6 +13,31 @@
         WHERE u.id=c.id and c.code=s.code and c.id=#{id}
         ORDER BY num   
     </select>
+    
+    <select id="sumMoney" resultType="int">
+    	SELECT NVL(SUM(price*amount), 0) money
+    	FROM cart c, shop_list s
+    	WHERE c.code = s.c AND c.id=#{id}
+    </select>
+    
+    <update id="modifyCart">
+    	UPDATE cart
+    	SET amount = #{amount}
+    	WHERE id = #{id}
+   		AND code = #{code}
+    </update>
+    
+    <delete id="delete">
+    	DELETE FROM cart
+    	WHERE num = #{num}
+    </delete>
+    
+    <select id="countCart" resultType="int">
+		SELECT COUNT(*)
+		FROM cart
+		WHERE id = #{id}
+		AND code = #{code}
+	</select>
 </mapper>
 
 
