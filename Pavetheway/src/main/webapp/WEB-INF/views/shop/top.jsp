@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/views/shop/list.jsp</title>
+<title>/views/shop/top.jsp</title>
 <%-- bootstrap 읽어오기 --%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
 <style>
@@ -46,6 +46,7 @@
 <div class="container">
    	<h1>전체 상품</h1>
    	<a href="${pageContext.request.contextPath}/shop/ajax_search.do">검색</a>
+   	<a href="${pageContext.request.contextPath}/shop/list.do">전체</a><br/>
    	<a href="${pageContext.request.contextPath}/shop/outer.do">아우터</a><br/>
    	<a href="${pageContext.request.contextPath}/shop/top.do">상의</a><br/>
    	<a href="${pageContext.request.contextPath}/shop/bottom.do">하의</a><br/>
@@ -67,14 +68,17 @@
          		</div>
       		</div>
 		</c:forEach>
+		<div>
+      		    <a href="${pageContext.request.contextPath}/shop/buy.do">주문하기</a><br/>
+   	            <a href="${pageContext.request.contextPath}/cart/cart.do">장바구니</a><br/>
+      	</div>
    	</div>
-   	<a href="${pageContext.request.contextPath}/shop/upload_form.do">상품 업로드</a><br/>
    	<nav>
 	<ul class="pagination justify-content-center">
 		<c:choose>
 			<c:when test="${startPageNum ne 1 }">
 				<li class="page-item">
-               		<a class="page-link" href="${pageContext.request.contextPath}/shop/list.do?pageNum=${startPageNum - 1}">Prev</a>
+               		<a class="page-link" href="${pageContext.request.contextPath}/shop/top.do?pageNum=${startPageNum - 1}">Prev</a>
             	</li>
 			</c:when>
 			<c:otherwise>
@@ -87,12 +91,12 @@
 			<c:choose>
 				<c:when test="${i eq pageNum }">
 					<li class="page-item active">
-                  		<a class="page-link" href="${pageContext.request.contextPath}/shop/list.do?pageNum=${i}">${i }</a>
+                  		<a class="page-link" href="${pageContext.request.contextPath}/shop/top.do?pageNum=${i}">${i }</a>
                		</li>
 				</c:when>
 				<c:otherwise>
 					<li class="page-item">
-                  		<a class="page-link" href="${pageContext.request.contextPath}/shop/list.do?pageNum=${i}">${i}</a>
+                  		<a class="page-link" href="${pageContext.request.contextPath}/shop/top.do?pageNum=${i}">${i}</a>
                		</li>
 				</c:otherwise>
 			</c:choose>
@@ -100,7 +104,7 @@
 		<c:choose>
 			<c:when test="${endPageNum lt totalPageCount }">
 				<li class="page-item">
-               		<a class="page-link" href="${pageContext.request.contextPath}/shop/list.do?pageNum=${endPageNum + 1}">Next</a>
+               		<a class="page-link" href="${pageContext.request.contextPath}/shop/top.do?pageNum=${endPageNum + 1}">Next</a>
             	</li>
 			</c:when>
 			<c:otherwise>
