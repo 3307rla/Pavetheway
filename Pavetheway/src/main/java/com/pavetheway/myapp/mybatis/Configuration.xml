@@ -7,7 +7,7 @@
 	<typeAliases>
 		<typeAlias type="com.pavetheway.myapp.users.dto.UsersDto" alias="usersDto"/>
 		<typeAlias type="com.pavetheway.myapp.shop.dto.ShopDto" alias="shopDto"/>
-		<typeAlias type="com.pavetheway.myapp.review.dto.ReviewDto" alias="reviewDto"/>
+		<typeAlias type="com.pavetheway.myapp.shop.dto.ReviewDto" alias="reviewDto"/>
 		<typeAlias type="com.pavetheway.myapp.inquiry.dto.InquiryCommentDto" alias="inquiryCommentDto"/>
 		<typeAlias type="com.pavetheway.myapp.inquiry.dto.InquiryDto" alias="inquiryDto"/>
 		<typeAlias type="com.pavetheway.myapp.cart.dto.CartDto" alias="cartDto"/>
