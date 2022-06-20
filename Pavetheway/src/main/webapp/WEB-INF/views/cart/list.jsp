@@ -6,8 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>/cart/list.jsp</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
 </head>
 <body>
+<div class="container">
 	<h1>장바구니 확인</h1>
 	<c:choose>
 		<c:when test="${map.count == 0 }">
@@ -25,5 +27,6 @@
 		</form>
 		</c:otherwise>
 	</c:choose>
+</div>
 </body>
 </html>

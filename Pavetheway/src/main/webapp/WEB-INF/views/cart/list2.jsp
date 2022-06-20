@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/cart/list.do</title>
+<title>/cart/list2.jsp</title>
 </head>
 <body>
 <h2>장바구니</h2>

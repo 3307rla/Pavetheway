@@ -28,7 +28,6 @@
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath }/home.do">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Shop</a></li>
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/inquiry/answer_list.do">Q&A</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/cart/list.do"></a></li>
                     </ul>
                     <c:choose>
                     	<c:when test="${ empty sessionScope.id}">
