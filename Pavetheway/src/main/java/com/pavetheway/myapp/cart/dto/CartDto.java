@@ -9,9 +9,9 @@ public class CartDto {
 	private String productName;
 	private int price;
 	private int money;
-	private int amoubt;
+	private int amount;
 	
-	public CartDto(int num, String id, String name, int code, String productName, int price, int money, int amoubt) {
+	public CartDto(int num, String id, String name, int code, String productName, int price, int money, int amount) {
 		super();
 		this.num = num;
 		this.id = id;
@@ -20,7 +20,7 @@ public class CartDto {
 		this.productName = productName;
 		this.price = price;
 		this.money = money;
-		this.amoubt = amoubt;
+		this.amount = amount;
 	}
 
 	public int getNum() {
@@ -79,12 +79,12 @@ public class CartDto {
 		this.money = money;
 	}
 
-	public int getAmoubt() {
-		return amoubt;
+	public int getAmount() {
+		return amount;
 	}
 
-	public void setAmoubt(int amoubt) {
-		this.amoubt = amoubt;
+	public void setAmount(int amount) {
+		this.amount = amount;
 	}
 	
 		
