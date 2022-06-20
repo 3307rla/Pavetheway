@@ -8,8 +8,8 @@ public class ShopDto {
 	private String name;//상품이름
 	private int price;//상품가격
 	private String category;//분류
-	private String imagePath;//업로드 된 이미지 경로
-	private String infoImagePath;//이미지 정보
+	private String imagePath;//상품 이미지 경로
+	private String infoImagePath;//상품 정보 이미지 경로
 	private int remainCount;//재고 갯수
 	private String id;//주문자 아이디
 	private String addr; //배송 주소
