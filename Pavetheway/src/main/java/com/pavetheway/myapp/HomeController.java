@@ -38,4 +38,11 @@ public class HomeController {
 		return mView;
 	}	
 
+	@RequestMapping("/inquiry/answer_list") 
+	public String answer_list(HttpServletRequest request) {
+		
+		// /WEB-INF/views/home.jsp 페이지로 forward 이동해서 응답
+		return "inquiry/answer_list";
+	}
+	
 }

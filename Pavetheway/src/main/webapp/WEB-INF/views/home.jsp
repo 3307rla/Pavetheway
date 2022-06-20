@@ -27,7 +27,7 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Shop</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">FAQs</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/inquiry/answer_list.do">FAQs</a></li>
                     </ul>
                     <c:choose>
                     	<c:when test="${ empty sessionScope.id}">
@@ -62,27 +62,45 @@
         <section class="py-5">
         	<div class="row">
         		<div class="col-2">
-        			<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-	                    <div class="sb-sidenav-menu">
-	                        <div class="nav">
-	                            <div class="sb-sidenav-menu-heading">큰카테고리</div>
-	                            <a class="nav-link" href="#!">
-	                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-	                                	작은카테고리1
-	                            </a>
-	                            <a class="nav-link" href="#!">
-	                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-	                                	작은카테고리2
-	                            </a>
-	                        </div>
-	                    </div>
-                	</nav>
+        			<div class="b-example-divider"></div>
+					  	<div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+						    <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+						      <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+						      <span class="fs-5 fw-semibold">Shop</span>
+						    </a>
+					    <ul class="list-unstyled ps-0">
+					      	<li class="mb-1">
+						        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+						        	Clothes
+						        </button>
+					        	<div class="collapse show" id="home-collapse">
+							        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+							        	<li><a href="#" class="link-dark rounded">Outer</a></li>
+							            <li><a href="#" class="link-dark rounded">Top</a></li>
+							            <li><a href="#" class="link-dark rounded">Bottom</a></li>
+							    	</ul>
+					        	</div>
+					      	</li>
+					      	<li class="mb-1">
+						        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+						          ACC
+						        </button>
+					        	<div class="collapse" id="orders-collapse">
+						          	<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+							            <li><a href="#" class="link-dark rounded">Caps</a></li>
+							            <li><a href="#" class="link-dark rounded">Gloves</a></li>
+
+						          	</ul>
+					        	</div>
+					      	</li>
+					    </ul>
+					</div>
         		</div>
-        		<div class="col-8">
+        		<div class="col-10">
         			<h1>내용</h1>
         			<img src="resources/images/main.jpg" width="700" height="500"/>
         			<img src="resources/images/main.jpg" width="700" height="500"/>
-        			<img src="resources/images/qna.jpg" width="700" height="500"/>
+
         		</div>
         	</div>
         </section>
