@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -12,6 +13,7 @@ import com.pavetheway.myapp.exception.NotDeleteException;
 import com.pavetheway.myapp.shop.dao.OrderDao;
 import com.pavetheway.myapp.shop.dto.OrderDto;
 
+@Service
 public class OrderServiceImpl implements OrderService {
     @Autowired 
     private OrderDao orderDao;
