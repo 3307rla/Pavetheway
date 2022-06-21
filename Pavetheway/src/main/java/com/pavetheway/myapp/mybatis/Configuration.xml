@@ -7,6 +7,7 @@
 	<typeAliases>
 		<typeAlias type="com.pavetheway.myapp.users.dto.UsersDto" alias="usersDto"/>
 		<typeAlias type="com.pavetheway.myapp.shop.dto.ShopDto" alias="shopDto"/>
+		<typeAlias type="com.pavetheway.myapp.shop.dto.OrderDto" alias="orderDto"/>
 		<typeAlias type="com.pavetheway.myapp.shop.dto.ReviewDto" alias="reviewDto"/>
 		<typeAlias type="com.pavetheway.myapp.inquiry.dto.InquiryCommentDto" alias="inquiryCommentDto"/>
 		<typeAlias type="com.pavetheway.myapp.inquiry.dto.InquiryDto" alias="inquiryDto"/>
@@ -16,6 +17,7 @@
 	<mappers>
 		<mapper resource="com/pavetheway/myapp/mybatis/UsersMapper.xml"/>
 		<mapper resource="com/pavetheway/myapp/mybatis/ShopMapper.xml"/>
+		<mapper resource="com/pavetheway/myapp/mybatis/OrderMapper.xml"/>
 		<mapper resource="com/pavetheway/myapp/mybatis/ReviewMapper.xml"/>
 		<mapper resource="com/pavetheway/myapp/mybatis/InquiryMapper.xml"/>
 		<mapper resource="com/pavetheway/myapp/mybatis/InquiryCommentMapper.xml"/>
