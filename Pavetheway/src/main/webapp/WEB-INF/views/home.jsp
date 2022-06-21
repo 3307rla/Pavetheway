@@ -32,8 +32,8 @@
                     </ul>
                     <c:choose>
                     	<c:when test="${ empty sessionScope.id}">
-                    		<button class="btn btn-outline-dark">Login</button>
-                    		<button class="btn btn-outline-dark" style="margin-left:3px">SignUp</button>
+                    		<button class="btn btn-outline-dark"><a href="${pageContext.request.contextPath }/users/loginform.do">Login</a></button>
+                    		<button class="btn btn-outline-dark" style="margin-left:3px"><a href="${pageContext.request.contextPath }/users/signup_form.do">SignUp</a></button>
                     	</c:when>
                     	<c:otherwise>
                     		<form class="d-flex">
@@ -43,7 +43,7 @@
                         		</button>
                     		</form>
                     		<button class="btn btn-outline-dark">MyInfo</button>
-                    		<button class="btn btn-outline-dark">Logout</button>
+                    		<button class="btn btn-outline-dark"><a href="${pageContext.request.contextPath }/users/logout.do">Logout</a></button>
                     	</c:otherwise>
                     </c:choose>
                     
