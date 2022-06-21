@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pavetheway.myapp.exception.NotDeleteException;
 import com.pavetheway.myapp.inquiry.dao.InquiryCommentDao;
 import com.pavetheway.myapp.inquiry.dao.InquiryDao;
 import com.pavetheway.myapp.inquiry.dto.InquiryCommentDto;
@@ -204,7 +205,17 @@ public class InquiryServiceImpl implements InquiryService{
 
 	@Override
 	public void deleteContent(int num, HttpServletRequest request) {
-		// TODO Auto-generated method stub
+		//세션에서 로그인된 아이디를 읽어와서
+		String id=(String)request.getSession().getAttribute("id");
+		//삭제할 글의 작성자
+		String writer=inquiryDao.getData(num).getWriter();
+		//만일 글의 작성자가 로그인된 아이디와 다르다면 
+		if(!writer.equals(id)) {
+			//예외를 발생시켜서 응답을 예외 Controller 에서 하도록 한다.
+			throw new NotDeleteException("로그인 하시거나 다른 사람의 글 삭제는 안 되요~");
+		}
+		//본인이 작성한 글이 아니면 아래의 코드가 실행이 안되야 된다. 
+		inquiryDao.delete(num);		
 		
 	}
 
@@ -247,7 +258,16 @@ public class InquiryServiceImpl implements InquiryService{
 
 	@Override
 	public void deleteComment(HttpServletRequest request) {
+		int num=Integer.parseInt(request.getParameter("num"));
+		//삭제할 댓글 정보를 읽어와서 
+		InquiryCommentDto dto=inquiryCommentDao.getData(num);
+		String id=(String)request.getSession().getAttribute("id");
+		//글 작성자와 로그인된 아이디와 일치하지 않으면
+		if(!dto.getWriter().equals(id)) {
+			throw new NotDeleteException("다른 사람의 댓글 삭제는 안 되요~");
+		}
 		
+		inquiryCommentDao.delete(num);
 	}
 
 	@Override
