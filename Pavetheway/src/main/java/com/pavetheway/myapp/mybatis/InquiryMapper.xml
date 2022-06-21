@@ -39,7 +39,7 @@
 	<insert id="insert" parameterType="inquiryDto">
 		INSERT INTO inquiry_board
 		(num,writer,title,content,regdate)
-		VALUES(board_inquiry_seq.NEXTVAL, #{writer}, #{title},
+		VALUES(inquiry_board_seq.NEXTVAL, #{writer}, #{title},
 			#{content}, SYSDATE)
 	</insert>
 	
