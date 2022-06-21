@@ -33,8 +33,8 @@
 							<fmt:formatNumber pattern="###,###,###" value="${tmp.price }"/>
 						</td>
 						<td>
-							<input type="number" style="" name="amount" value="${tmp.amount }"/>
-							<input type="hidden" name="code" value="${code }"/>							
+							<input type="number" style="" name="amount" value="${tmp.amount }">
+							<input type="hidden" name="code" value="${code }">							
 						</td>
 						<td>
 							<fmt:formatNumber pattern="###,###,###" value="${tmp.money }"/>							
@@ -52,9 +52,12 @@
 					</td>
 				</tr>
 			</table>
+			<input type="hidden" name="count" value="${map.count }">
+			<button type="submit" id="btnUpdate">수정</button>
 		</form>
 		</c:otherwise>
 	</c:choose>
+	<button type="button" id="btnList">상품목록</button>
 </div>
 </body>
 </html>

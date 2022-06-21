@@ -2,10 +2,10 @@ package com.pavetheway.myapp.cart.dto;
 
 public class CartDto {
 	//필드
-	private int num;
-	private String id;
+	private int num; //장바구니 번호
+	private String id; //사용자 아이디
 	private String name; //상품이름
-	private int code;
+	private int code; //상품번호
 	private int price;
 	private int money;
 	private int amount;
