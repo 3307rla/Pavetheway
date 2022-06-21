@@ -78,8 +78,8 @@
 						        </button>
 					        	<div class="collapse show" id="home-collapse">
 							        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-							        	<li><a href="#" class="link-dark rounded">문의 게시판</a></li>
-							        	<li><a href="#" class="link-dark rounded">Q&A</a></li>
+							        	<li><a href="${pageContext.request.contextPath }/inquiry/list.do" class="link-dark rounded">문의 게시판</a></li>
+							        	<li><a href="${pageContext.request.contextPath }/inquiry/answer_list.do" class="link-dark rounded">Q&A</a></li>
 							    	</ul>
 					        	</div>
 					      	</li>
@@ -117,7 +117,7 @@
 						<br />
 						<center>
 							<a href="insertform.do" >
-							   <button type="button" class="btn btn-outline-success">새로운 글 작성하기</button>
+							   <button type="button" class="btn btn-outline-success">새로운 글 작성 하기</button>
 							</a>
 						</center>
 						<br />
