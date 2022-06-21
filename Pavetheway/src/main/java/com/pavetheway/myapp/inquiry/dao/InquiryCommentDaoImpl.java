@@ -22,7 +22,8 @@ public class InquiryCommentDaoImpl implements InquiryCommentDao{
 
 	@Override
 	public void delete(int num) {
-		session.update("inquiryComment.delete", num);
+		
+		session.delete("inquiryComment.delete", num);
 		
 	}
 
