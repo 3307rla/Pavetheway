@@ -19,14 +19,45 @@
 		<form name="form1" id="form1" method="post" action="${pageContext.request.contextPath }/cart/update.do">
 			<table>
 				<tr>
-					<th>상품번호</th>
-					<th>상품코드</th>
-					<th>상품이름</th>
+					<th>상품명</th>
+					<th>단가</th>
+					<th>수량</th>
+					<th>금액</th>
+					<th>취소</th>
+				</tr>
+				<c:forEach var="tmp" items="${mpa.list }">
+					<tr>
+						<td>${tmp.name }</td>
+						
+						<td>
+							<fmt:formatNumber pattern="###,###,###" value="${tmp.price }"/>
+						</td>
+						<td>
+							<input type="number" style="" name="amount" value="${tmp.amount }">
+							<input type="hidden" name="code" value="${code }">							
+						</td>
+						<td>
+							<fmt:formatNumber pattern="###,###,###" value="${tmp.money }"/>							
+						</td>
+						<td>
+							<a href="${pageContext.request.contextPath}/cart/delete.do?num=${tmp.num}"></a>
+						</td>
+					</tr>
+				</c:forEach>
+				<tr>
+					<td>
+						장바구니 금액 합계 : <fmt formatNumber patter="###,###,###" value="${map.sumMoney}"/><br>
+						배송료 : ${map.fee}<br>
+						전체 주문 금액 : <fmt formatNumber patter="###,###,###" value="${map.allSum}"/><br> 
+					</td>
 				</tr>
 			</table>
+			<input type="hidden" name="count" value="${map.count }">
+			<button type="submit" id="btnUpdate">수정</button>
 		</form>
 		</c:otherwise>
 	</c:choose>
+	<button type="button" id="btnList">상품목록</button>
 </div>
 </body>
 </html>

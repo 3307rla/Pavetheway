@@ -45,7 +45,7 @@ public class CartDaoImpl implements CartDao{
 	}
 
 	@Override
-	public void deletAll(String id) {
+	public void deleteAll(String id) {
 		
 		session.delete("cart.deleteAll", id);
 	}
@@ -64,13 +64,19 @@ public class CartDaoImpl implements CartDao{
 
 	@Override
 	public void updateCart(CartDto dto) {
-		
+		session.update("cart.sumCart", dto);
 	}
 
 	@Override
 	public void modifyCart(CartDto dto) {
 		session.update("cart.modify", dto);
 		
+	}
+
+	@Override
+	public CartDto getData(int num) {
+		
+		return null;
 	}
 
 }

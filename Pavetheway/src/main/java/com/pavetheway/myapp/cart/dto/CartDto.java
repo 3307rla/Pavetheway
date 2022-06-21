@@ -2,22 +2,20 @@ package com.pavetheway.myapp.cart.dto;
 
 public class CartDto {
 	//필드
-	private int num;
-	private String id;
-	private String name;
-	private int code;
-	private String productName;
+	private int num; //장바구니 번호
+	private String id; //사용자 아이디
+	private String name; //상품이름
+	private int code; //상품번호
 	private int price;
 	private int money;
 	private int amount;
 	
-	public CartDto(int num, String id, String name, int code, String productName, int price, int money, int amount) {
+	public CartDto(int num, String id, String name, int code, int price, int money, int amount) {
 		super();
 		this.num = num;
 		this.id = id;
-		this.name = name;
+		this.name = name; //상품이름
 		this.code = code;
-		this.productName = productName;
 		this.price = price;
 		this.money = money;
 		this.amount = amount;
@@ -53,14 +51,6 @@ public class CartDto {
 
 	public void setCode(int code) {
 		this.code = code;
-	}
-
-	public String getProductName() {
-		return productName;
-	}
-
-	public void setProductName(String productName) {
-		this.productName = productName;
 	}
 
 	public int getPrice() {
