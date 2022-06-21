@@ -7,7 +7,7 @@
 			(SELECT result1.*, ROWNUM AS rnum
 			FROM
 				(SELECT num, writer, content, target_id, ref_group,
-					comment_group, deleted, inquiry_comment.regdate, profile
+					comment_group, deleted, inquiry_comment.regdate
 				FROM inquiry_comment
 				INNER JOIN users
 				ON inquiry_comment.writer=users.id
