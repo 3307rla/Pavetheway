@@ -9,13 +9,14 @@ public class InquiryCommentDto {
 	private int comment_group;
 	private String deleted;
 	private String regdate;
+	private String profile;
 	private int startRowNum;
 	private int endRowNum;
 
 	public InquiryCommentDto() {}
 
 	public InquiryCommentDto(int num, String writer, String content, String target_id, int ref_group, int comment_group,
-			String deleted, String regdate, int startRowNum, int endRowNum) {
+			String deleted, String regdate, String profile, int startRowNum, int endRowNum) {
 		super();
 		this.num = num;
 		this.writer = writer;
@@ -25,6 +26,7 @@ public class InquiryCommentDto {
 		this.comment_group = comment_group;
 		this.deleted = deleted;
 		this.regdate = regdate;
+		this.profile = profile;
 		this.startRowNum = startRowNum;
 		this.endRowNum = endRowNum;
 	}
@@ -91,6 +93,14 @@ public class InquiryCommentDto {
 
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
+	}
+	
+	public String getProfile() {
+		return profile;
+	}
+
+	public void setProfile(String profile) {
+		this.profile = profile;
 	}
 
 	public int getStartRowNum() {
