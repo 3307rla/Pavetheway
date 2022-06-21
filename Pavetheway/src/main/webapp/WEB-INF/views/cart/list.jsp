@@ -25,22 +25,32 @@
 					<th>금액</th>
 					<th>취소</th>
 				</tr>
-				<c:forEach var="row" items="${mpa.list }">
+				<c:forEach var="tmp" items="${mpa.list }">
 					<tr>
-						<td>${row.name }</td>
+						<td>${tmp.name }</td>
 						
 						<td>
-							<fmt:formatNumber pattern="###,###,###" value="${row.price }"/>
+							<fmt:formatNumber pattern="###,###,###" value="${tmp.price }"/>
 						</td>
 						<td>
-							<input type="number" style="" name="amount" value="${row.amount }"/>
+							<input type="number" style="" name="amount" value="${tmp.amount }"/>
 							<input type="hidden" name="code" value="${code }"/>							
 						</td>
 						<td>
-							<fmt></fmt>
+							<fmt:formatNumber pattern="###,###,###" value="${tmp.money }"/>							
+						</td>
+						<td>
+							<a href="${pageContext.request.contextPath}/cart/delete.do?num=${tmp.num}"></a>
 						</td>
 					</tr>
 				</c:forEach>
+				<tr>
+					<td>
+						장바구니 금액 합계 : <fmt formatNumber patter="###,###,###" value="${map.sumMoney}"/><br>
+						배송료 : ${map.fee}<br>
+						전체 주문 금액 : <fmt formatNumber patter="###,###,###" value="${map.allSum}"/><br> 
+					</td>
+				</tr>
 			</table>
 		</form>
 		</c:otherwise>
