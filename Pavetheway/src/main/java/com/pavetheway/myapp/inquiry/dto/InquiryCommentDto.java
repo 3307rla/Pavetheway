@@ -94,7 +94,7 @@ public class InquiryCommentDto {
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
-
+	
 	public String getProfile() {
 		return profile;
 	}

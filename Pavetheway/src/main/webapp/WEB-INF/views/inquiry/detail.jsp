@@ -193,10 +193,10 @@
 				<div class="col-9">
 					<div class="container">
 						<c:if test="${dto.prevNum ne 0 }">
-							<a href="detail.do?num=${dto.prevNum }&keyword=${encodedK }&condition=${condition }">이전글</a>
+							<center><a href="detail.do?num=${dto.prevNum }&keyword=${encodedK }&condition=${condition }">이전글</a></center>
 						</c:if>
 						<c:if test="${dto.nextNum ne 0 }">
-							<a href="detail.do?num=${dto.nextNum }&keyword=${encodedK }&condition=${condition }">다음글</a>
+							<center><a href="detail.do?num=${dto.nextNum }&keyword=${encodedK }&condition=${condition }">다음글</a></center>
 						</c:if>
 						<c:if test="${ not empty keyword }">
 							<p>	
@@ -204,21 +204,21 @@
 								<strong>${keyword }</strong> 검색어로 검색된 내용 자세히 보기 
 							</p>
 						</c:if>
-						<table>
+						<table class="table table-bordered">
 							<tr>
-								<th>글번호</th>
+								<th scope="col">글번호</th>
 								<td>${dto.num }</td>
 							</tr>
 							<tr>
-								<th>작성자</th>
+								<th scope="col">작성자</th>
 								<td>${dto.writer }</td>
 							</tr>
 							<tr>
-								<th>제목</th>
+								<th scope="col">제목</th>
 								<td>${dto.title }</td>
 							</tr>
 							<tr>
-								<th>등록일</th>
+								<th scope="col">등록일</th>
 								<td>${dto.regdate }</td>
 							</tr>
 							<tr>
