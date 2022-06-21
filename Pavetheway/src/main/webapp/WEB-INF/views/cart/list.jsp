@@ -19,10 +19,28 @@
 		<form name="form1" id="form1" method="post" action="${pageContext.request.contextPath }/cart/update.do">
 			<table>
 				<tr>
-					<th>상품번호</th>
-					<th>상품코드</th>
-					<th>상품이름</th>
+					<th>상품명</th>
+					<th>단가</th>
+					<th>수량</th>
+					<th>금액</th>
+					<th>취소</th>
 				</tr>
+				<c:forEach var="row" items="${mpa.list }">
+					<tr>
+						<td>${row.name }</td>
+						
+						<td>
+							<fmt:formatNumber pattern="###,###,###" value="${row.price }"/>
+						</td>
+						<td>
+							<input type="number" style="" name="amount" value="${row.amount }"/>
+							<input type="hidden" name="code" value="${code }"/>							
+						</td>
+						<td>
+							<fmt></fmt>
+						</td>
+					</tr>
+				</c:forEach>
 			</table>
 		</form>
 		</c:otherwise>

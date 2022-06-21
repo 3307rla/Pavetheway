@@ -4,7 +4,7 @@
 	<insert id="insert" parameterType="cartDto">
 		INSERT INTO cart
 		(num, id, code, amount) 
-		VALUES ( seq.cart.NEXTVAL, #{id}, #{code}, #{amount})
+		VALUES ( seq_cart.NEXTVAL, #{id}, #{code}, #{amount})
 	</insert>
 
 	<select id="getList" resultType="cartDto">
@@ -14,10 +14,18 @@
         ORDER BY num   
     </select>
     
+    <select id="productMoney" resultType="cartDto">
+    	SELECT name, SUM(price*amount) money
+    	FROM cart c, shop_list s
+    	WHERE c.code = s.code
+    	GROUP BY name
+    	ORDER BY name
+    </select>
+    
     <select id="sumMoney" resultType="int">
     	SELECT NVL(SUM(price*amount), 0) money
     	FROM cart c, shop_list s
-    	WHERE c.code = s.c AND c.id=#{id}
+    	WHERE c.code = s.c AND id=#{id}
     </select>
     
     <update id="modifyCart">
@@ -32,6 +40,11 @@
     	WHERE num = #{num}
     </delete>
     
+    <delete id="deleteAll">
+    	DELETE FROM cart
+    	WHERE id=#{id}
+    </delete>
+    
     <select id="countCart" resultType="int">
 		SELECT COUNT(*)
 		FROM cart
@@ -42,8 +55,7 @@
 	<update id="updateCart">
 		UPDATE cart
 		SET amount = amount + #{amount}
-		WHERE id = #{id}
-		AND code = #{code} 
+		WHERE num = #{num}
 	</update>
 </mapper>
 
