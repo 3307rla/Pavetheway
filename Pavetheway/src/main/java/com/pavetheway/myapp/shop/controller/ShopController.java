@@ -1,7 +1,5 @@
 package com.pavetheway.myapp.shop.controller;
 
-
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
