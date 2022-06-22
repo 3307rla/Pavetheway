@@ -76,8 +76,8 @@
 						        </button>
 					        	<div class="collapse show" id="home-collapse">
 							        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-							        	<li><a href="#" class="link-dark rounded">Outer</a></li>
-							            <li><a href="#" class="link-dark rounded">Top</a></li>
+							        	<li><a href="${pageContext.request.contextPath }/shop/list.do?category=outer" class="link-dark rounded">Outer</a></li>
+							            <li><a href="${pageContext.request.contextPath }/shop/list.do?category=top" class="link-dark rounded">Top</a></li>
 							            <li><a href="#" class="link-dark rounded">Bottom</a></li>
 							            <li><a href="#" class="link-dark rounded">Etc</a></li>
 							    	</ul>

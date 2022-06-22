@@ -16,6 +16,8 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="resources/css/styles.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 		<%-- bootstrap 읽어오기 --%>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
 		<style>
@@ -50,6 +52,9 @@
 			   	*/
 				object-fit: contain;	
 		   	}
+		   	
+		   	
+		   	
 		</style>
         </head>
 		<body>
@@ -88,17 +93,18 @@
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
+
                     <img src="${pageContext.request.contextPath }/resources/images/logo1.png" width="220" height="120"/>
+
                 </div>
             </div>
         </header>
 		<!-- Section-->
-        <section class="py-5">
+        <section class="py-3">
         	<div class="row">
         		<div class="col-2">
-        			<div class="b-example-divider"></div>
-					  	<div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
-						    <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+        			  	<div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+						    <a href="/" class="d-flex align-items-center pb-3 mb-3 ">
 						      <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
 						      <span class="fs-5 fw-semibold">Menu</span>
 						    </a>
@@ -120,8 +126,9 @@
 					    </ul>
 					</div>
         		</div>
+        		<div class="col-9">
 		    <div class="container">
-		   	<h1>전체 상품</h1>
+		   	<h3>All</h3>
 		   	<div class="row">
 				<c:forEach var="tmp" items="${list }">
 					<div class="col-6 col-md-4 col-lg-3">
@@ -140,7 +147,6 @@
 		      		</div>
 				</c:forEach>
 		   	</div>
-		   	<a href="${pageContext.request.contextPath}/shop/upload_form.do">상품 업로드</a><br/>
 		   	<nav>
 			<ul class="pagination justify-content-center">
 				<c:choose>
@@ -183,7 +189,10 @@
 				</c:choose>
 		      </ul>
 		   </nav>   
+		   </div>
+		   
 		</div>
+		
 		<%-- <script>
 		   // card 이미지의 부모 요소를 선택해서 imgLiquid  동작(jquery plugin 동작) 하기 
 		   $(".img-wrapper").imgLiquid();

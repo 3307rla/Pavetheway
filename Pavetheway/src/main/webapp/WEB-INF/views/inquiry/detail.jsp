@@ -194,12 +194,21 @@
         		
 				<div class="col-9">
 					<div class="container">
-						<c:if test="${dto.prevNum ne 0 }">
-							<center><a href="detail.do?num=${dto.prevNum }&keyword=${encodedK }&condition=${condition }">이전글</a></center>
-						</c:if>
-						<c:if test="${dto.nextNum ne 0 }">
-							<center><a href="detail.do?num=${dto.nextNum }&keyword=${encodedK }&condition=${condition }">다음글</a></center>
-						</c:if>
+						<nav aria-label="Page navigation example">
+						  <ul class="pagination justify-content-center">
+						    <li class="page-item">
+						    	<c:if test="${dto.prevNum ne 0 }">
+									<a class="page-link" href="detail.do?num=${dto.prevNum }&keyword=${encodedK }&condition=${condition }">이전 글</a>
+								</c:if>
+						    </li>
+						    <li class="page-item">
+							    <c:if test="${dto.nextNum ne 0 }">
+									<a class="page-link" href="detail.do?num=${dto.nextNum }&keyword=${encodedK }&condition=${condition }">다음 글</a>
+								</c:if>
+						    </li>
+						  </ul>
+						</nav>
+						<br />
 						<c:if test="${ not empty keyword }">
 							<p>	
 								<strong>${condition }</strong> 조건, 
@@ -224,17 +233,18 @@
 								<td>${dto.regdate }</td>
 							</tr>
 							<tr>
-								<td colspan="2">
+								<td height="200" colspan="2">
 									<div class="content">${dto.content }</div>
 								</td>
 							</tr>
 						</table>
-						<ul>
-							<li><a href="list.do">목록보기</a></li>
-							<c:if test="${dto.writer eq id }">
-								<li><a href="delete.do?num=${dto.num }" onclick="return confirm('삭제 하시겠습니까?');">삭제</a></li>
-							</c:if>
-						</ul>
+						
+						<a class="btn btn-primary" href="list.do" role="button">목록으로 이동</a>
+						
+						<c:if test="${dto.writer eq id }">
+							<a class="btn btn-primary" href="delete.do?num=${dto.num }" onclick="return confirm('삭제 하시겠습니까?');" role="button">삭제</a>
+						</c:if>
+						
 						<!-- 댓글 목록 -->
 						<div class="comments">
 							<ul>
@@ -296,7 +306,7 @@
 								  <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
 							</svg>
 						</div>
-					
+						<br />
 						<!-- 원글에 댓글을 작성할 폼 -->
 						<form class="comment-form insert-form" action="comment_insert.do" method="post">
 							<!-- 원글의 글번호가 댓글의 ref_group 번호가 된다. -->

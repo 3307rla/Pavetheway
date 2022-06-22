@@ -169,7 +169,9 @@
 									<li>
 										<c:choose>
 											<c:when test="${pageNum eq i }">
-												<a class="page-link" href="list.do?pageNum=${i }&condition=${condition }&keyword=${encodedK }">${i }</a>
+												<li class="page-item active">
+													<a class="page-link" href="list.do?pageNum=${i }&condition=${condition }&keyword=${encodedK }">${i }</a>
+												</li>
 											</c:when>
 											<c:otherwise>
 												<a class="page-link" href="list.do?pageNum=${i }&condition=${condition }&keyword=${encodedK }">${i }</a>
