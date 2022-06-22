@@ -153,45 +153,56 @@
 							</c:forEach>
 							</tbody>
 						</table>
-						<div class="page-ui clearfix">
-							<ul>
-								<c:if test="${startPageNum ne 1 }">
+						<br />
+						<nav aria-label="Page navigation example">
+						  <ul class="pagination justify-content-center">
+						    <li>
+						      <c:if test="${startPageNum ne 1 }">
 									<li>
-										<a href="list.do?pageNum=${startPageNum-1 }&condition=${condition }&keyword=${encodedK }">Prev</a>
+										<a class="page-link" href="list.do?pageNum=${startPageNum-1 }&condition=${condition }&keyword=${encodedK }">Previous</a>
 									</li>
 								</c:if>
-								<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
+						    </li>
+						    <li>
+						      <span>
+						        <c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
 									<li>
 										<c:choose>
 											<c:when test="${pageNum eq i }">
-												<a  class="active" href="list.do?pageNum=${i }&condition=${condition }&keyword=${encodedK }">${i }</a>
+												<a class="page-link" href="list.do?pageNum=${i }&condition=${condition }&keyword=${encodedK }">${i }</a>
 											</c:when>
 											<c:otherwise>
-												<a href="list.do?pageNum=${i }&condition=${condition }&keyword=${encodedK }">${i }</a>
+												<a class="page-link" href="list.do?pageNum=${i }&condition=${condition }&keyword=${encodedK }">${i }</a>
 											</c:otherwise>
 										</c:choose>
 									</li>
 								</c:forEach>
-								<c:if test="${endPageNum lt totalPageCount }">
-									<li>
-										<a href="list.do?pageNum=${endPageNum+1 }&condition=${condition }&keyword=${encodedK }">Next</a>
+						      </span>
+						    </li>
+						    <li class="page-item">
+						      <c:if test="${endPageNum lt totalPageCount }">
+									<li class="page-item">
+										<a class="page-link" href="list.do?pageNum=${endPageNum+1 }&condition=${condition }&keyword=${encodedK }">Next</a>
 									</li>
 								</c:if>
-							</ul>
-						</div>
-						
+						    </li>
+						  </ul>
+						</nav>					
+						<br />
 						<div style="clear:both;"></div>
 						
-						<form action="list.do" method="get"> 
-								<label for="condition"><strong>검색 카테고리</strong></label>
-								<select name="condition" id="condition">
-									<option value="title_content" ${condition eq 'title_content' ? 'selected' : '' }>제목+내용</option>
-									<option value="title" ${condition eq 'title' ? 'selected' : '' }>제목</option>
-									<option value="writer" ${condition eq 'writer' ? 'selected' : '' }>작성자</option>
-								</select>
-								<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요." value="${keyword }"/>
-								<button type="submit" class="btn btn-success">검색</button>
-						</form>	
+						<center>
+							<form action="list.do" method="get"> 
+									<label for="condition"><strong>검색 카테고리</strong></label>
+									<select name="condition" id="condition">
+										<option value="title_content" ${condition eq 'title_content' ? 'selected' : '' }>제목+내용</option>
+										<option value="title" ${condition eq 'title' ? 'selected' : '' }>제목</option>
+										<option value="writer" ${condition eq 'writer' ? 'selected' : '' }>작성자</option>
+									</select>
+									<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요." value="${keyword }"/>
+									<button type="submit" class="btn btn-success">검색</button>
+							</form>
+						</center>
 						</div>
 						<c:if test="${ not empty condition }">
 							<p>
