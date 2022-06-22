@@ -131,7 +131,7 @@ h1 {
 					    	<div class="row">
 					    		<label class="control-label" for="addr">주소</label> 
 								<div class="col mb-2">
-									<input type="text" class="form-control" id="postcode" name="postcode" placeholder="우편번호">	
+									<input type="text" class="form-control" id="postcode" name="postcode" placeholder="우편번호" required>	
 								</div>
 								<div class="col mb-2">
 									<button type="button" class="btn btn-primary w-100" id="btnPostCode" >우편번호 찾기</button>
@@ -139,12 +139,12 @@ h1 {
 							</div>
 							<div class="row">
 								<div class="col mb-2">
-									<input type="text" class="form-control" id="roadAddr" name="roadAddr" placeholder="도로명주소">
+									<input type="text" class="form-control" id="roadAddr" name="roadAddr" placeholder="도로명주소" required>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col mb-2">
-									<input type="text" class="form-control" id="detailAddr" name="detailAddr" placeholder="상세주소">
+									<input type="text" class="form-control" id="detailAddr" name="detailAddr" placeholder="상세주소" required>
 								</div>
 								<div class="col mb-2">
 									<input type="text" class="form-control" id="extraAddr" name="extraAddr" placeholder="읍/면/동">
