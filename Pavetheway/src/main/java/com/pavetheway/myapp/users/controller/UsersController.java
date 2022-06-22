@@ -34,16 +34,17 @@ public class UsersController {
 	}
 	
 	//개인정보 수정 반영 요청 처리
-	@RequestMapping(value = "/users/update", method=RequestMethod.POST)
+	@RequestMapping("/users/update")
 	public ModelAndView authUpdate(UsersDto dto, HttpSession session, ModelAndView mView,
 			 HttpServletRequest request) {
 		//서비스를 이용해서 개인정보를 수정하고 
 		service.updateUser(dto, session);
-		mView.setViewName("redirect:/users/info.do");
+		mView.setViewName("users/update");
 		//개인정보 보기로 리다일렉트 이동 시틴다
 		return mView;
 	}
 	
+		
 	//회원정보 수정폼 요청처리
 	@RequestMapping("/users/updateform")
 	public ModelAndView authUpdateForm(ModelAndView mView, HttpSession session,
@@ -120,11 +121,6 @@ public class UsersController {
 	@RequestMapping("/users/login")
 	public ModelAndView login(ModelAndView mView, UsersDto dto,
 			@RequestParam String url, HttpSession session) {
-		/*
-		 *  서비스에서 비즈니스 로직을 처리할때 필요로  하는 객체를 컨트롤러에서 직접 전달을 해 주어야 한다.
-		 *  주로, HttpServletRequest, HttpServletResponse, HttpSession, ModelAndView
-		 *  등등의 객체 이다. 
-		 */
 		service.loginProcess(dto, session);
 		
 		String encodedUrl=URLEncoder.encode(url);

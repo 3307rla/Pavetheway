@@ -125,7 +125,7 @@ h1 {
 					    	<div class="row">
 					    		<label class="control-label" for="addr">주소</label> 
 								<div class="col mb-2">
-									<input type="text" class="form-control" id="postcode" name="postcode" value="${dto.postcode }" disabled>	
+									<input type="text" class="form-control" id="postcode" name="postcode" value="${dto.postcode }">	
 								</div>
 								<div class="col mb-2">
 									<button type="button" class="btn btn-primary w-100" id="btnPostCode" >우편번호 찾기</button>
@@ -133,7 +133,7 @@ h1 {
 							</div>
 							<div class="row">
 								<div class="col mb-2">
-									<input type="text" class="form-control" id="roadAddr" name="roadAddr" value="${dto.roadAddr }" disabled>
+									<input type="text" class="form-control" id="roadAddr" name="roadAddr" value="${dto.roadAddr }">
 								</div>
 							</div>
 							<div class="row">
@@ -141,7 +141,7 @@ h1 {
 									<input type="text" class="form-control" id="detailAddr" name="detailAddr" value="${dto.detailAddr }">
 								</div>
 								<div class="col mb-2">
-									<input type="text" class="form-control" id="extraAddr" name="extraAddr" value="${dto.extraAddr }" disabled>
+									<input type="text" class="form-control" id="extraAddr" name="extraAddr" value="${dto.extraAddr }">
 								</div>
 							</div>
 							<div class="d-flex justify-content-center">
