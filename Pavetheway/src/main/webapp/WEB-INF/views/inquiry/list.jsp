@@ -191,9 +191,8 @@
 								</select>
 								<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요." value="${keyword }"/>
 								<button type="submit" class="btn btn-success">검색</button>
-							</div>
 						</form>	
-					
+						</div>
 						<c:if test="${ not empty condition }">
 							<p>
 								<center><strong>${totalRow }</strong> 개의 글이 검색 되었습니다.</center>
