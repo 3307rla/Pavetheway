@@ -34,8 +34,8 @@
                     </ul>
                     <c:choose>
                     	<c:when test="${ empty sessionScope.id}">
-                    		<button class="btn btn-outline-dark">Login</button>
-                    		<button class="btn btn-outline-dark" style="margin-left:3px">SignUp</button>
+                    		<button class="btn btn-outline-dark"><a href="${pageContext.request.contextPath }/users/loginform.do">Login</a></button>
+                    		<button class="btn btn-outline-dark" style="margin-left:3px"><a href="${pageContext.request.contextPath }/users/signup_form.do">SignUp</a></button>
                     	</c:when>
                     	<c:otherwise>
                     		<form class="d-flex">
@@ -44,8 +44,8 @@
                            				Cart
                         		</button>
                     		</form>
-                    		<button class="btn btn-outline-dark">MyInfo</button>
-                    		<button class="btn btn-outline-dark">Logout</button>
+                    		<button class="btn btn-outline-dark"><a href="${pageContext.request.contextPath }/users/info.do">MyInfo</a></button>
+                    		<button class="btn btn-outline-dark"><a href="${pageContext.request.contextPath }/users/logout.do">Logout</a></button>
                     	</c:otherwise>
                     </c:choose>
                     
@@ -142,7 +142,7 @@
 									<td>${tmp.writer }</td>
 									<td>${tmp.regdate }</td>
 									<td>
-										<a href="delete.do?num=${tmp.num }">
+										<a href="delete.do?num=${tmp.num }" onclick="return confirm('삭제 하시겠습니까?');">
 											<svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
 												  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
 												  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
@@ -153,47 +153,59 @@
 							</c:forEach>
 							</tbody>
 						</table>
-						<div class="page-ui clearfix">
-							<ul>
-								<c:if test="${startPageNum ne 1 }">
+						<br />
+						<nav aria-label="Page navigation example">
+						  <ul class="pagination justify-content-center">
+						    <li>
+						      <c:if test="${startPageNum ne 1 }">
 									<li>
-										<a href="list.do?pageNum=${startPageNum-1 }&condition=${condition }&keyword=${encodedK }">Prev</a>
+										<a class="page-link" href="list.do?pageNum=${startPageNum-1 }&condition=${condition }&keyword=${encodedK }">Previous</a>
 									</li>
 								</c:if>
-								<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
+						    </li>
+						    <li>
+						      <span>
+						        <c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
 									<li>
 										<c:choose>
 											<c:when test="${pageNum eq i }">
-												<a  class="active" href="list.do?pageNum=${i }&condition=${condition }&keyword=${encodedK }">${i }</a>
+												<li class="page-item active">
+													<a class="page-link" href="list.do?pageNum=${i }&condition=${condition }&keyword=${encodedK }">${i }</a>
+												</li>
 											</c:when>
 											<c:otherwise>
-												<a href="list.do?pageNum=${i }&condition=${condition }&keyword=${encodedK }">${i }</a>
+												<a class="page-link" href="list.do?pageNum=${i }&condition=${condition }&keyword=${encodedK }">${i }</a>
 											</c:otherwise>
 										</c:choose>
 									</li>
 								</c:forEach>
-								<c:if test="${endPageNum lt totalPageCount }">
-									<li>
-										<a href="list.do?pageNum=${endPageNum+1 }&condition=${condition }&keyword=${encodedK }">Next</a>
+						      </span>
+						    </li>
+						    <li class="page-item">
+						      <c:if test="${endPageNum lt totalPageCount }">
+									<li class="page-item">
+										<a class="page-link" href="list.do?pageNum=${endPageNum+1 }&condition=${condition }&keyword=${encodedK }">Next</a>
 									</li>
 								</c:if>
-							</ul>
-						</div>
-						
+						    </li>
+						  </ul>
+						</nav>					
+						<br />
 						<div style="clear:both;"></div>
 						
-						<form action="list.do" method="get"> 
-								<label for="condition"><strong>검색 카테고리</strong></label>
-								<select name="condition" id="condition">
-									<option value="title_content" ${condition eq 'title_content' ? 'selected' : '' }>제목+내용</option>
-									<option value="title" ${condition eq 'title' ? 'selected' : '' }>제목</option>
-									<option value="writer" ${condition eq 'writer' ? 'selected' : '' }>작성자</option>
-								</select>
-								<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요." value="${keyword }"/>
-								<button type="submit" class="btn btn-success">검색</button>
-							</div>
-						</form>	
-					
+						<center>
+							<form action="list.do" method="get"> 
+									<label for="condition"><strong>검색 카테고리</strong></label>
+									<select name="condition" id="condition">
+										<option value="title_content" ${condition eq 'title_content' ? 'selected' : '' }>제목+내용</option>
+										<option value="title" ${condition eq 'title' ? 'selected' : '' }>제목</option>
+										<option value="writer" ${condition eq 'writer' ? 'selected' : '' }>작성자</option>
+									</select>
+									<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요." value="${keyword }"/>
+									<button type="submit" class="btn btn-success">검색</button>
+							</form>
+						</center>
+						</div>
 						<c:if test="${ not empty condition }">
 							<p>
 								<center><strong>${totalRow }</strong> 개의 글이 검색 되었습니다.</center>

@@ -12,7 +12,7 @@
 <body>
 	<div class="container">
 	   	<h1>상품 업로드</h1>
-	   	<form action="${pageContext.request.contextPath}/shop/upload.do" method="post" enctype="multipart/form-data">
+	   	<form action="${pageContext.request.contextPath }/shop/upload.do" method="post" enctype="multipart/form-data">
 	      	<div>
 	         	<label for="caption">설명</label>
 	         	<input type="file" name="caption" id="caption"/>

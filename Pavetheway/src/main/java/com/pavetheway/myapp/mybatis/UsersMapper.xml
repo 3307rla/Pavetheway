@@ -27,7 +27,7 @@
 	
 	<update id="update" parameterType="usersDto">
 		UPDATE users
-		SET email=#{email }
+		SET email=#{email }, postcode=#{postcode }, roadAddr=#{roadAddr }, detailAddr=#{detailAddr }, extraAddr=#{extraAddr  }
 		WHERE id=#{id }
 	</update>
 	
