@@ -108,7 +108,7 @@
 							</div>
 							<div class="mb-3">
 								<label class="form-label" for="content">내용</label>
-								<textarea class="form-control"  name="content" id="content"></textarea>
+								<textarea rows="10" class="form-control"  name="content" id="content"></textarea>
 							</div>
 							<button class="btn btn-primary" type="submit">작성 완료</button>
 						</form>
