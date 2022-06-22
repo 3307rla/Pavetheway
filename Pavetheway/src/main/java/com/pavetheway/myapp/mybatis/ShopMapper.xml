@@ -8,6 +8,7 @@
 			FROM
 				(SELECT num, code, name, imagePath
 				FROM shop_list
+				WHERE category=#{category}
 				ORDER BY num DESC) result1)
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
