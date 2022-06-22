@@ -233,7 +233,7 @@
 								<td>${dto.regdate }</td>
 							</tr>
 							<tr>
-								<td colspan="2">
+								<td height="200" colspan="2">
 									<div class="content">${dto.content }</div>
 								</td>
 							</tr>
