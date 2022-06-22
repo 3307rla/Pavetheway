@@ -60,7 +60,7 @@ body {
 }
 h1 {
 	text-align: center;
-	margin-bottom: 30px;
+	margin: 15px;
 	padding: 15px;
 	text-weight : bolder;
 }
@@ -86,21 +86,6 @@ h1 {
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath }/inquiry/answer_list.do">Q&A</a></li>
 				</ul>
-				<c:choose>
-					<c:when test="${ empty sessionScope.id}">
-						<button class="btn btn-outline-dark">Login</button>
-						<button class="btn btn-outline-dark" style="margin-left: 3px">signUp</button>
-					</c:when>
-					<c:otherwise>
-						<form class="d-flex">
-							<button class="btn btn-outline-dark" type="submit">
-								<i class="bi-cart-fill me-1"></i> Cart
-							</button>
-						</form>
-						<button class="btn btn-outline-dark">MyInfo</button>
-						<button class="btn btn-outline-dark">Logout</button>
-					</c:otherwise>
-				</c:choose>
 			</div>
 		</div>
 	</nav>
@@ -113,33 +98,32 @@ h1 {
 		</div>
 	</header>
 
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-lg-6">
-				<form action="${pageContext.request.contextPath}/users/signup.do"
-					method="post" id="myForm" class="form" onsubmit="return sendit()">
+	<div class="container, bg-dark py-5">
+		<div class="row justify-content-center m-0">
+			<div class="col-lg-7">
+				<form action="${pageContext.request.contextPath}/users/signup.do" method="post" id="myForm" class="form" onsubmit="return sendit()">
 					<div class="card card-custom">
 						<div class="card-header">
-							<h1>Regist Form</h1>
+							<h1>JOIN</h1>
 						</div>
 							<div class="card-body">
-							<div>
+							<div class="col mb-2">
 								<label class="control-label" for="id">아이디</label> 
 								<input class="form-control" type="text" name="id" id="id" /> 
 								<small class="form-text text-muted">5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.</small>
 								<div class="invalid-feedback">사용할수 없는 아이디 입니다.</div>
 							</div>
-							<div>
+							<div class="col mb-2">
 								<label class="control-label" for="pwd">비밀번호</label> 
 								<input class="form-control" type="password" name="pwd" id="pwd" /> 
 								<small class="form-text text-muted">6~12자 영문 대 소문자, 숫자, 특수문자를 사용하세요.</small>
 								<div class="invalid-feedback">비밀번호를 확인 하세요.</div>
 							</div>
-							<div>
+							<div class="col mb-2">
 								<label class="control-label" for="pwd2">비밀번호 확인</label> 
 								<input class="form-control" type="password" name="pwd2" id="pwd2" />
 							</div>
-							<div>
+							<div class="col mb-2">
 								<label class="control-label" for="email">이메일</label> 
 								<input class="form-control" type="text" name="email" id="email" />
 								<div class="invalid-feedback">이메일 주소를 다시 확인해주세요.</div>
@@ -153,7 +137,7 @@ h1 {
 									<button type="button" class="btn btn-primary w-100" id="btnPostCode" >우편번호 찾기</button>
 								</div>
 							</div>
-							<div class=class="row">
+							<div class="row">
 								<div class="col mb-2">
 									<input type="text" class="form-control" id="roadAddr" name="roadAddr" placeholder="도로명주소">
 								</div>
@@ -183,6 +167,7 @@ h1 {
 	let isIdValid=false;
 	let isPwdValid=false;
 	let isEmailValid=false;
+	
 	//아이디를 입력했을때(input) 실행할 함수 등록 
 	document.querySelector("#id").addEventListener("input", function(){
 		//일단 is-valid,  is-invalid 클래스를 제거한다.
