@@ -137,8 +137,8 @@
                            				Cart
                         		</button>
                     		</form>
-                    		<button class="btn btn-outline-dark">MyInfo</button>
-                    		<button class="btn btn-outline-dark">Logout</button>
+                    		<button class="btn btn-outline-dark"><a href="${pageContext.request.contextPath }/users/info.do">MyInfo</a></button>
+                    		<button class="btn btn-outline-dark"><a href="${pageContext.request.contextPath }/users/logout.do">Logout</a></button>
                     	</c:otherwise>
                     </c:choose>
                     
