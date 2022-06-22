@@ -98,21 +98,25 @@
         		
         		<div class="col-10">			
 	        		<div class="container">
-						<h1>장바구니 확인</h1>
+						<center><h1>장바구니 확인</h1></center>
+						
 						<c:choose>
 							<c:when test="${map.count == 0 }">
 								장바구니가 비었습니다.
 							</c:when>
 							<c:otherwise>
 							<form name="form1" id="form1" method="post" action="${pageContext.request.contextPath }/cart/update.do">
-								<table>
-									<tr>
-										<th>상품명</th>
-										<th>단가</th>
-										<th>수량</th>
-										<th>금액</th>
-										<th>취소</th>
-									</tr>
+								<table class="table">
+									<thead class="thead-dark">
+										<tr>
+											<th scope="col">상품명</th>
+											<th scope="col">단가</th>
+											<th scope="col">수량</th>
+											<th scope="col">금액</th>
+											<th scope="col">취소</th>
+										</tr>
+									</thead>
+									<tbody>
 									<c:forEach var="tmp" items="${mpa.list }">
 										<tr>
 											<td>${tmp.name }</td>
@@ -132,6 +136,7 @@
 											</td>
 										</tr>
 									</c:forEach>
+									</tbody>
 									<tr>
 										<td>
 											장바구니 금액 합계 : <fmt formatNumber patter="###,###,###" value="${map.sumMoney}"/><br>
