@@ -232,7 +232,7 @@
 						<ul>
 							<li><a href="list.do">목록보기</a></li>
 							<c:if test="${dto.writer eq id }">
-								<li><a href="delete.do?num=${dto.num }">삭제</a></li>
+								<li><a href="delete.do?num=${dto.num }" onclick="return confirm('삭제 하시겠습니까?');">삭제</a></li>
 							</c:if>
 						</ul>
 						<!-- 댓글 목록 -->
@@ -480,7 +480,6 @@
 								});
 							}
 						}
-						
 						function addUpdateFormListener(sel){
 							//댓글 수정 폼의 참조값을 배열에 담아오기
 							let updateForms=document.querySelectorAll(sel);
