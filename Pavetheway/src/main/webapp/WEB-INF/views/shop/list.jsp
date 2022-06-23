@@ -124,11 +124,9 @@
         		</div>
         		<div class="col-9">
 		    <div class="container">
-<<<<<<< HEAD
-		   	<h3 style="color:gray;">All</h3>
-=======
+
 		   	<h3>Outer</h3>
->>>>>>> branch 'master' of https://github.com/3307rla/Pavetheway.git
+
 		   	<div class="row">
 				<c:forEach var="tmp" items="${list }">
 					<div class="col-6 col-md-4 col-lg-3">
