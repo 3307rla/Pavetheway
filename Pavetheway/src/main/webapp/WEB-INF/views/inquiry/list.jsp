@@ -126,8 +126,8 @@
 							<thead class="thead-dark">
 								<tr>
 									<th scope="col">글번호</th>
-									<th scope="col">제목</th>
 									<th scope="col">작성자</th>
+									<th scope="col">제목</th>
 									<th scope="col">등록일</th>
 									<th scope="col">삭제</th>
 								</tr>
@@ -136,10 +136,10 @@
 							<c:forEach var="tmp" items="${list }">
 								<tr>
 									<td>${tmp.num }</td>
+									<td>${tmp.writer }</td>
 									<td>
 										<a href="detail.do?num=${tmp.num }&keyword=${encodedK }&condition=${condition}">${tmp.title }</a>
 									</td>				
-									<td>${tmp.writer }</td>
 									<td>${tmp.regdate }</td>
 									<td>
 										<a href="delete.do?num=${tmp.num }" onclick="return confirm('삭제 하시겠습니까?');">
