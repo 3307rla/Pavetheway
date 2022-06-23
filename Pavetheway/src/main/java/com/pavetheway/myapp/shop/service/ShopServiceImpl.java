@@ -28,7 +28,9 @@ public class ShopServiceImpl implements ShopService{
 		final int PAGE_ROW_COUNT=8;
 		//하단 페이지를 몇개씩 표시할 것인지
 		final int PAGE_DISPLAY_COUNT=5;
-	   
+	    
+		String category = request.getParameter("category");
+		
 		//보여줄 페이지의 번호를 일단 1이라고 초기값 지정
 		int pageNum=1;
 		//페이지 번호가 파라미터로 전달되는지 읽어와 본다.
@@ -48,6 +50,7 @@ public class ShopServiceImpl implements ShopService{
 		ShopDto dto = new ShopDto();
 		dto.setStartRowNum(startRowNum);
 		dto.setEndRowNum(endRowNum);
+		dto.setCategory(category);
 	   
 		//ShopDao 객체를 이용해서 상품목록을 얻어온다.
 		List<ShopDto> list = dao.getList(dto);
@@ -68,6 +71,7 @@ public class ShopServiceImpl implements ShopService{
 		
 		//request 영역에 담아주기
 		request.setAttribute("list", list);	//shop list
+		request.setAttribute("category", category);
 		request.setAttribute("startPageNum", startPageNum);	//시작 페이지 번호
 		request.setAttribute("endPageNum", endPageNum);	//끝 페이지 번호
 		request.setAttribute("pageNum", pageNum);	//현재 페이지 번호

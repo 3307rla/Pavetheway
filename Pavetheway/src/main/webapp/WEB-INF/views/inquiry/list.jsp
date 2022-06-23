@@ -29,7 +29,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath }/home.do">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Shop</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/shop/list.do?category=outer">Shop</a></li>
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/inquiry/answer_list.do">Q&A</a></li>
                     </ul>
                     <c:choose>
@@ -41,7 +41,7 @@
                     		<form class="d-flex">
                         		<button class="btn btn-outline-dark" type="submit">
                             		<i class="bi-cart-fill me-1"></i>
-                           				Cart
+                           				<a href="${pageContext.request.contextPath }/cart/list.do">Cart</a>
                         		</button>
                     		</form>
                     		<button class="btn btn-outline-dark"><a href="${pageContext.request.contextPath }/users/info.do">MyInfo</a></button>
@@ -126,8 +126,8 @@
 							<thead class="thead-dark">
 								<tr>
 									<th scope="col">글번호</th>
-									<th scope="col">제목</th>
 									<th scope="col">작성자</th>
+									<th scope="col">제목</th>
 									<th scope="col">등록일</th>
 									<th scope="col">삭제</th>
 								</tr>
@@ -136,10 +136,10 @@
 							<c:forEach var="tmp" items="${list }">
 								<tr>
 									<td>${tmp.num }</td>
+									<td>${tmp.writer }</td>
 									<td>
 										<a href="detail.do?num=${tmp.num }&keyword=${encodedK }&condition=${condition}">${tmp.title }</a>
 									</td>				
-									<td>${tmp.writer }</td>
 									<td>${tmp.regdate }</td>
 									<td>
 										<a href="delete.do?num=${tmp.num }" onclick="return confirm('삭제 하시겠습니까?');">

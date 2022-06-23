@@ -122,7 +122,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath }/home.do">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Shop</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/shop/list.do?category=outer">Shop</a></li>
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/inquiry/answer_list.do">Q&A</a></li>
                     </ul>
                     <c:choose>
@@ -134,7 +134,7 @@
                     		<form class="d-flex">
                         		<button class="btn btn-outline-dark" type="submit">
                             		<i class="bi-cart-fill me-1"></i>
-                           				Cart
+                           				<a href="${pageContext.request.contextPath }/cart/list.do">Cart</a>
                         		</button>
                     		</form>
                     		<button class="btn btn-outline-dark"><a href="${pageContext.request.contextPath }/users/info.do">MyInfo</a></button>
@@ -198,22 +198,24 @@
 						  <ul class="pagination justify-content-center">
 						    <li class="page-item">
 						    	<c:if test="${dto.prevNum ne 0 }">
-									<a class="page-link" href="detail.do?num=${dto.prevNum }&keyword=${encodedK }&condition=${condition }">이전 글</a>
+									<a class="page-link" href="detail.do?num=${dto.prevNum }&keyword=${encodedK }&condition=${condition }">다음 글</a>
 								</c:if>
 						    </li>
 						    <li class="page-item">
 							    <c:if test="${dto.nextNum ne 0 }">
-									<a class="page-link" href="detail.do?num=${dto.nextNum }&keyword=${encodedK }&condition=${condition }">다음 글</a>
+									<a class="page-link" href="detail.do?num=${dto.nextNum }&keyword=${encodedK }&condition=${condition }">이전 글</a>
 								</c:if>
 						    </li>
 						  </ul>
 						</nav>
 						<br />
 						<c:if test="${ not empty keyword }">
-							<p>	
-								<strong>${condition }</strong> 조건, 
-								<strong>${keyword }</strong> 검색어로 검색된 내용 자세히 보기 
-							</p>
+							<center>
+								<p>	
+									<strong>${condition }</strong> 조건, 
+									<strong>${keyword }</strong> 검색어로 검색 결과 입니다.
+								</p>
+							</center>
 						</c:if>
 						<table class="table table-bordered">
 							<tr>
@@ -233,17 +235,21 @@
 								<td>${dto.regdate }</td>
 							</tr>
 							<tr>
-								<td colspan="2">
+								<td height="200" colspan="2">
 									<div class="content">${dto.content }</div>
 								</td>
 							</tr>
 						</table>
-						
-						<a class="btn btn-primary" href="list.do" role="button">목록으로 이동</a>
-						
-						<c:if test="${dto.writer eq id }">
-							<a class="btn btn-primary" href="delete.do?num=${dto.num }" onclick="return confirm('삭제 하시겠습니까?');" role="button">삭제</a>
-						</c:if>
+						<br />
+						<center>
+							<a class="btn btn-primary" href="list.do" role="button">목록으로 이동</a>
+							
+							<c:if test="${dto.writer eq id }">
+								<a class="btn btn-primary" href="delete.do?num=${dto.num }" onclick="return confirm('삭제 하시겠습니까?');" role="button">현재 글 삭제</a>
+							</c:if>
+						</center>
+						<br />
+						<br />
 						
 						<!-- 댓글 목록 -->
 						<div class="comments">

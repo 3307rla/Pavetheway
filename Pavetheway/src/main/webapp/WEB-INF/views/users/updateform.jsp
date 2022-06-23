@@ -74,28 +74,39 @@ h1 {
 </style>
 </head>
 <body>
-	<!-- Navigation-->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<div class="container px-4 px-lg-5">
-			<a class="navbar-brand" href="#!">Pave the way!</a>
-			<button class="navbar-toggler" type="button"
-				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-					<li class="nav-item"><a class="nav-link active"
-						aria-current="page"
-						href="${pageContext.request.contextPath }/home.do">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="#!">Shop</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="${pageContext.request.contextPath }/inquiry/answer_list.do">Q&A</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="#!">Pave the way!</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath }/home.do">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/shop/list.do?category=outer">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/inquiry/answer_list.do">Q&A</a></li>
+
+                </ul>
+                <c:choose>
+                	<c:when test="${ empty sessionScope.id}">
+                		<button class="btn btn-outline-dark"><a href="${pageContext.request.contextPath }/users/loginform.do">Login</a></button>
+                		<button class="btn btn-outline-dark" style="margin-left:3px"><a href="${pageContext.request.contextPath }/users/signup_form.do">SignUp</a></button>
+                	</c:when>
+                	<c:otherwise>
+                		<form class="d-flex">
+                    		<button class="btn btn-outline-dark" type="submit">
+                        		<i class="bi-cart-fill me-1"></i>
+                       				<a href="${pageContext.request.contextPath }/cart/list.do">Cart</a>
+                    		</button>
+                		</form>
+                		<button class="btn btn-outline-dark"><a href="${pageContext.request.contextPath }/users/info.do">MyInfo</a></button>
+                		<button class="btn btn-outline-dark"><a href="${pageContext.request.contextPath }/users/logout.do">Logout</a></button>
+                	</c:otherwise>
+                </c:choose>
+                
+            </div>
+        </div>
+    </nav>
+    
 	<!-- Header-->
 	<header class="bg-dark py-5">
 		<div class="container px-4 px-lg-5 my-5">
@@ -107,8 +118,8 @@ h1 {
 
 	<div class=" bg-dark py-5">
 		<div class="row justify-content-center m-0">
-			<div class="col-lg-7">
-				<form action="${pageContext.request.contextPath}/users/update.do" method="post">
+			<div class="col-lg-5">
+				<form action="${pageContext.request.contextPath}/users/update.do"  method="post" id="myForm" class="form" onsubmit="return sendit()">
 					<div class="card card-custom">
 						<div class="card-header">
 							<h1>Update Info</h1>
@@ -119,13 +130,14 @@ h1 {
 								<label class="control-label" for="id">아이디</label>
 								<input class="form-control" type="text" id="id" value="${id }" disabled/>
 							<div class="col mb-2">
-								<label class="control-label" for="email">이메일</label>
+								<label class="control-label" for="email">이메일</label> 
 								<input class="form-control" type="text" name="email" id="email" value="${dto.email }"/>
+								<div class="invalid-feedback">이메일 주소를 다시 확인해주세요.</div>
 							</div>
 					    	<div class="row">
 					    		<label class="control-label" for="addr">주소</label> 
 								<div class="col mb-2">
-									<input type="text" class="form-control" id="postcode" name="postcode" value="${dto.postcode }">	
+									<input type="text" class="form-control" id="postcode" name="postcode" value="${dto.postcode }" required>	
 								</div>
 								<div class="col mb-2">
 									<button type="button" class="btn btn-primary w-100" id="btnPostCode" >우편번호 찾기</button>
@@ -133,7 +145,7 @@ h1 {
 							</div>
 							<div class="row">
 								<div class="col mb-2">
-									<input type="text" class="form-control" id="roadAddr" name="roadAddr" value="${dto.roadAddr }">
+									<input type="text" class="form-control" id="roadAddr" name="roadAddr" value="${dto.roadAddr }" required>
 								</div>
 							</div>
 							<div class="row">
@@ -155,6 +167,39 @@ h1 {
 	</div>
 	
 	<script>
+	
+	let isEmailValid=true;
+	
+	//이메일을 입력했을때 실행할 함수 등록
+	document.querySelector("#email").addEventListener("input", function(){
+		document.querySelector("#email").classList.remove("is-valid");
+		document.querySelector("#email").classList.remove("is-invalid");
+		
+		//1. 입력한 이메일을 읽어와서
+		const inputEmail=this.value;
+		//2. 이메일을 검증할 정규 표현식 객체를 만들어서
+		const reg_email=/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+		//3. 정규표현식 매칭 여부에 따라 분기하기
+		if(reg_email.test(inputEmail)){//만일 매칭된다면
+			isEmailValid=true;
+			document.querySelector("#email").classList.add("is-valid");
+		}else{
+			isEmailValid=false;
+			document.querySelector("#email").classList.add("is-invalid");
+		}
+	});
+	
+	
+	//폼에 submit 이벤트가 발생했을때 실행할 함수 등록
+	document.querySelector("#myForm").addEventListener("submit", function(e){
+		//폼 전체의 유효성 여부 알아내기 
+		let isFormValid = isEmailValid;
+		if(!isFormValid){//폼이 유효하지 않으면
+			//폼 전송 막기 
+			e.preventDefault();
+		}	
+	});
+	
 	// 다음 우편번호 api
 	$("#btnPostCode").on("click",function() {
 		new daum.Postcode({

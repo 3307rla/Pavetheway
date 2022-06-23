@@ -29,7 +29,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath }/home.do">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Shop</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/shop/list.do?category=outer">Shop</a></li>
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/inquiry/answer_list.do">Q&A</a></li>
                     </ul>
                     <c:choose>
@@ -41,7 +41,7 @@
                     		<form class="d-flex">
                         		<button class="btn btn-outline-dark" type="submit">
                             		<i class="bi-cart-fill me-1"></i>
-                           				Cart
+                           				<a href="${pageContext.request.contextPath }/cart/list.do">Cart</a>
                         		</button>
                     		</form>
                     		<button class="btn btn-outline-dark"><a href="${pageContext.request.contextPath }/users/info.do">MyInfo</a></button>
@@ -108,7 +108,7 @@
 							</div>
 							<div class="mb-3">
 								<label class="form-label" for="content">내용</label>
-								<textarea class="form-control"  name="content" id="content"></textarea>
+								<textarea rows="10" class="form-control"  name="content" id="content"></textarea>
 							</div>
 							<button class="btn btn-primary" type="submit">작성 완료</button>
 						</form>
