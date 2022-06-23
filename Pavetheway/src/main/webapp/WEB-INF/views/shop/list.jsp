@@ -52,9 +52,7 @@
 			   	*/
 				object-fit: contain;	
 		   	}
-		   	
-		   	
-		   	
+		
 		</style>
         </head>
 		<body>
