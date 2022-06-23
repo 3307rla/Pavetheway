@@ -112,20 +112,10 @@
 						        </button>
 					        	<div class="collapse show" id="home-collapse">
 							        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-<<<<<<< HEAD
-							        	<li><a href="${pageContext.request.contextPath}/shop/outer.do" class="link-dark rounded">Outer</a></li>
-							        	<br />
-							            <li><a href="${pageContext.request.contextPath}/shop/top.do" class="link-dark rounded">Top</a></li>
-							            <br />
-							            <li><a href="${pageContext.request.contextPath}/shop/bottom.do" class="link-dark rounded">Bottom</a></li>
-							            <br />
-							            <li><a href="${pageContext.request.contextPath}/shop/etc.do" class="link-dark rounded">Etc</a></li>
-=======
 							        	<li><a href="${pageContext.request.contextPath }/shop/list.do?category=outer" class="link-dark rounded">Outer</a></li>
 							            <li><a href="${pageContext.request.contextPath }/shop/list.do?category=top" class="link-dark rounded">Top</a></li>
 							            <li><a href="${pageContext.request.contextPath }/shop/list.do?category=bottom" class="link-dark rounded">Bottom</a></li>
 							            <li><a href="${pageContext.request.contextPath }/shop/list.do?category=etc" class="link-dark rounded">Etc</a></li>
->>>>>>> branch 'master' of https://github.com/3307rla/Pavetheway.git
 							    	</ul>
 					        	</div>
 					      	</li>
