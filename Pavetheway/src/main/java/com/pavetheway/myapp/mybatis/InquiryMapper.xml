@@ -24,6 +24,7 @@
 			FROM
 				(SELECT num,writer,title,content,regdate
 				FROM inquiry_board
+				<include refid="searchCondition"/>
 				ORDER BY num DESC) result1)
 		<![CDATA[ 
 		WHERE rnum >= #{startRowNum} AND rnum <= #{endRowNum}
