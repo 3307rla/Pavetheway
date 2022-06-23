@@ -91,7 +91,7 @@
         <header class="bg-dark py-2">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <img src="resources/images/logo1.png" width="130" height="30"/>
+                    <img src="${pageContext.request.contextPath }/resources/images/logo1.png" width="130" height="30"/>
                 </div>
             </div>
         </header>
@@ -203,3 +203,4 @@
         <script src="resources/js/scripts.js"></script>
     </body>
 </html>
+
