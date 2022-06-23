@@ -139,7 +139,7 @@ h1 {
 							</div>
 							<div class="row">
 								<div class="col mb-2">
-									<input type="text" class="form-control" id="detailAddr" name="detailAddr" value="${dto.detailAddr }" required>
+									<input type="text" class="form-control" id="detailAddr" name="detailAddr" value="${dto.detailAddr }">
 								</div>
 								<div class="col mb-2">
 									<input type="text" class="form-control" id="extraAddr" name="extraAddr" value="${dto.extraAddr }">

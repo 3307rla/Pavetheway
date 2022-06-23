@@ -144,7 +144,7 @@ h1 {
 							</div>
 							<div class="row">
 								<div class="col mb-2">
-									<input type="text" class="form-control" id="detailAddr" name="detailAddr" placeholder="상세주소" required>
+									<input type="text" class="form-control" id="detailAddr" name="detailAddr" placeholder="상세주소">
 								</div>
 								<div class="col mb-2">
 									<input type="text" class="form-control" id="extraAddr" name="extraAddr" placeholder="읍/면/동">
