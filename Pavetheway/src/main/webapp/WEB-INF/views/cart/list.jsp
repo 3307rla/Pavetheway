@@ -150,7 +150,7 @@
 							</form>
 							</c:otherwise>
 						</c:choose>
-						<button type="button" id="btnList"><a href="${pageContext.request.contextPath }/shop/list.do">상품목록</a></button>
+						<button type="button" id="btnList"><a href="${pageContext.request.contextPath }/shop/list.do?category=outer">상품목록</a></button>
 				</div>
 			</div>
 			        		
