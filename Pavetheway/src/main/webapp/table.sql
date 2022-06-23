@@ -44,19 +44,13 @@ CREATE TABLE shop_list(
    category VARCHAR2(100), --분류
    imagePath VARCHAR2(100), -- 업로드된 이미지의 경로  ex) /upload/xxx.jpg
    infoImagePath VARCHAR2(100), --상품 정보 이미지
-   remainCount NUMBER CHECK(remainCount >= 0), --재고갯수
    viewcount NUMBER
 );
 
 CREATE SEQUENCE shop_list_seq;
 
 
--- 고객 계좌 테이블
-CREATE TABLE client_account(
-   id VARCHAR2(100) PRIMARY KEY, -- 고객의 아이디
-   money NUMBER CHECK(money >= 0), -- 고객의 잔고 
-   point NUMBER
-);
+
 
 -- 배송정보
 CREATE TABLE client_order(

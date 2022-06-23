@@ -29,11 +29,11 @@ public class ShopController {
 	
 	//shop list 게시글의  num 이 parameter get 방식으로 넘어온다.
 	//info 페이지
-	@RequestMapping(value = "/shop/info", method = RequestMethod.GET)
+	@RequestMapping(value = "/shop/detail", method = RequestMethod.GET)
 	public ModelAndView detail(ModelAndView mView, @RequestParam int num) {
 		//shop info 페이지에 필요한 data를 num 으로 가져와, ModelAndView 에 저장
 		service.getDetail(mView, num);
-		mView.setViewName("shop/info");
+		mView.setViewName("shop/detail");
 		
 		return mView;
 	}
