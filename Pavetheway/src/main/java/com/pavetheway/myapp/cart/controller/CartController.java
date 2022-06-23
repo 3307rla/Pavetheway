@@ -22,14 +22,14 @@ public class CartController {
 	@Autowired
 	private CartService service;
 	
-	@RequestMapping("/cart/insert")
-	public ModelAndView authInsert(CartDto dto, HttpSession session, HttpServletRequest request) {
+	@RequestMapping("insert.do")
+	public String AuthInsert(CartDto dto, HttpSession session, HttpServletRequest request) {
 		
 		String id=(String)session.getAttribute("id");		
 		dto.setId(id);		
 		service.insert(dto);
 		
-		return new ModelAndView("shop/upload");
+		return "redirect:/cart/list.do";
 	}
 	
 	@RequestMapping("/cart/list")
@@ -47,7 +47,7 @@ public class CartController {
 	    map.put("list", list);
 	    map.put("count", list.size());
 	      
-	    mview.setViewName("cart/list");
+	    mview.setViewName("cart/list");  
 	    mview.addObject("map", map);
 	      
 	    return mview;

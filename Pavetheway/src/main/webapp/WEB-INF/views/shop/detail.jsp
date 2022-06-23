@@ -183,7 +183,17 @@
         			<br/>
         			<a href="${pageContext.request.contextPath}/shop/list.do?category=${dto.category}">목록으로</a>
         			<a href="${pageContext.request.contextPath}/shop/buy.do">주문하기</a>
-	 	           	<a href="${pageContext.request.contextPath}/cart/cart.do">장바구니</a>
+        			<td>
+        				<form name="form1" method="post" action="${pageContext.request.contextPath}/cart/insert.do">
+        				<input type="hidden" name="code" value="${dto.code }"/>
+        				<select name="amount">
+        					<c:forEach begin="1" end="10" var="i">
+        						<option value="${i}">${i}</option>
+        					</c:forEach>
+        				</select>&nbsp;개
+        				<input type="submit" value="장바구니"/>
+        				</form>
+        			</td>
         			<br />
         			
         			<!-- 댓글 목록 -->
