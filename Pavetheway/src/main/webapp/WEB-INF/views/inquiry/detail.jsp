@@ -240,13 +240,14 @@
 								</td>
 							</tr>
 						</table>
-						
-						<a class="btn btn-primary" href="list.do" role="button">목록으로 이동</a>
-						
-						<c:if test="${dto.writer eq id }">
-							<a class="btn btn-primary" href="delete.do?num=${dto.num }" onclick="return confirm('삭제 하시겠습니까?');" role="button">삭제</a>
-						</c:if>
-						
+						<br />
+						<center>
+							<a class="btn btn-primary" href="list.do" role="button">목록으로 이동</a>
+							
+							<c:if test="${dto.writer eq id }">
+								<a class="btn btn-primary" href="delete.do?num=${dto.num }" onclick="return confirm('삭제 하시겠습니까?');" role="button">현재 글 삭제</a>
+							</c:if>
+						</center>
 						<br />
 						<br />
 						
