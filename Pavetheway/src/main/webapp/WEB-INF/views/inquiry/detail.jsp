@@ -166,7 +166,7 @@
 						    </a>
 					    <ul class="list-unstyled ps-0">
 					      	<li class="mb-1">
-						        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+						        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true" style="font-size:17px; font-weight:bold;">
 						        	문의 및 답변
 						        </button>
 					        	<div class="collapse show" id="home-collapse">
@@ -177,15 +177,16 @@
 					        	</div>
 					      	</li>
 					      	<li class="mb-1">
-						        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+						        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false" style="font-size:17px; font-weight:bold;">
 						          Shop
 						        </button>
 					        	<div class="collapse" id="orders-collapse">
 						          	<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-							            <li><a href="#" class="link-dark rounded">Clothes</a></li>
-							            <li><a href="#" class="link-dark rounded">ACC</a></li>
-
-						          	</ul>
+							        	<li><a href="${pageContext.request.contextPath }/shop/list.do?category=outer" class="link-dark rounded">Outer</a></li>
+							            <li><a href="${pageContext.request.contextPath }/shop/list.do?category=top" class="link-dark rounded">Top</a></li>
+							            <li><a href="${pageContext.request.contextPath }/shop/list.do?category=bottom" class="link-dark rounded">Bottom</a></li>
+							            <li><a href="${pageContext.request.contextPath }/shop/list.do?category=etc" class="link-dark rounded">Etc</a></li>
+							    	</ul>
 					        	</div>
 					      	</li>
 					    </ul>
