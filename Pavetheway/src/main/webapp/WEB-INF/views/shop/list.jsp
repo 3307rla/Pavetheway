@@ -61,7 +61,7 @@
 		<!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#!">Pave the way!</a>
+                <a class="navbar-brand" style="font-weight:bold;">PAVE the WAY!</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
@@ -90,7 +90,7 @@
             </div>
         </nav>
         <!-- Header-->
-        <header class="bg-dark py-5">
+        <header class="bg-dark py-2">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <img src="../resources/images/logo1.png" width="130" height="30"/>
@@ -101,22 +101,21 @@
         <section class="py-3">
         	<div class="row">
         		<div class="col-2">
-        			  	<div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
-						    <a href="/" class="d-flex align-items-center pb-3 mb-3 ">
-						      <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
-						      <span class="fs-5 fw-semibold">Menu</span>
-						    </a>
-					    <ul class="list-unstyled ps-0">
-					      	<li class="mb-1">
+        			  	<div class="flex-shrink-0 p-3 bg-white" style="width: 70px;">
+						    <ul class="list-unstyled ps-0">
+					      	<li class="mb-1 container-fluid">
 						        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true"
-						         href="${pageContext.request.contextPath}/shop/list.do">
+						         style="font-size:17px; font-weight:bold;" href="${pageContext.request.contextPath}/shop/list.do">
 						         Shop
 						        </button>
 					        	<div class="collapse show" id="home-collapse">
 							        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 							        	<li><a href="${pageContext.request.contextPath}/shop/outer.do" class="link-dark rounded">Outer</a></li>
+							        	<br />
 							            <li><a href="${pageContext.request.contextPath}/shop/top.do" class="link-dark rounded">Top</a></li>
+							            <br />
 							            <li><a href="${pageContext.request.contextPath}/shop/bottom.do" class="link-dark rounded">Bottom</a></li>
+							            <br />
 							            <li><a href="${pageContext.request.contextPath}/shop/etc.do" class="link-dark rounded">Etc</a></li>
 							    	</ul>
 					        	</div>
@@ -126,7 +125,7 @@
         		</div>
         		<div class="col-9">
 		    <div class="container">
-		   	<h3>All</h3>
+		   	<h3 style="color:gray;">All</h3>
 		   	<div class="row">
 				<c:forEach var="tmp" items="${list }">
 					<div class="col-6 col-md-4 col-lg-3">
