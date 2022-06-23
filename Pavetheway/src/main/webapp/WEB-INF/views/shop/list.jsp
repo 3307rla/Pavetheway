@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -59,12 +58,14 @@
 		<!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" style="font-weight:bold;">PAVE the WAY!</a>
+            <a class="navbar-brand" style="font-weight:bold;">PAVE the WAY!</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath }/home.do">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/shop/list.do">Shop</a></li>
+
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/shop/list.do?category=outer">Shop</a></li>
+
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/inquiry/answer_list.do">Q&A</a></li>
                     </ul>
                     <c:choose>
@@ -83,17 +84,14 @@
                     		<button class="btn btn-outline-dark" href="${pageContext.request.contextPath}/users/logout.do">Logout</button>
                     	</c:otherwise>
                     </c:choose>
-                    
-                </div>
+                 </div>
             </div>
         </nav>
         <!-- Header-->
         <header class="bg-dark py-2">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-
-                    <img src="${pageContext.request.contextPath }/resources/images/logo1.png" width="220" height="120"/>
-
+                    <img src="${pageContext.request.contextPath }/resources/images/logo1.png" width="130" height="30"/>
                 </div>
             </div>
         </header>
