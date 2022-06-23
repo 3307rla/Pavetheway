@@ -116,10 +116,10 @@
 						        </button>
 					        	<div class="collapse show" id="home-collapse">
 							        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-							        	<li><a href="${pageContext.request.contextPath}/shop/outer.do" class="link-dark rounded">Outer</a></li>
-							            <li><a href="${pageContext.request.contextPath}/shop/top.do" class="link-dark rounded">Top</a></li>
-							            <li><a href="${pageContext.request.contextPath}/shop/bottom.do" class="link-dark rounded">Bottom</a></li>
-							            <li><a href="${pageContext.request.contextPath}/shop/etc.do" class="link-dark rounded">Etc</a></li>
+							        	<li><a href="${pageContext.request.contextPath }/shop/list.do?category=outer" class="link-dark rounded">Outer</a></li>
+							            <li><a href="${pageContext.request.contextPath }/shop/list.do?category=top" class="link-dark rounded">Top</a></li>
+							            <li><a href="${pageContext.request.contextPath }/shop/list.do?category=bottom" class="link-dark rounded">Bottom</a></li>
+							            <li><a href="${pageContext.request.contextPath }/shop/list.do?category=etc" class="link-dark rounded">Etc</a></li>
 							    	</ul>
 					        	</div>
 					      	</li>
@@ -128,7 +128,7 @@
         		</div>
         		<div class="col-9">
 		    <div class="container">
-		   	<h3>All</h3>
+		   	<h3>Outer</h3>
 		   	<div class="row">
 				<c:forEach var="tmp" items="${list }">
 					<div class="col-6 col-md-4 col-lg-3">
@@ -139,9 +139,9 @@
 			               		</div>
 		            		</a>
 		            		<div class="card-body">
-		               			<p class="card-text">${tmp.infoImagePath}</p>
-		               			<p class="card-text">by <strong>${tmp.name}</strong></p>
-		               			<p><small>${tmp.price}</small></p>
+		               			<p class="card-text"><strong>${tmp.name}</strong></p>
+		               			<p><small>${tmp.price}</small>원</p>
+		               			<p><small>수량 : ${tmp.remainCount}</small>개</p>
 		            		</div>
 		         		</div>
 		      		</div>

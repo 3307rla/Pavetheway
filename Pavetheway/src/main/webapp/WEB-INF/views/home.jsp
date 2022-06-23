@@ -42,8 +42,8 @@
                            				<a href="${pageContext.request.contextPath }/cart/list.do">Cart</a>
                         		</button>
                     		</form>
-                    		<button class="btn btn-outline-dark"><a href="${pageContext.request.contextPath }/users/info.do">MyInfo</a></button>
-                    		<button class="btn btn-outline-dark"><a href="${pageContext.request.contextPath }/users/logout.do">Logout</a></button>
+                    		<button class="btn btn-outline-dark" style="margin-left:3px"><a href="${pageContext.request.contextPath }/users/info.do">MyInfo</a></button>
+                    		<button class="btn btn-outline-dark" style="margin-left:3px"><a href="${pageContext.request.contextPath }/users/logout.do">Logout</a></button>
                     	</c:otherwise>
                     </c:choose>
                     
@@ -78,8 +78,8 @@
 							        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 							        	<li><a href="${pageContext.request.contextPath }/shop/list.do?category=outer" class="link-dark rounded">Outer</a></li>
 							            <li><a href="${pageContext.request.contextPath }/shop/list.do?category=top" class="link-dark rounded">Top</a></li>
-							            <li><a href="#" class="link-dark rounded">Bottom</a></li>
-							            <li><a href="#" class="link-dark rounded">Etc</a></li>
+							            <li><a href="${pageContext.request.contextPath }/shop/list.do?category=bottom" class="link-dark rounded">Bottom</a></li>
+							            <li><a href="${pageContext.request.contextPath }/shop/list.do?category=etc" class="link-dark rounded">Etc</a></li>
 							    	</ul>
 					        	</div>
 					      	</li>

@@ -7,7 +7,7 @@
 		FROM	
 			(SELECT result1.*, ROWNUM as rnum
 			FROM
-				(SELECT num, code, name, imagePath
+				(SELECT num, code, name, imagePath, price, infoImagePath, remainCount, category
 				FROM shop_list
 				WHERE category=#{category}
 				ORDER BY num DESC) result1)
