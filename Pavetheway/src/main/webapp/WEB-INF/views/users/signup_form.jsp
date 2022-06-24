@@ -138,7 +138,7 @@ h1 {
 								<label class="control-label" for="email">이메일</label> 
 								<input class="form-control" type="text" name="email" id="email" required/>
 								<small class="form-text text-muted">이메일 형식에 맞춰 작성해주세요.</small>
-								<div class="invalid-feedback">사용 할 수 없는 이메일 입니다</div>
+								<div class="invalid-feedback">사용 할 수 없는 이메일 입니다.</div>
 							</div>
 					    	<div class="row">
 					    		<label class="control-label" for="addr">주소</label> 
