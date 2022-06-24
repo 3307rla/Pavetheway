@@ -44,13 +44,13 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public void delete(int num, HttpServletRequest request) {
-		 
+
 		cartDao.delete(num);
 		
 	}
 
 	@Override
-	public void deletAll(String id) {
+	public void deleteAll(String id) {
 		
 		cartDao.deleteAll(id);
 		

@@ -28,8 +28,9 @@ public class CartController {
 		String id=(String)session.getAttribute("id");		
 	
 		dto.setId(id);
+		
 		service.insert(dto);		
-		return new ModelAndView("cart/list");
+		return new ModelAndView("redirect:/cart/list.do");
 	}
 	
 	@RequestMapping("/cart/list")
@@ -39,7 +40,7 @@ public class CartController {
 	    String id=(String)session.getAttribute("id");
 	    List<CartDto> list=service.getList(id);
 	    int sumMoney=service.sumMoney(id);
-	    int fee=sumMoney >= 20000 ? 0 : 2000;
+	    int fee=sumMoney >= 50000 ? 0 : 5000;
 	      
 	    map.put("sumMoney", sumMoney);
 	    map.put("fee", fee);
@@ -59,7 +60,7 @@ public class CartController {
 			
 		service.delete(num, request);
 			
-		return new ModelAndView("redirect:/inquiry/list.do");
+		return new ModelAndView("redirect:/cart/list.do");
 	}
 	
 	@RequestMapping("/cart/update")
@@ -76,4 +77,12 @@ public class CartController {
 	    return "redirect:/cart/list.do";
 	 }
 
+	@RequestMapping("/cart/deleteAll")
+	public String deleteAll(HttpSession session) {
+		String id=(String)session.getAttribute("id");
+		if(id!=null) {
+			service.deleteAll(id);
+		}
+		return "redirect:/cart/list.do";
+	}
 }

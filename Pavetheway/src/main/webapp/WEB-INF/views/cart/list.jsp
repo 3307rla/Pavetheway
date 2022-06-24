@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -16,6 +16,11 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../resources/css/styles.css" rel="stylesheet" />
+    
+    <script>
+
+    </script>    
+    
     </head>
     <body>
         <!-- Navigation-->
@@ -122,35 +127,37 @@
 											<td>${tmp.name }</td>
 											
 											<td>
-												${tmp.price }
+												<fmt:formatNumber  value="${tmp.price }" type="currency"/>
 											</td>
 											<td>
 												<input type="number" style="" name="amount" value="${tmp.amount }">
 												<input type="hidden" name="code" value="${tmp.code }">							
 											</td>
 											<td>
-												${tmp.money }							
+												<fmt:formatNumber  value="${tmp.money }" type="currency"/>						
 											</td>
 											<td>
-												<a href="${pageContext.request.contextPath}/cart/delete.do?num=${tmp.num}"></a>
+												<a href="${pageContext.request.contextPath}/cart/delete.do?num=${tmp.num}">삭제</a>
 											</td>
 										</tr>
 									</c:forEach>
 									</tbody>
 									<tr>
 										<td>
-											장바구니 금액 합계 : <fmt formatNumber patter="###,###,###" value="${map.sumMoney}"/><br>
-											배송료 : ${map.fee}<br>
-											전체 주문 금액 : <fmt formatNumber patter="###,###,###" value="${map.allSum}"/><br> 
+											장바구니 금액 합계 : <fmt:formatNumber  value="${map.sumMoney }" type="currency"/><br>
+											배송료 : <fmt:formatNumber  value="${map.fee }" type="currency"/><br>
+											전체 주문 금액 : <fmt:formatNumber  value="${map.sum }" type="currency"/><br> 
 										</td>
 									</tr>
 								</table>
 								<input type="hidden" name="count" value="${map.count }">
 								<button type="submit" id="btnUpdate">수정</button>
+								<button type="button" id="btnDelete"><a href="${pageContext.request.contextPath }/cart/deleteAll.do">장바구니 비우기</a></button>
 							</form>
 							</c:otherwise>
 						</c:choose>
 						<button type="button" id="btnList"><a href="${pageContext.request.contextPath }/shop/list.do?category=outer">상품목록</a></button>
+				
 				</div>
 			</div>
 			        		
