@@ -16,7 +16,7 @@ public interface CartService {
 	//장바구니 상품 개별 delete
 	public void delete(int num, HttpServletRequest request);
 	//장바구니 상품 전체 delete
-	public void deletAll(String id);
+	public void deleteAll(String id);
 	//장바구니 총 합계
 	public int sumMoney(String id);
 	//장바구니 상품 갯수

@@ -23,5 +23,6 @@ public interface CartDao {
 	//장바구니 수정
 	public void updateCart(CartDto dto);
 	public void modifyCart(CartDto dto);
+	//글 정보 얻어오기
 	public CartDto getData(int num);
 }
