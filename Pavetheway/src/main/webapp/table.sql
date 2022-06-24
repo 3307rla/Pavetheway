@@ -8,19 +8,19 @@ CREATE TABLE inquiry_board(
 
 CREATE SEQUENCE inquiry_board_seq;
 
-
-CREATE TABLE review(
-   num NUMBER PRIMARY KEY,
-   writer VARCHAR2(100) NOT NULL,
-   title VARCHAR2(100) NOT NULL,
-   content CLOB(4000),
-   orgImgName VARCHAR2(100) NOT NULL, -- 원본 사진명
-   saveImgName VARCHAR2(100) NOT NULL, -- 서버에 실제로 저장된 사진명
-   fileSize NUMBER NOT NULL, -- 파일의 크기 
+CREATE TABLE shop_comment(
+   num NUMBER PRIMARY KEY, --댓글의 글번호
+   writer VARCHAR2(100), --댓글 작성자의 아이디
+   content VARCHAR2(500), --댓글 내용
+   target_id VARCHAR2(100), --댓글의 대상자 아이디
+   ref_group NUMBER,
+   comment_group NUMBER,
+   deleted CHAR(3) DEFAULT 'no',
    regdate DATE
 );
 
-CREATE SEQUENCE review_seq; 
+
+CREATE SEQUENCE shop_comment_seq; 
 
 CREATE TABLE inquiry_comment(
    num NUMBER PRIMARY KEY, --댓글의 글번호

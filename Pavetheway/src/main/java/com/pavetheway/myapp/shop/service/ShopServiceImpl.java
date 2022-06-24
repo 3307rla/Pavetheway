@@ -13,13 +13,21 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pavetheway.myapp.exception.NotDeleteException;
+import com.pavetheway.myapp.inquiry.dao.InquiryCommentDao;
+import com.pavetheway.myapp.inquiry.dto.InquiryCommentDto;
+import com.pavetheway.myapp.shop.dao.ShopCommentDao;
 import com.pavetheway.myapp.shop.dao.ShopDao;
+import com.pavetheway.myapp.shop.dto.ShopCommentDto;
 import com.pavetheway.myapp.shop.dto.ShopDto;
 
 @Service
 public class ShopServiceImpl implements ShopService{
     
 	@Autowired ShopDao dao;
+	
+	@Autowired
+	private ShopCommentDao shopCommentDao;
 
 	@Override
 	//상품 list
@@ -79,89 +87,7 @@ public class ShopServiceImpl implements ShopService{
 		
 	}
 
-	@Override
-	//이미지 추가 - 이미지 업로드 & db 저장
-	public void saveImage(ShopDto dto, HttpServletRequest request) {
-		//업로드된 파일의 정보를 가지고 있는 MultipartFile 객체의 참조값을 얻어오기
-		MultipartFile image = dto.getImage();
-		//원본 파일명 -> 저장할 파일 이름 만들기위해서 사용됨
-		String orgFileName = image.getOriginalFilename();
-		//파일 크기 -> 다운로드가 없으므로, 여기서는 필요 없다.
-		//long fileSize = image.getSize();
-		
-		// webapp/upload 폴더 까지의 실제 경로(서버의 파일 시스템 상에서의 경로)
-		String realPath = request.getServletContext().getRealPath("/upload");
-		//db 에 저장할 저장할 파일의 상세 경로
-		String filePath = realPath + File.separator;
-		//디렉토리를 만들 파일 객체 생성
-		File upload = new File(filePath);
-		if(!upload.exists()) {
-			//만약 디렉토리가 존재하지X
-			upload.mkdir();//폴더 생성
-		}
-		//저장할 파일의 이름을 구성한다. -> 우리가 직접 구성해줘야한다.
-		String saveFileName = System.currentTimeMillis() + orgFileName;
-		
-		try {
-			//upload 폴더에 파일을 저장한다.
-			image.transferTo(new File(filePath + saveFileName));
-			System.out.println();	//임시 출력
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		//dto 에 업로드된 파일의 정보를 담는다.
-		//-> parameer 로 넘어온 dto 에는 infoimagePath, image 가 들어 있었다.
-		//-> 추가할 것 : writer(id), imagePath 만 추가로 담아주면 된다.
-		//-> num, regdate : db 에 추가하면서 자동으로 들어감
-		//String id = (String)request.getSession().getAttribute("id");
-		//dto.setWriter(id);
-		//shop은 사진 다운 기능이 없다. -> orgFileName, saveFileName, fileSize 저장할 필요X
-		//imagePath 만 저장해주면 됨
-		dto.setImagePath("/upload/" + saveFileName);
-		
-		//ShopDao 를 이용해서 DB 에 저장하기
-		dao.insert(dto);
-	}
-
-	@Override
-	public Map<String, Object> uploadAjaxImage(ShopDto dto, HttpServletRequest request){
-		//업로드된 파일의 정보를 가지고 있는 MultipartFile 객체의 참조값을 얻어오기
-		MultipartFile image = dto.getImage();
-		//원본 파일명 -> 저장할 파일 이름 만들기위해서 사용됨
-		String orgFileName = image.getOriginalFilename();
-		//파일 크기
-		long fileSize = image.getSize();
-		
-		// webapp/upload 폴더 까지의 실제 경로(서버의 파일 시스템 상에서의 경로)
-		String realPath = request.getServletContext().getRealPath("/upload");
-		//db 에 저장할 저장할 파일의 상세 경로
-		String filePath = realPath + File.separator;
-		//디렉토리를 만들 파일 객체 생성
-		File upload = new File(filePath);
-		if(!upload.exists()) {
-			//만약 디렉토리가 존재하지X
-			upload.mkdir();//폴더 생성
-		}
-		//저장할 파일의 이름을 구성한다. -> 우리가 직접 구성해줘야한다.
-		String saveFileName = System.currentTimeMillis() + orgFileName;
-		
-		try {
-			//upload 폴더에 파일을 저장한다.
-			image.transferTo(new File(filePath + saveFileName));
-			System.out.println();	//임시 출력
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-
-		String imagePath = "/upload/" + saveFileName;
-		
-		//ajax upload 를 위한 imagePath return
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("imagePath", imagePath);
-		
-		return map;
-	}
+	
 
 	@Override
 	public void insert(ShopDto dto, HttpServletRequest request) {
@@ -181,6 +107,35 @@ public class ShopServiceImpl implements ShopService{
 		ShopDto dto = dao.getDetail(num);
 		//ModelAndView 에 가져온 GalleryDto 를 담는다.
 		mView.addObject("dto", dto);
+		
+		/*
+		[ 댓글 페이징 처리에 관련된 로직 ]
+		*/
+		//한 페이지에 몇개씩 표시할 것인지
+		final int PAGE_ROW_COUNT=10;
+	
+		//detail.jsp 페이지에서는 항상 1페이지의 댓글 내용만 출력한다. 
+		int pageNum=1;
+	
+		//보여줄 페이지의 시작 ROWNUM
+		int startRowNum=1+(pageNum-1)*PAGE_ROW_COUNT;
+		//보여줄 페이지의 끝 ROWNUM
+		int endRowNum=pageNum*PAGE_ROW_COUNT;
+	
+		//원글의 글번호를 이용해서 해당글에 달린 댓글 목록을 얻어온다.
+		ShopCommentDto commentDto=new ShopCommentDto();
+		commentDto.setRef_group(num);
+		//1페이지에 해당하는 startRowNum 과 endRowNum 을 dto 에 담아서  
+		commentDto.setStartRowNum(startRowNum);
+		commentDto.setEndRowNum(endRowNum);
+	
+		//1페이지에 해당하는 댓글 목록만 select 되도록 한다. 
+		List<ShopCommentDto> commentList=shopCommentDao.getList(commentDto);
+	
+		//원글의 글번호를 이용해서 댓글 전체의 갯수를 얻어낸다.
+		int totalRow=shopCommentDao.getCount(num);
+		//댓글 전체 페이지의 갯수
+		int totalPageCount=(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
 	}
 
 	@Override
@@ -267,6 +222,125 @@ public class ShopServiceImpl implements ShopService{
 		request.setAttribute("list", list);
 		request.setAttribute("totalRow", totalRow);
 
+	}
+	
+	@Override
+	public void saveComment(HttpServletRequest request) {
+		//폼 전송되는 파라미터 추출 
+		int ref_group=Integer.parseInt(request.getParameter("ref_group"));
+		String target_id=request.getParameter("target_id");
+		String content=request.getParameter("content");
+		/*
+		 *  원글의 댓글은 comment_group 번호가 전송이 안되고
+		 *  댓글의 댓글은 comment_group 번호가 전송이 된다.
+		 *  따라서 null 여부를 조사하면 원글의 댓글인지 댓글의 댓글인지 판단할수 있다. 
+		 */
+		String comment_group=request.getParameter("comment_group");
+
+		//댓글 작성자는 session 영역에서 얻어내기
+		String writer=(String)request.getSession().getAttribute("id");
+		//댓글의 시퀀스 번호 미리 얻어내기
+		int seq=shopCommentDao.getSequence();
+		//저장할 댓글의 정보를 dto 에 담기
+		ShopCommentDto dto=new ShopCommentDto();
+		dto.setNum(seq);
+		dto.setWriter(writer);
+		dto.setTarget_id(target_id);
+		dto.setContent(content);
+		dto.setRef_group(ref_group);
+		//원글의 댓글인경우
+		if(comment_group == null){
+			//댓글의 글번호를 comment_group 번호로 사용한다.
+			dto.setComment_group(seq);
+		}else{
+			//전송된 comment_group 번호를 숫자로 바꾸서 dto 에 넣어준다. 
+			dto.setComment_group(Integer.parseInt(comment_group));
+		}
+		//댓글 정보를 DB 에 저장하기
+		shopCommentDao.insert(dto);
+		
+	}
+
+	@Override
+	public void deleteComment(HttpServletRequest request) {
+		int num=Integer.parseInt(request.getParameter("num"));
+		//삭제할 댓글 정보를 읽어와서 
+		ShopCommentDto dto=shopCommentDao.getData(num);
+		String id=(String)request.getSession().getAttribute("id");
+		//글 작성자와 로그인된 아이디와 일치하지 않으면
+		if(!dto.getWriter().equals(id)) {
+			throw new NotDeleteException("다른 사람의 댓글 삭제는 안 돼요~");
+		}
+		
+		shopCommentDao.delete(num);
+	}
+
+	@Override
+	public void updateComment(ShopCommentDto dto) {
+		shopCommentDao.update(dto);
+		
+	}
+
+	@Override
+	public void moreCommentList(HttpServletRequest request) {
+		//로그인된 아이디
+		String id=(String)request.getSession().getAttribute("id");
+		//ajax 요청 파라미터로 넘어오는 댓글의 페이지 번호를 읽어낸다
+		int pageNum=Integer.parseInt(request.getParameter("pageNum"));
+		//ajax 요청 파라미터로 넘어오는 원글의 글 번호를 읽어낸다
+		int num=Integer.parseInt(request.getParameter("num"));
+		/*
+			[ 댓글 페이징 처리에 관련된 로직 ]
+		*/
+		//한 페이지에 몇개씩 표시할 것인지
+		final int PAGE_ROW_COUNT=10;
+
+		//보여줄 페이지의 시작 ROWNUM
+		int startRowNum=1+(pageNum-1)*PAGE_ROW_COUNT;
+		//보여줄 페이지의 끝 ROWNUM
+		int endRowNum=pageNum*PAGE_ROW_COUNT;
+
+		//원글의 글번호를 이용해서 해당글에 달린 댓글 목록을 얻어온다.
+		ShopCommentDto commentDto=new ShopCommentDto();
+		commentDto.setRef_group(num);
+		//1페이지에 해당하는 startRowNum 과 endRowNum 을 dto 에 담아서  
+		commentDto.setStartRowNum(startRowNum);
+		commentDto.setEndRowNum(endRowNum);
+
+		//pageNum에 해당하는 댓글 목록만 select 되도록 한다. 
+		List<ShopCommentDto> commentList=shopCommentDao.getList(commentDto);
+		//원글의 글번호를 이용해서 댓글 전체의 갯수를 얻어낸다.
+		int totalRow=shopCommentDao.getCount(num);
+		//댓글 전체 페이지의 갯수
+		int totalPageCount=(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
+
+		//view page 에 필요한 값 request 에 담아주기
+		request.setAttribute("commentList", commentList);
+		request.setAttribute("num", num); //원글의 글번호
+		request.setAttribute("pageNum", pageNum); //댓글의 페이지 번호
+		
+	}
+
+	@Override
+	public void getData(HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void saveImage(ShopDto dto, HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public Map<String, Object> uploadAjaxImage(ShopDto dto, HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
