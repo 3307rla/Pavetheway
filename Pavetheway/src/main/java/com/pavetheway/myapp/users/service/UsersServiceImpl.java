@@ -37,7 +37,7 @@ public class UsersServiceImpl implements UsersService{
 		//Map 객체를 생성해서 
 		Map<String, Object> map=new HashMap<String, Object>();
 		//isExist 라는 키값으로 이메일이 존재하는지 여부를 담고 
-		map.put("inputEmail", dao.isExistEmail(inputEmail));
+		map.put("isExistEmail", dao.isExistEmail(inputEmail));
 		//Map 객체를 리턴해 준다. 
 		return map;
 	}

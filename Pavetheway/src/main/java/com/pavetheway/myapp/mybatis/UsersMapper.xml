@@ -7,6 +7,12 @@
 		WHERE id=#{id}
 	</select>
 	
+	<select id="isExistEmail" parameterType="java.lang.String" resultType="string">
+		SELECT email 
+		FROM users
+		WHERE email=#{email}
+	</select>
+	
 	<select id="find_id" parameterType="String" resultType="String">
 		SELECT id 
 		FROM users
