@@ -49,7 +49,7 @@ h1 {
 .info {
 	border: 1px solid #d9d9d9;
 	width:580px; 
-	height: 300px;
+	height: 250px;
 	padding-left: 5px;
 	border-radius: 5px;
 	box-sizing: border-box;

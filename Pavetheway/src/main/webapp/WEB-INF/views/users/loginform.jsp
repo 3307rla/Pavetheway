@@ -55,11 +55,12 @@ body {
 }
 h1 {
 	text-align: center;
-	margin: 15px;
-	padding: 15px;
+	margin: 17px;
+	padding: 17px;
 	text-weight : bolder;
 }
-.signupform a { color: red;}
+.find { color: blue;}
+.signupform { color: red;}
 </style>
 </head>
 <body>
@@ -107,7 +108,7 @@ h1 {
 
 	<div class=" bg-dark py-5">
 		<div class="row justify-content-center m-0">
-			<div class="col-lg-6">
+			<div class="col-lg-5">
 				<form action="${pageContext.request.contextPath}/users/login.do" method="post" name="loginform" id="loginform" class="form" onsubmit="return sendit()">      		
 					<div class="card card-custom">
 						<div class="card-header">
@@ -130,11 +131,10 @@ h1 {
 								<div class="form-floating">
 									<input type="password" class="form-control" name="pwd" id="pwd" placeholder="비밀번호 입력..." required>
 									<label for="pwd">비밀번호</label>
-								</div>
 								<div>
 									<button class="login" type="submit">로그인</button>
 								</div>
-							<div class="signupform">계정이 없나요? <a href="${pageContext.request.contextPath }/users/signup_form.do">Sign Up</a></div>					    
+							<div>계정이 없나요? <a class="signupform" href="${pageContext.request.contextPath }/users/signup_form.do">Sign Up</a>   /    <a class="find" href="${pageContext.request.contextPath }/users/find_id_form.do">아이디 찾기</a></div>					    
 						</div>
 					</div>
 				</form>

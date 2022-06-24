@@ -21,6 +21,16 @@ public class UsersDaoImpl implements UsersDao{
 			return true;
 		}
 	}
+	
+	@Override
+	public boolean isExistEmail(String inputEmail) {
+		String email=session.selectOne("users.isExistEmail", inputEmail);
+		if(email==null) {
+			return false;
+		}else {
+			return true;
+		}
+	}
 
 	@Override
 	public void insert(UsersDto dto) {
@@ -46,7 +56,12 @@ public class UsersDaoImpl implements UsersDao{
 	public void delete(String id) {
 		session.delete("users.delete", id);
 	}
-	
+
+	@Override
+	public String find_id(String email) throws Exception{
+		return session.selectOne("users.find_id", email);
+	}
+
 }
 
 
