@@ -111,7 +111,7 @@ h1 {
 
 	<div class="container, bg-dark py-5">
 		<div class="row justify-content-center m-0">
-			<div class="col-lg-7">
+			<div class="col-lg-5">
 				<form action="${pageContext.request.contextPath}/users/signup.do" method="post" id="myForm" class="form" onsubmit="return sendit()">
 					<div class="card card-custom">
 						<div class="card-header">

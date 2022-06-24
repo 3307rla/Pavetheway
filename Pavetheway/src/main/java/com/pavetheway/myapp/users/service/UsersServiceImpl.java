@@ -1,8 +1,10 @@
 package com.pavetheway.myapp.users.service;
 
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,16 @@ public class UsersServiceImpl implements UsersService{
 		Map<String, Object> map=new HashMap<String, Object>();
 		//isExist 라는 키값으로 아이디가 존재하는지 여부를 담고 
 		map.put("isExist", dao.isExist(inputId));
+		//Map 객체를 리턴해 준다. 
+		return map;
+	}
+	
+	@Override
+	public Map<String, Object> isExistEmail(String inputEmail) {
+		//Map 객체를 생성해서 
+		Map<String, Object> map=new HashMap<String, Object>();
+		//isExist 라는 키값으로 이메일이 존재하는지 여부를 담고 
+		map.put("inputEmail", dao.isExistEmail(inputEmail));
 		//Map 객체를 리턴해 준다. 
 		return map;
 	}
@@ -127,7 +139,26 @@ public class UsersServiceImpl implements UsersService{
 		//ModelAndView 객체에 탈퇴한 회원의 아이디를 담아준다.
 		mView.addObject("id", id);
 	}
-	
+
+
+	@Override
+	public String find_id(HttpServletResponse response, String email) throws Exception {
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		String id = dao.find_id(email);
+		
+		if (id == null) {
+			out.println("<script>");
+			out.println("alert('가입된 아이디가 없습니다.');");
+			out.println("history.go(-1);");
+			out.println("</script>");
+			out.close();
+			return null;
+		} else {
+			return id;
+		}
+	}
+
 }
 
 

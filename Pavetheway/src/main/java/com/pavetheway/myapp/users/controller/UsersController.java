@@ -4,10 +4,12 @@ import java.net.URLEncoder;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,6 +23,21 @@ import com.pavetheway.myapp.users.service.UsersService;
 public class UsersController {
 	@Autowired
 	private UsersService service;
+	
+	//아이디 찾기
+	@RequestMapping(value = "/users/find_id_form")
+	public String find_id_Form() throws Exception{
+		
+		return "users/find_id_form";
+	}	
+	
+	//아이디 찾기
+	@RequestMapping(value = "/users/find_id", method = RequestMethod.POST)
+	public String find_id(HttpServletResponse response, @RequestParam("email") String email, Model md) throws Exception{
+		md.addAttribute("id", service.find_id(response, email));
+		return "users/find_id";
+	}
+	
 	
 	//회원 탈퇴 요청 처리
 	@RequestMapping("/users/delete")
@@ -101,6 +118,15 @@ public class UsersController {
 		//UsersService 가 리턴해주는 Map 을 리턴해서 json 문자열을 응답한다. 
 		return service.isExistId(inputId);
 	}
+	
+	//이메일 중복 확인을 해서 json 문자열을 리턴해주는 메소드 
+	@RequestMapping("/users/checkEmail")
+	@ResponseBody
+	public Map<String, Object> checkEmail(@RequestParam String inputEmail){
+		//UsersService 가 리턴해주는 Map 을 리턴해서 json 문자열을 응답한다. 
+		return service.isExistEmail(inputEmail);
+	}
+	
 	//회원 가입 요청 처리 ( post 방식 요청은 요청 method 를 명시하는것이 좋다.
 	@RequestMapping(value = "/users/signup", method = RequestMethod.POST)
 	public ModelAndView signup(ModelAndView mView, UsersDto dto) {

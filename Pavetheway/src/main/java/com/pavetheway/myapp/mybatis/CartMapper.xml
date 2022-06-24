@@ -4,7 +4,7 @@
 	<insert id="insert" parameterType="cartDto">
 		INSERT INTO cart
 		(num, id, code, amount) 
-		VALUES ( seq_cart.NEXTVAL, #{id}, #{code}, #{amount})
+		VALUES ( cart_seq.NEXTVAL, #{id}, #{code}, #{amount})
 	</insert>
 
 	<select id="getList" resultType="cartDto">

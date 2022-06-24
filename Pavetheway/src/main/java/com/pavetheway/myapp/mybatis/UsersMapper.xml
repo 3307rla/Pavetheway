@@ -7,6 +7,12 @@
 		WHERE id=#{id}
 	</select>
 	
+	<select id="find_id" parameterType="String" resultType="String">
+		SELECT id 
+		FROM users
+		WHERE email=#{email}
+	</select>
+	
 	<insert id="insert" parameterType="usersDto">
 		INSERT INTO users
 		(id, pwd, email, postcode, roadAddr, detailAddr, extraAddr, regdate)
