@@ -136,6 +136,9 @@ public class ShopServiceImpl implements ShopService{
 		int totalRow=shopCommentDao.getCount(num);
 		//댓글 전체 페이지의 갯수
 		int totalPageCount=(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
+		
+		mView.addObject("commentList", commentList);
+		mView.addObject("totalPageCount", totalPageCount);
 	}
 
 	@Override
@@ -245,7 +248,7 @@ public class ShopServiceImpl implements ShopService{
 		ShopCommentDto dto=new ShopCommentDto();
 		dto.setNum(seq);
 		dto.setWriter(writer);
-		dto.setTarget_id(target_id);
+		dto.setTarget_id(writer);
 		dto.setContent(content);
 		dto.setRef_group(ref_group);
 		//원글의 댓글인경우
@@ -344,3 +347,4 @@ public class ShopServiceImpl implements ShopService{
 	}
 
 }
+
