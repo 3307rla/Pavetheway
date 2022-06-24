@@ -96,7 +96,7 @@
             </div>
         </header>
 		<!-- Section-->
-        <section class="py-3">
+        <section class="py-5">
         	<div class="row">
         		<div class="col-2">
         			  	<div class="flex-shrink-0 p-3 bg-white" style="width: 70px;">
