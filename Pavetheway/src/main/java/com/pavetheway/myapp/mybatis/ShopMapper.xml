@@ -58,3 +58,4 @@
 		VALUES(shop_list_seq.NEXTVAL, #{name}, #{imagePath}, #{infoImagePath})
 	</insert>
 </mapper>
+

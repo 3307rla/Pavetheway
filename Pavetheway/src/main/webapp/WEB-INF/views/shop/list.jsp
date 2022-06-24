@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -71,8 +70,8 @@
                     </ul>
                     <c:choose>
                     	<c:when test="${ empty sessionScope.id}">
-                    		<button class="btn btn-outline-dark" href="${pageContext.request.contextPath}/users/loginform.do">Login</button>
-                    		<button class="btn btn-outline-dark" style="margin-left:3px" href="${pageContext.request.contextPath}/users/signup_form.do">SignUp</button>
+                    		<button class="btn btn-outline-dark"><a href="${pageContext.request.contextPath }/users/loginform.do">Login</a></button>
+                    		<button class="btn btn-outline-dark" style="margin-left:3px"><a href="${pageContext.request.contextPath }/users/signup_form.do">SignUp</a></button>
                     	</c:when>
                     	<c:otherwise>
                     		<form class="d-flex">
