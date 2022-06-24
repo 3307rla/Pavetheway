@@ -121,7 +121,7 @@
         		<div class="col-9">
 		    <div class="container">
 
-		   	<h3>Outer</h3>
+		   	<h3>${dto.category}</h3>
 
 		   	<div class="row">
 				<c:forEach var="tmp" items="${list }">

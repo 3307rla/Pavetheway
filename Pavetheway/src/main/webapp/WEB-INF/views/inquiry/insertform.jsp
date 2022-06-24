@@ -24,7 +24,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#!">Pave the way!</a>
+                <a class="navbar-brand" style="font-weight:bold;">PAVE the WAY!</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
@@ -111,7 +111,8 @@
 								<label class="form-label" for="content">내용</label>
 								<textarea rows="10" class="form-control"  name="content" id="content"></textarea>
 							</div>
-							<button class="btn btn-primary" type="submit">작성 완료</button>
+							<button class="btn btn-outline-success" type="submit">작성 완료</button>
+							<a class="btn btn-outline-primary" href="list.do" role="button">작성 취소</a>
 						</form>
 					</div>
 					<%--

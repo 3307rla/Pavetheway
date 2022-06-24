@@ -1,5 +1,8 @@
 package com.pavetheway.myapp.shop.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,9 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pavetheway.myapp.inquiry.dto.InquiryCommentDto;
+import com.pavetheway.myapp.shop.dto.ShopCommentDto;
 import com.pavetheway.myapp.shop.service.ShopService;
 
 @Controller
@@ -36,6 +41,46 @@ public class ShopController {
 		mView.setViewName("shop/detail");
 		
 		return mView;
+	}
+	
+	//새로운 댓글 저장 요청 처리
+	@RequestMapping("/shop/comment_insert")
+	public ModelAndView authCommentInsert(HttpServletRequest request, 
+			@RequestParam int ref_group) {
+		
+		service.saveComment(request);
+	
+		return new ModelAndView("redirect:/shop/detail.do?num="+ref_group);
+	}
+	
+	//댓글 더보기 요청 처리
+	@RequestMapping("/shop/ajax_comment_list")
+	public String ajaxCommentList(HttpServletRequest request) {
+		
+		service.moreCommentList(request);
+		
+		return "shop/ajax_comment_list";
+	}
+	//댓글 삭제 요청 처리
+	@RequestMapping("/shop/comment_delete")
+	@ResponseBody
+	public Map<String, Object> authCommentDelete(HttpServletRequest request) {
+		service.deleteComment(request);
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("isSuccess", true);
+		// {"isSuccess":true} 형식의 JSON 문자열이 응답되도록 한다. 
+		return map;
+	}
+	
+	//댓글 수정 요청처리 (JSON 을 응답하도록 한다)
+	@RequestMapping("/shop/comment_update")
+	@ResponseBody
+	public Map<String, Object> authCommentUpdate(ShopCommentDto dto, HttpServletRequest request){
+		service.updateComment(dto);
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("isSuccess", true);
+		// {"isSuccess":true} 형식의 JSON 문자열이 응답되도록 한다. 
+		return map;
 	}
 	
 }

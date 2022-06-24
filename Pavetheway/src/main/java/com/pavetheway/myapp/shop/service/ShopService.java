@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pavetheway.myapp.inquiry.dto.InquiryCommentDto;
+import com.pavetheway.myapp.shop.dto.ShopCommentDto;
 import com.pavetheway.myapp.shop.dto.ShopDto;
 
 
@@ -23,5 +25,10 @@ public interface ShopService {
 	public void getDetail(ModelAndView mView, int num);
 	//Shop_list 에서 키워드를 활용한 상품 data 얻어오기
 	public void getSearch(HttpServletRequest request);
+	public void saveComment(HttpServletRequest request);//댓글 저장 
+	public void deleteComment(HttpServletRequest request);//댓글 삭제
+	public void updateComment(ShopCommentDto dto);//댓글 수정
+	public void moreCommentList(HttpServletRequest request);//댓글 추가 응답
+	public void getData(HttpServletRequest request); //글 수정하기 위해 정보 불러오는 기능
 }
 

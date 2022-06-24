@@ -137,7 +137,8 @@ h1 {
 							<div class="col mb-2">
 								<label class="control-label" for="email">이메일</label> 
 								<input class="form-control" type="text" name="email" id="email" required/>
-								<div class="invalid-feedback">이메일 주소를 다시 확인해주세요.</div>
+								<small class="form-text text-muted">이메일 형식에 맞춰 작성해주세요.</small>
+								<div class="invalid-feedback">사용 할 수 없는 이메일 입니다</div>
 							</div>
 					    	<div class="row">
 					    		<label class="control-label" for="addr">주소</label> 
@@ -259,13 +260,30 @@ h1 {
 		//2. 이메일을 검증할 정규 표현식 객체를 만들어서
 		const reg_email=/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 		//3. 정규표현식 매칭 여부에 따라 분기하기
-		if(reg_email.test(inputEmail)){//만일 매칭된다면
-			isEmailValid=true;
-			document.querySelector("#email").classList.add("is-valid");
-		}else{
+		if(!reg_email.test(inputEmail)){//만일 매칭된다면
 			isEmailValid=false;
-			document.querySelector("#email").classList.add("is-invalid");
-		}
+			document.querySelector("#email").classList.add("is-invalid"); 
+			return; //함수를 여기서 끝낸다 (ajax 전송 되지 않도록)
+		}		
+		
+		//2. util 에 있는 함수를 이용해서 ajax 요청하기
+		ajaxPromise("${pageContext.request.contextPath}/users/checkemail.do", "get", "inputEmail="+inputEmail)
+		.then(function(response){
+			return response.json();
+		})
+		.then(function(data){
+			console.log(data);
+			//data 는 {isExist:true} or {isExist:false} 형태의 object 이다.
+			if(data.isExistEmail){//만일 존재한다면
+				//사용할수 없는 아이디라는 피드백을 보이게 한다. 
+				isEmailValid=false;
+				// is-invalid 클래스를 추가한다. 
+				document.querySelector("#email").classList.add("is-invalid");
+			}else{
+				isEmailValid=true;
+				document.querySelector("#email").classList.add("is-valid");
+			}
+		});
 	});
 	
 	

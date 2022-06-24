@@ -120,9 +120,9 @@ public class UsersController {
 	}
 	
 	//이메일 중복 확인을 해서 json 문자열을 리턴해주는 메소드 
-	@RequestMapping("/users/checkEmail")
+	@RequestMapping("/users/checkemail")
 	@ResponseBody
-	public Map<String, Object> checkEmail(@RequestParam String inputEmail){
+	public Map<String, Object> checkemail(@RequestParam String inputEmail){
 		//UsersService 가 리턴해주는 Map 을 리턴해서 json 문자열을 응답한다. 
 		return service.isExistEmail(inputEmail);
 	}
