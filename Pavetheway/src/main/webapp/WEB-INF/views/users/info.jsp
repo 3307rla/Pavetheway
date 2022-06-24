@@ -49,7 +49,7 @@ h1 {
 .info {
 	border: 1px solid #d9d9d9;
 	width:580px; 
-	height: 300px;
+	height: 250px;
 	padding-left: 5px;
 	border-radius: 5px;
 	box-sizing: border-box;
@@ -96,7 +96,7 @@ h1 {
 	<header class="bg-dark py-5">
 		<div class="container px-4 px-lg-5 my-5">
 			<div class="text-center text-white">
-				<img src="../resources/images/logo1.png" width="220" height="120" />
+				<img src="../resources/images/logo1.png" width="220" height="80" />
 			</div>
 		</div>
 	</header>
@@ -153,8 +153,4 @@ h1 {
 	<script src="resources/js/scripts.js"></script>
 </body>
 </html>
-
-
-
-
 

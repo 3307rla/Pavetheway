@@ -104,14 +104,14 @@ h1 {
 	<header class="bg-dark py-5">
 		<div class="container px-4 px-lg-5 my-5">
 			<div class="text-center text-white">
-				<img src="../resources/images/logo1.png" width="220" height="120" />
+				<img src="../resources/images/logo1.png" width="220" height="80" />
 			</div>
 		</div>
 	</header>
 
 	<div class="container, bg-dark py-5">
 		<div class="row justify-content-center m-0">
-			<div class="col-lg-7">
+			<div class="col-lg-5">
 				<form action="${pageContext.request.contextPath}/users/signup.do" method="post" id="myForm" class="form" onsubmit="return sendit()">
 					<div class="card card-custom">
 						<div class="card-header">
@@ -120,23 +120,23 @@ h1 {
 							<div class="card-body">
 							<div class="col mb-2">
 								<label class="control-label" for="id">아이디</label> 
-								<input class="form-control" type="text" name="id" id="id" /> 
+								<input class="form-control" type="text" name="id" id="id" required/> 
 								<small class="form-text text-muted">5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.</small>
 								<div class="invalid-feedback">사용할수 없는 아이디 입니다.</div>
 							</div>
 							<div class="col mb-2">
 								<label class="control-label" for="pwd">비밀번호</label> 
-								<input class="form-control" type="password" name="pwd" id="pwd" /> 
+								<input class="form-control" type="password" name="pwd" id="pwd" required/> 
 								<small class="form-text text-muted">6~12자 영문 대 소문자, 숫자, 특수문자를 사용하세요.</small>
 								<div class="invalid-feedback">비밀번호를 확인 하세요.</div>
 							</div>
 							<div class="col mb-2">
 								<label class="control-label" for="pwd2">비밀번호 확인</label> 
-								<input class="form-control" type="password" name="pwd2" id="pwd2" />
+								<input class="form-control" type="password" name="pwd2" id="pwd2" required/>
 							</div>
 							<div class="col mb-2">
 								<label class="control-label" for="email">이메일</label> 
-								<input class="form-control" type="text" name="email" id="email" />
+								<input class="form-control" type="text" name="email" id="email" required/>
 								<div class="invalid-feedback">이메일 주소를 다시 확인해주세요.</div>
 							</div>
 					    	<div class="row">

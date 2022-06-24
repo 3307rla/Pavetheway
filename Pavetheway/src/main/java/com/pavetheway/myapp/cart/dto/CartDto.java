@@ -10,6 +10,8 @@ public class CartDto {
 	private int money;
 	private int amount;
 	
+	public CartDto() {}
+	
 	public CartDto(int num, String id, String name, int code, int price, int money, int amount) {
 		super();
 		this.num = num;

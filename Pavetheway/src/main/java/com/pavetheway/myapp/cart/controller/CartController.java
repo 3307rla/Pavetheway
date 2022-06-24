@@ -26,10 +26,10 @@ public class CartController {
 	public ModelAndView authInsert(CartDto dto, HttpSession session, HttpServletRequest request) {
 		
 		String id=(String)session.getAttribute("id");		
-		dto.setId(id);		
-		service.insert(dto);
-		
-		return new ModelAndView("shop/upload");
+	
+		dto.setId(id);
+		service.insert(dto);		
+		return new ModelAndView("cart/list");
 	}
 	
 	@RequestMapping("/cart/list")
@@ -47,7 +47,7 @@ public class CartController {
 	    map.put("list", list);
 	    map.put("count", list.size());
 	      
-	    mview.setViewName("cart/list");
+	    mview.setViewName("cart/list");  
 	    mview.addObject("map", map);
 	      
 	    return mview;

@@ -117,19 +117,19 @@
 										</tr>
 									</thead>
 									<tbody>
-									<c:forEach var="tmp" items="${mpa.list }">
+									<c:forEach var="tmp" items="${map.list }">
 										<tr>
 											<td>${tmp.name }</td>
 											
 											<td>
-												<fmt:formatNumber pattern="###,###,###" value="${tmp.price }"/>
+												${tmp.price }
 											</td>
 											<td>
 												<input type="number" style="" name="amount" value="${tmp.amount }">
-												<input type="hidden" name="code" value="${code }">							
+												<input type="hidden" name="code" value="${tmp.code }">							
 											</td>
 											<td>
-												<fmt:formatNumber pattern="###,###,###" value="${tmp.money }"/>							
+												${tmp.money }							
 											</td>
 											<td>
 												<a href="${pageContext.request.contextPath}/cart/delete.do?num=${tmp.num}"></a>
@@ -150,7 +150,7 @@
 							</form>
 							</c:otherwise>
 						</c:choose>
-						<button type="button" id="btnList"><a href="${pageContext.request.contextPath }/shop/list.do">상품목록</a></button>
+						<button type="button" id="btnList"><a href="${pageContext.request.contextPath }/shop/list.do?category=outer">상품목록</a></button>
 				</div>
 			</div>
 			        		

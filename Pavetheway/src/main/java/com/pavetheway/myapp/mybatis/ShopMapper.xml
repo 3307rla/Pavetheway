@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="shop">
@@ -62,3 +63,65 @@
 		VALUES(shop_list_seq.NEXTVAL, #{name}, #{imagePath}, #{infoImagePath})
 	</insert>
 </mapper>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="shop">
+
+	<select id="getList" parameterType="shopDto" resultType="shopDto">
+		SELECT *
+		FROM	
+			(SELECT result1.*, ROWNUM as rnum
+			FROM
+				(SELECT num, code, name, imagePath, price, infoImagePath, remainCount, category
+				FROM shop_list
+				WHERE category=#{category}
+				ORDER BY num DESC) result1)
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	
+	<select id="getCount" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM shop_list
+	</select>
+	
+	<select id="getDetail" parameterType="int" resultType="shopDto">
+		SELECT *
+		FROM
+			(SELECT num, code, name, imagePath, infoImagePath, 
+				LAG(num, 1, 0) OVER (ORDER BY num DESC) AS prevNum,
+				LEAD(num, 1, 0) OVER (ORDER BY num DESC) AS nextNum
+			FROM shop_list
+			ORDER BY num DESC)
+		WHERE num = #{num}
+	</select>
+	
+	<select id="getData" parameterType="shopDto" resultType="shopDto">
+		SELECT *
+		FROM
+			(SELECT result1.*, ROWNUM AS rnum
+			FROM
+				(SELECT num, code, name, imagePath
+				FROM shop_list
+				<choose>
+					<when test=" num != null and name != null">
+						WHERE num LIKE '%${num}%' 
+						OR name LIKE '%'||#{name}||'%'
+					</when>
+					<when test="name != null">
+						WHERE name LIKE '%'||#{name}||'%'
+					</when>
+					<when test="code != null">
+						WHERE code LIKE '%${code}%'
+					</when>
+				</choose>
+				ORDER BY num DESC) result1)
+		WHERE rnum BETWEEN #{startRowNum} AND ${endRowNum}
+	</select>
+	<insert id="insert" parameterType="ShopDto">
+		INSERT INTO shop_list
+		(num, code, name, imagePath, infoImagePath)
+		VALUES(shop_list_seq.NEXTVAL, #{name}, #{imagePath}, #{infoImagePath})
+	</insert>
+</mapper>
+>>>>>>> branch 'master' of https://github.com/3307rla/Pavetheway.git
