@@ -5,6 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class ShopDto {
 	private int num;//번호
 	private int code;//상품번호
+	private String writer;
 	private String name;//상품이름
 	private int price;//상품가격
 	private String category;//분류
@@ -21,12 +22,15 @@ public class ShopDto {
 	
 	public ShopDto() {} //디폴트 생성자
 
-	public ShopDto(int num, int code, String name, int price, String category, String imagePath, String infoImagePath,
-			int remainCount, String id, String addr, int startRowNum, int endRowNum, int prevNum, int nextNum,
-			MultipartFile image) {
+	
+
+	public ShopDto(int num, int code, String writer, String name, int price, String category, String imagePath,
+			String infoImagePath, int remainCount, String id, String addr, int startRowNum, int endRowNum, int prevNum,
+			int nextNum, MultipartFile image) {
 		super();
 		this.num = num;
 		this.code = code;
+		this.writer = writer;
 		this.name = name;
 		this.price = price;
 		this.category = category;
@@ -41,6 +45,20 @@ public class ShopDto {
 		this.nextNum = nextNum;
 		this.image = image;
 	}
+
+
+
+	public String getWriter() {
+		return writer;
+	}
+
+
+
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+
+
 
 	public int getNum() {
 		return num;
