@@ -100,7 +100,7 @@ h1 {
 	<header class="bg-dark py-5">
 		<div class="container px-4 px-lg-5 my-5">
 			<div class="text-center text-white">
-				<img src="../resources/images/logo1.png" width="220" height="120" />
+				<img src="../resources/images/logo1.png" width="220" height="80" />
 			</div>
 		</div>
 	</header>
@@ -124,11 +124,11 @@ h1 {
 							</c:choose>
 							<div class="card-body">
 								<div class="form-floating ">
-									<input type="text" class="form-control" name="id" id="id" placeholder="아이디 입력...">
+									<input type="text" class="form-control" name="id" id="id" placeholder="아이디 입력..." required>
 									<label for="id">아이디</label>
 								</div>
 								<div class="form-floating">
-									<input type="password" class="form-control" name="pwd" id="pwd" placeholder="비밀번호 입력...">
+									<input type="password" class="form-control" name="pwd" id="pwd" placeholder="비밀번호 입력..." required>
 									<label for="pwd">비밀번호</label>
 								</div>
 								<div>
