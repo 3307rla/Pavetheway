@@ -30,8 +30,8 @@ public class ShopDaoImpl implements ShopDao {
 	 */
 	//row 의 총 개수 구하기
 	@Override
-	public int getCount() {
-		return session.selectOne("shop.getCount");
+	public int getCount(ShopDto dto) {
+		return session.selectOne("shop.getCount",dto);
 	}
 	/*
 	 * Mapper's namespace : shop

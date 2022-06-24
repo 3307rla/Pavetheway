@@ -1,22 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="shop">
-
-	<select id="getList" parameterType="shopDto" resultType="shopDto">
+    <sql id="searchCondition">
+		<choose>
+			
+            <when test="name != null">
+				WHERE name LIKE '%'||#{name}||'%'
+			</when>
+			<when test="code != null">
+				WHERE code LIKE '%'||#{code}||'%'
+			</when>
+		</choose>
+	</sql>
+    
+    <select id="getList" parameterType="shopDto" resultType="shopDto">
 		SELECT *
 		FROM	
-			(SELECT result1.*, ROWNUM as rnum
+			(SELECT result1.*, ROWNUM AS rnum
 			FROM
 				(SELECT num, code, name, imagePath, price, infoImagePath, remainCount, category
 				FROM shop_list
+				<include refid="searchCondition"/>
 				WHERE category=#{category}
 				ORDER BY num DESC) result1)
-		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+				
+		        WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+		
 	</select>
 	
 	<select id="getCount" resultType="int">
 		SELECT NVL(MAX(ROWNUM), 0)
 		FROM shop_list
+		<include refid="searchCondition"/>
 	</select>
 	
 	<select id="getDetail" parameterType="int" resultType="shopDto">
@@ -37,18 +52,7 @@
 			FROM
 				(SELECT num, code, name, imagePath
 				FROM shop_list
-				<choose>
-					<when test=" num != null and name != null">
-						WHERE num LIKE '%${num}%' 
-						OR name LIKE '%'||#{name}||'%'
-					</when>
-					<when test="name != null">
-						WHERE name LIKE '%'||#{name}||'%'
-					</when>
-					<when test="code != null">
-						WHERE code LIKE '%${code}%'
-					</when>
-				</choose>
+				<include refid="searchCondition"/>
 				ORDER BY num DESC) result1)
 		WHERE rnum BETWEEN #{startRowNum} AND ${endRowNum}
 	</select>

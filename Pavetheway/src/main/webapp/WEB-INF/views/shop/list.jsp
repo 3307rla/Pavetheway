@@ -183,16 +183,33 @@
 				</c:choose>
 		      </ul>
 		   </nav>   
-		   </div>
-		   
+		  
+		<div class="pagination justify-content-center">
+		<form action="list.do" method="get">
+		<label for="condition">검색조건</label>
+		<select name="condition" id="condition">
+		    <option value="name" "${condition eq 'name' ? 'selected' : '' }">상품이름</option>
+			<option value="code" "${condition eq 'code' ? 'selected' : '' }">상품번호</option>
+		</select>
+		<input type="text" name="keyword" id="keyword" placeholder="검색어 ..." value="${keyword }"/>
+		<button type="submit" class="btn btn-success">검색</button>
+	    </form><!-- condition이라는 파라미터 명으로 넘어간다. -->
+        </div><!-- container -->​
+        <c:if test="${ not empty condition }">
+			<p>
+				<strong>${keyword } </strong>키워드로 검색된
+				<strong>${totalRow }</strong>개의 상품이 있습니다.
+			</p>
+		</c:if>
 		</div>
-		
-		<%-- <script>
+		</div>
+		   <%-- <script>
 		   // card 이미지의 부모 요소를 선택해서 imgLiquid  동작(jquery plugin 동작) 하기 
 		   $(".img-wrapper").imgLiquid();
 		</script> --%>
 		</section>
-        
+		
+		
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Pave the way 2022</p></div>
