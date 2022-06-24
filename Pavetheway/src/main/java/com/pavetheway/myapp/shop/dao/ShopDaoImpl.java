@@ -66,4 +66,5 @@ public class ShopDaoImpl implements ShopDao {
 		
 	}
 	
+
 }
