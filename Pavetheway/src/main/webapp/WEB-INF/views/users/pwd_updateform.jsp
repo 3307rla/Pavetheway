@@ -74,7 +74,10 @@ h1 {
 	padding: 15px;
 	text-weight : bolder;
 }
-.join { color: red;}
+.join { 
+	color: red;
+	text-decoration:none;
+}
 </style>
 </head>
 <body>
@@ -147,7 +150,6 @@ h1 {
 							<div class="d-flex justify-content-center">
 								<button class="change" type="submit">Change Password</button>
 							</div>
-							<div class="d-flex justify-content-center">로그인 하러 가기 <a class="join" href="${pageContext.request.contextPath}/users/loginform.do">Login</a></div>					    
 						</div>
 					</div>
 				</form>

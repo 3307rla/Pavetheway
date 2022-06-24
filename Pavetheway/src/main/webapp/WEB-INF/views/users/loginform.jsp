@@ -59,8 +59,14 @@ h1 {
 	padding: 17px;
 	text-weight : bolder;
 }
-.find { color: blue;}
-.signupform { color: red;}
+.find {
+	color: blue;
+	text-decoration:none;
+}
+.signupform { 
+	color: red;
+	text-decoration:none;
+}
 </style>
 </head>
 <body>
