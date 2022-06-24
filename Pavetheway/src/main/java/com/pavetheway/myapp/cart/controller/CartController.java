@@ -22,14 +22,14 @@ public class CartController {
 	@Autowired
 	private CartService service;
 	
-	@RequestMapping("insert.do")
-	public String AuthInsert(CartDto dto, HttpSession session, HttpServletRequest request) {
+	@RequestMapping("/cart/insert")
+	public ModelAndView authInsert(CartDto dto, HttpSession session, HttpServletRequest request) {
 		
 		String id=(String)session.getAttribute("id");		
-		dto.setId(id);		
-		service.insert(dto);
-		
-		return "redirect:/cart/list.do";
+	
+		dto.setId(id);
+		service.insert(dto);		
+		return new ModelAndView("cart/list");
 	}
 	
 	@RequestMapping("/cart/list")
