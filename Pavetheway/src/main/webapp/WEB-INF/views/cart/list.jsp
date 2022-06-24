@@ -15,7 +15,7 @@
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="../resources/css/styles.css" rel="stylesheet" />
+        <link href="${pageContext.request.contextPath }/resources/css/styles.css" rel="stylesheet" />
     
     <script>
 
@@ -46,8 +46,8 @@
                            				Cart
                         		</button>
                     		</form>
-                    		<button class="btn btn-outline-dark"><a href="${pageContext.request.contextPath }/users/info.do">MyInfo</button>
-                    		<button class="btn btn-outline-dark"><a href="${pageContext.request.contextPath }/users/logout.do">Logout</button>
+                    		<button class="btn btn-outline-dark" onclick="location.href='${pageContext.request.contextPath }/users/info.do'">MyInfo</button>
+                    		<button class="btn btn-outline-dark" onclick="location.href='${pageContext.request.contextPath }/users/logout.do'">Logout</button>
                     	</c:otherwise>
                     </c:choose>
                     
@@ -67,42 +67,12 @@
         <section class="py-5">
         	<div class="row">
         		<div class="col-2">
-        			<div class="b-example-divider"></div>
-					  	<div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
-						    <a href="#" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-						      <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
-						      <span class="fs-5 fw-semibold">MENU</span>
-						    </a>
-					    <ul class="list-unstyled ps-0">
-					      	<li class="mb-1">
-						        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-						        	문의 및 답변
-						        </button>
-					        	<div class="collapse show" id="home-collapse">
-							        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-							        	<li><a href="${pageContext.request.contextPath }/inquiry/list.do" class="link-dark rounded">문의 게시판</a></li>
-							        	<li><a href="${pageContext.request.contextPath }/inquiry/answer_list.do" class="link-dark rounded">Q&A</a></li>
-							    	</ul>
-					        	</div>
-					      	</li>
-					      	<li class="mb-1">
-						        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-						          Shop
-						        </button>
-					        	<div class="collapse" id="orders-collapse">
-						          	<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-							            <li><a href="#" class="link-dark rounded">Clothes</a></li>
-							            <li><a href="#" class="link-dark rounded">ACC</a></li>
-
-						          	</ul>
-					        	</div>
-					      	</li>
-					    </ul>
-					</div>
+        			
+					  	
         		</div>
         		
         		<div class="col-10">			
-	        		<div class="container">
+	        		<div>
 						<center><h1>장바구니 확인</h1></center>
 						
 						<c:choose>
