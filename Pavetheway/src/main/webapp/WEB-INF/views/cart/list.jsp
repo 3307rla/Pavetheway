@@ -65,13 +65,14 @@
         <!-- Section-->
         <section class="py-5">
         	<div class="row">
-        		<div class="col-2">
+        		<div class="col-1">
         			
 					  	
         		</div>
         		
-        		<div class="col-10">			
-	        		<div>
+        		<div class="col-10">
+        		<cneter>
+        			<div>
 						<center><h1>장바구니 확인</h1></center>
 						
 						<c:choose>
@@ -133,6 +134,12 @@
 						<button type="button" id="btnList"><a href="${pageContext.request.contextPath }/shop/list.do?category=outer">상품목록</a></button>
 				
 				</div>
+				</cneter>
+				
+        		<div class="col-1">
+        			
+					  	
+        		</div>
 			</div>
 			        		
         	</div>
