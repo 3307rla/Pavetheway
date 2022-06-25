@@ -96,14 +96,14 @@
 											<td>${tmp.name }</td>
 											
 											<td>
-												<fmt:formatNumber  value="${tmp.price }" type="currency"/>
+												₩<fmt:formatNumber  value="${tmp.price }" pattern="#,###"/>
 											</td>
 											<td>
 												<input type="number" style="" name="amount" value="${tmp.amount }">
 												<input type="hidden" name="code" value="${tmp.code }">							
 											</td>
 											<td>
-												<fmt:formatNumber  value="${tmp.money }" type="currency"/>						
+												₩<fmt:formatNumber  value="${tmp.money }" pattern="#,###"/>						
 											</td>
 											<td>
 												<a href="${pageContext.request.contextPath}/cart/delete.do?num=${tmp.num}">
@@ -118,9 +118,9 @@
 									</tbody>
 									<tr>
 										<td>
-											장바구니 금액 합계 : <fmt:formatNumber  value="${map.sumMoney }" type="currency"/><br>
-											배송료 : <fmt:formatNumber  value="${map.fee }" type="currency"/><br>
-											전체 주문 금액 : <fmt:formatNumber  value="${map.sum }" type="currency"/><br> 
+											장바구니 금액 합계 : ₩<fmt:formatNumber  value="${map.sumMoney }" pattern="#,###"/><br>
+											배송료 : ₩<fmt:formatNumber  value="${map.fee }" pattern="#,###"/><br>
+											전체 주문 금액 : ₩<fmt:formatNumber  value="${map.sum }" pattern="#,###"/><br> 
 										</td>
 									</tr>
 								</table>
