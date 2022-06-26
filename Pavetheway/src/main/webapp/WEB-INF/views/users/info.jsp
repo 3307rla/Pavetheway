@@ -83,8 +83,8 @@ h1 {
                 </ul>
                 <c:choose>
                 	<c:when test="${ empty sessionScope.id}">
-                		<button class="btn btn-outline-dark"><a href="${pageContext.request.contextPath }/users/loginform.do">Login</a></button>
-                		<button class="btn btn-outline-dark" style="margin-left:3px"><a href="${pageContext.request.contextPath }/users/signup_form.do">SignUp</a></button>
+                		<button class="btn btn-outline-dark" onclick="location.href='${pageContext.request.contextPath }/users/loginform.do">Login</button>
+                		<button class="btn btn-outline-dark" style="margin-left:3px" onclick="location.href='${pageContext.request.contextPath }/users/signup_form.do">SignUp</button>
                 	</c:when>
                 	<c:otherwise>
                 		<form class="d-flex">
@@ -92,10 +92,10 @@ h1 {
                         		<i class="bi-cart-fill me-1"></i>
                        				<a href="${pageContext.request.contextPath }/cart/list.do">Cart</a>
                     		</button>
-                		</form>
-                		<button class="btn btn-outline-dark"><a href="${pageContext.request.contextPath }/users/info.do">MyInfo</a></button>
-                		<button class="btn btn-outline-dark"><a href="${pageContext.request.contextPath }/users/logout.do">Logout</a></button>
-                	</c:otherwise>
+               		    </form>
+                   		<button class="btn btn-outline-dark" onclick="location.href='${pageContext.request.contextPath }/users/info.do'">MyInfo</button>
+                   		<button class="btn btn-outline-dark" onclick="location.href='${pageContext.request.contextPath }/users/logout.do'">Logout</button>
+                   	</c:otherwise>
                 </c:choose>
                 
             </div>
@@ -106,7 +106,7 @@ h1 {
 	<header class="bg-dark py-5">
 		<div class="container px-4 px-lg-5 my-5">
 			<div class="text-center text-white">
-				<img src="../resources/images/logo1.png" width="220" height="80" />
+				<img src="../resources/images/logo1.png" width="220" height="100" />
 			</div>
 		</div>
 	</header>
