@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.pavetheway.myapp.exception.NotDeleteException;
 import com.pavetheway.myapp.inquiry.dao.InquiryCommentDao;
 import com.pavetheway.myapp.inquiry.dto.InquiryCommentDto;
+import com.pavetheway.myapp.inquiry.dto.InquiryDto;
 import com.pavetheway.myapp.shop.dao.ShopCommentDao;
 import com.pavetheway.myapp.shop.dao.ShopDao;
 import com.pavetheway.myapp.shop.dto.ShopCommentDto;
@@ -59,6 +60,34 @@ public class ShopServiceImpl implements ShopService{
 		dto.setStartRowNum(startRowNum);
 		dto.setEndRowNum(endRowNum);
 		dto.setCategory(category);
+		
+		/*
+		[ 검색 키워드에 관련된 처리 ]
+		-검색 키워드가 파라미터로 넘어올수도 있고 안넘어 올수도 있다.		
+		*/
+		String keyword=request.getParameter("keyword");
+		String condition=request.getParameter("condition");
+		//만일 키워드가 넘어오지 않는다면 
+		if(keyword==null){
+			//키워드와 검색 조건에 빈 문자열을 넣어준다. 
+			//클라이언트 웹브라우저에 출력할때 "null" 을 출력되지 않게 하기 위해서  
+			keyword="";
+			condition=""; 
+		}
+	
+		//특수기호를 인코딩한 키워드를 미리 준비한다. 
+		String encodedK=URLEncoder.encode(keyword);
+		
+	
+		//만일 검색 키워드가 넘어온다면 
+		if(!keyword.equals("")){
+			//검색 조건이 무엇이냐에 따라 분기 하기
+			if(condition.equals("name")){//제목 + 내용 검색인 경우
+				//검색 키워드를 InquiryDto 에 담아서 전달한다.
+				dto.setName(keyword);
+				
+			}// 다른 검색 조건을 추가 하고 싶다면 아래에 else if() 를 계속 추가 하면 된다.
+		}
 	   
 		//ShopDao 객체를 이용해서 상품목록을 얻어온다.
 		List<ShopDto> list = dao.getList(dto);
@@ -84,7 +113,10 @@ public class ShopServiceImpl implements ShopService{
 		request.setAttribute("endPageNum", endPageNum);	//끝 페이지 번호
 		request.setAttribute("pageNum", pageNum);	//현재 페이지 번호
 		request.setAttribute("totalPageCount", totalPageCount);	//모든 페이지 count
-		
+		request.setAttribute("totalRow", totalRow);
+		request.setAttribute("condition", condition);
+		request.setAttribute("keyword", keyword);
+		request.setAttribute("encodedK", encodedK);
 	}
 
 	

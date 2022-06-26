@@ -183,15 +183,31 @@
 					</c:otherwise>
 				</c:choose>
 		      </ul>
+		      <div style="clear:both;"></div>
+						
+						<center>
+							<form action="list.do" method="get"> 
+									<label for="condition"><strong>검색 카테고리</strong></label>
+									<select name="condition" id="condition">
+										
+										<option value="name" ${condition eq 'name' ? 'selected' : '' }>상품명</option>
+										
+									</select>
+									<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요." value="${keyword }"/>
+									<button type="submit" class="btn btn-success">검색</button>
+							</form>
+						</center>
+						</div>
+						<c:if test="${ not empty condition }">
+							<p>
+								<center><strong>${totalRow }</strong> 개의 글이 검색 되었습니다.</center>
+							</p>
+						</c:if>
 		   </nav>   
 		   </div>
 		   
 		</div>
 		
-		<%-- <script>
-		   // card 이미지의 부모 요소를 선택해서 imgLiquid  동작(jquery plugin 동작) 하기 
-		   $(".img-wrapper").imgLiquid();
-		</script> --%>
 		</section>
         
         <!-- Footer-->

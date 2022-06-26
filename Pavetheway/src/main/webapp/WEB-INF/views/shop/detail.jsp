@@ -177,31 +177,59 @@
 					</div>
         		</div>
         		<div class=col-8>
-        			<img src="${pageContext.request.contextPath}${dto.imagePath}" width="500" height="500"/>
-        			<br/>
-        			<img src="${pageContext.request.contextPath}${dto.infoImagePath}" width="500" height="500"/>
-        			<br/>
-        			<a href="${pageContext.request.contextPath}/shop/list.do?category=${dto.category}">목록으로</a>
-        			<a href="${pageContext.request.contextPath}/shop/buy.do">주문하기</a>
-        			<td>
-        				<form name="form1" method="post" action="${pageContext.request.contextPath}/cart/insert.do">
-        				<input type="hidden" name="code" value="${dto.code }"/>
-        				<select name="amount">
-        					<c:forEach begin="1" end="10" var="i">
-        						<option value="${i}">${i}</option>
-        					</c:forEach>
-        				</select>&nbsp;개
-        				<input type="submit" value="장바구니"/>
-        				</form>
-        			</td>
-				</div>
-				<!-- 댓글 목록 -->
+        			<center><h1>Info</h1></center>
+        			<div class="row">
+        				
+        				<div class="col-8">
+        					<center>
+	        				<img src="${pageContext.request.contextPath}${dto.imagePath}" width="400px" height="500px"/>
+	        				<br/>
+	        				<img src="${pageContext.request.contextPath}${dto.infoImagePath}" width="400px" height="500px"/>
+        					</center>
+        				</div>
+        				
+        				
+        			<div class="col-4 text-center">
+
+				      
+				        <div class="card mb-4 rounded-3 shadow-sm">
+				          <div class="card-header py-3">
+				            <h4 class="my-0 fw-normal">Order</h4>
+				          </div>
+				          <div class="card-body">
+				            <ul class="list-unstyled mt-3 mb-5">
+				              <li>상품이름 : ${dto.name }</li>
+				              <li>수량 : ${dto.remainCount }</li>
+				              <li>주문자 : ${sessionScope.id }</li>
+				              <li>가격 : ${dto.price }</li>
+				            </ul>
+				           	<td>
+		        				<form name="form1" method="post" action="${pageContext.request.contextPath}/cart/insert.do">
+			        				<input type="hidden" name="code" value="${dto.code }"/>
+			        				<select name="amount">
+			        					<c:forEach begin="1" end="10" var="i">
+			        						<option value="${i}">${i}</option>
+			        					</c:forEach>
+			        				</select>&nbsp;개
+			        				<input type="submit" value="장바구니담기"/>
+		        				</form>
+        					</td>
+				            <button type="button" class="w-100 btn btn-lg btn-outline-primary" onclick="location.href='${pageContext.request.contextPath }/users/info.do'">바로구매</button>
+				          </div>
+				        </div>
+
+
+        			</div>
+        			
+        			
+        			<center><h1>Review</h1></center>
+        			<!-- 댓글 목록 -->
 						<div class="comments">
 							<ul>
 								<c:forEach var="tmp" items="${commentList }">
 									<c:choose>
 										<c:when test="${tmp.deleted eq 'yes' }">
-											<li>삭제된 댓글 입니다.</li>
+											<li>삭제된 리뷰 입니다.</li>
 										</c:when>
 										<c:otherwise>
 											<c:if test="${tmp.num eq tmp.comment_group }">
@@ -264,10 +292,12 @@
 							<!-- 원글의 작성자가 댓글의 대상자가 된다. -->
 							<input type="hidden" name="target_id" value="${dto.writer }"/>
 					
-							<textarea name="content">${empty id ? '댓글 작성을 위해 로그인이 필요 합니다.' : '' }</textarea>
+							<textarea name="content">${empty id ? '리뷰 작성을 위해 로그인이 필요 합니다.' : '' }</textarea>
 							<button type="submit">등록</button>
 						</form>
 					</div>
+				</div>
+				
 					<script src="${pageContext.request.contextPath}/resources/js/util.js"></script>
 					<script>
 						
@@ -379,7 +409,7 @@
 								deleteLinks[i].addEventListener("click", function(){
 									//click 이벤트가 일어난 바로 그 요소의 data-num 속성의 value 값을 읽어온다. 
 									const num=this.getAttribute("data-num"); //댓글의 글번호
-									const isDelete=confirm("댓글을 삭제 하시겠습니까?");
+									const isDelete=confirm("리뷰를 삭제 하시겠습니까?");
 									if(isDelete){
 										// gura_util.js 에 있는 함수들 이용해서 ajax 요청
 										ajaxPromise("comment_delete.do", "post", "num="+num)
