@@ -56,7 +56,7 @@
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-1">
                 <div class="text-center text-white">
-                    <img src="../resources/images/logo1.png" width="220" height="100"/>
+                    <img src="${pageContext.request.contextPath }/resources/images/logo1.png" width="220" height="100"/>
                 </div>
             </div>
         </header>
