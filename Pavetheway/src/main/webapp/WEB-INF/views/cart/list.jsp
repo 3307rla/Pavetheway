@@ -45,8 +45,8 @@
                            				Cart
                         		</button>
                     		</form>
-                    		<button class="btn btn-outline-dark" onclick="location.href='${pageContext.request.contextPath }/users/info.do'">MyInfo</button>
-                    		<button class="btn btn-outline-dark" onclick="location.href='${pageContext.request.contextPath }/users/logout.do'">Logout</button>
+                    		<button class="btn btn-outline-dark" style="margin-left:3px" onclick="location.href='${pageContext.request.contextPath }/users/info.do'">MyInfo</button>
+                    		<button class="btn btn-outline-dark" style="margin-left:3px" onclick="location.href='${pageContext.request.contextPath }/users/logout.do'">Logout</button>
                     	</c:otherwise>
                     </c:choose>
                     
@@ -55,9 +55,9 @@
         </nav>
         <!-- Header-->
         <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
+            <div class="container px-4 px-lg-5 my-1">
                 <div class="text-center text-white">
-                    <img src="../resources/images/logo1.png" width="220" height="120"/>
+                    <img src="${pageContext.request.contextPath }/resources/images/logo1.png" width="220" height="100"/>
                 </div>
             </div>
         </header>
