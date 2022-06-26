@@ -35,13 +35,13 @@
                     <c:choose>
                     	<c:when test="${ empty sessionScope.id}">
                     		<button class="btn btn-outline-dark" onclick="location.href='${pageContext.request.contextPath }/users/login.do'">Login</button>
-                    		<button class="btn btn-outline-dark" style="margin-left:3px"><a href="${pageContext.request.contextPath }/users/signup_form.do">SignUp</a></button>
+                    		<button class="btn btn-outline-dark" style="margin-left:3px" onclick="location.href='${pageContext.request.contextPath }/users/signup_form.do'">SignUp</a></button>
                     	</c:when>
                     	<c:otherwise>
                     		<form class="d-flex">
-                        		<button class="btn btn-outline-dark" type="submit">
+                        		<button class="btn btn-outline-dark" type="submit" onclick="location.href='${pageContext.request.contextPath }/cart/list.do'">
                             		<i class="bi-cart-fill me-1"></i>
-                           				<a href="${pageContext.request.contextPath }/cart/list.do">Cart</a>
+                           				Cart
                         		</button>
                     		</form>
                     		<button class="btn btn-outline-dark" onclick="location.href='${pageContext.request.contextPath }/users/info.do'">MyInfo</button>
@@ -77,7 +77,7 @@
 						        	문의 및 답변
 						        </button>
 					        	<div class="collapse show" id="home-collapse">
-							        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+							        <ul class="btn-toggle-nav list-unstyled fw-normal pb-3 small">
 							        	<li><a href="${pageContext.request.contextPath }/inquiry/list.do" class="link-dark rounded">문의 게시판</a></li>
 							        	<li><a href="${pageContext.request.contextPath }/inquiry/answer_list.do" class="link-dark rounded">Q&A</a></li>
 							    	</ul>
