@@ -28,9 +28,9 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath }/home.do">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" aria-current="page" href="${pageContext.request.contextPath }/home.do">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/shop/list.do?category=outer">Shop</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/inquiry/answer_list.do">Q&A</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="${pageContext.request.contextPath }/inquiry/answer_list.do">Q&A</a></li>
                     </ul>
                     <c:choose>
                     	<c:when test="${ empty sessionScope.id}">
@@ -80,19 +80,6 @@
 							        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 							        	<li><a href="${pageContext.request.contextPath }/inquiry/list.do" class="link-dark rounded">문의 게시판</a></li>
 							        	<li><a href="${pageContext.request.contextPath }/inquiry/answer_list.do" class="link-dark rounded">Q&A</a></li>
-							    	</ul>
-					        	</div>
-					      	</li>
-					      	<li class="mb-1">
-						        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false" style="font-size:17px; font-weight:bold;">
-						          Shop
-						        </button>
-					        	<div class="collapse" id="orders-collapse">
-						          	<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-							        	<li><a href="${pageContext.request.contextPath }/shop/list.do?category=outer" class="link-dark rounded">Outer</a></li>
-							            <li><a href="${pageContext.request.contextPath }/shop/list.do?category=top" class="link-dark rounded">Top</a></li>
-							            <li><a href="${pageContext.request.contextPath }/shop/list.do?category=bottom" class="link-dark rounded">Bottom</a></li>
-							            <li><a href="${pageContext.request.contextPath }/shop/list.do?category=etc" class="link-dark rounded">Etc</a></li>
 							    	</ul>
 					        	</div>
 					      	</li>

@@ -32,18 +32,18 @@
                     </ul>
                     <c:choose>
                     	<c:when test="${ empty sessionScope.id}">
-                    		<button class="btn btn-outline-dark"><a href="${pageContext.request.contextPath }/users/loginform.do">Login</a></button>
-                    		<button class="btn btn-outline-dark" style="margin-left:3px"><a href="${pageContext.request.contextPath }/users/signup_form.do">SignUp</a></button>
+                    		<button class="btn btn-outline-dark" onclick="location.href='${pageContext.request.contextPath }/users/loginform.do'">Login</button>
+                    		<button class="btn btn-outline-dark" style="margin-left:3px" onclick="location.href='${pageContext.request.contextPath }/users/signup_form.do'">SignUp</button>
                     	</c:when>
                     	<c:otherwise>
                     		<form class="d-flex">
-                        		<button class="btn btn-outline-dark" type="submit">
+                        		<button class="btn btn-outline-dark" type="submit" onclick="location.href='${pageContext.request.contextPath }/cart/list.do'">
                             		<i class="bi-cart-fill me-1"></i>
-                           				<a href="${pageContext.request.contextPath }/cart/list.do">Cart</a>
+                           				Cart
                         		</button>
                     		</form>
-                    		<button class="btn btn-outline-dark"><a href="${pageContext.request.contextPath }/users/info.do">MyInfo</a></button>
-                    		<button class="btn btn-outline-dark"><a href="${pageContext.request.contextPath }/users/logout.do">Logout</a></button>                    	</c:otherwise>
+                    		<button class="btn btn-outline-dark" style="margin-left:3px" onclick="location.href='${pageContext.request.contextPath }/users/info.do'">MyInfo</button>
+                    		<button class="btn btn-outline-dark" style="margin-left:3px" onclick="location.href='${pageContext.request.contextPath }/users/logout.do'">Logout</button>                    	</c:otherwise>
                     </c:choose>
                  </div>
             </div>
@@ -60,13 +60,13 @@
 		<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
         <div class="carousel-item active">
-        <img src="resources/images/pavetheway.jpg" width="700" height="500" class="d-block w-100" alt="...">
+        <img src="resources/images/pavetheway.jpg" width="700" height="600" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-        <img src="resources/images/pavetheway1.jpg" width="700" height="500" class="d-block w-100" alt="...">
+        <img src="resources/images/pavetheway1.jpg" width="700" height="600" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-        <img src="resources/images/pavetheway2.jpg" width="700" height="500" class="d-block w-100" alt="...">
+        <img src="resources/images/pavetheway2.jpg" width="700" height="600" class="d-block w-100" alt="...">
         </div>
 	    </div>
 	    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
