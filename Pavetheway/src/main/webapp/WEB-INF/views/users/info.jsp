@@ -87,12 +87,9 @@ h1 {
                 		<button class="btn btn-outline-dark" style="margin-left:3px" onclick="location.href='${pageContext.request.contextPath }/users/signup_form.do">SignUp</button>
                 	</c:when>
                    	<c:otherwise>
-                   		<form class="d-flex">
-                       		<button class="btn btn-outline-dark" type="submit">
-                           		<i class="bi-cart-fill me-1"></i>
-                          				<a href="${pageContext.request.contextPath }/cart/list.do">Cart</a>
-                       		</button>
-                   		</form>
+                    	<form class="d-flex">
+                        	<a class="w-55 btn btn-outline-dark" href="${pageContext.request.contextPath }/cart/list.do"><i class="bi-cart-fill me-1"></i> Cart</a>
+                    	</form>
                    		<button class="btn btn-outline-dark" style="margin-left:3px" onclick="location.href='${pageContext.request.contextPath }/users/info.do'">MyInfo</button>
                    		<button class="btn btn-outline-dark" style="margin-left:3px" onclick="location.href='${pageContext.request.contextPath }/users/logout.do'">Logout</button>
                    	</c:otherwise>
@@ -141,13 +138,13 @@ h1 {
 							</div>
 							<div class="row">
 							<div class="col d-flex justify-content-end">
-								<a href="${pageContext.request.contextPath}/order/list.do">주문 정보</a>
+								<a class="w-55 btn btn-outline-dark" href="${pageContext.request.contextPath }/order/list.do">주문조회</a>
 							</div>
 							<div class="col d-flex justify-content-end">
-								<a class="update" href="${pageContext.request.contextPath}/users/updateform.do">개인정보 수정</a>
+								<a class="w-55 btn btn-outline-primary" class="update" href="${pageContext.request.contextPath}/users/updateform.do">개인정보 수정</a>
 							</div>
 							<div class="col d-flex justify-content-start">	
-								<a class="delete" href="${pageContext.request.contextPath}/users/delete.do">탈퇴</a>			    
+								<a class="w-55 btn btn-outline-danger" class="delete" href="${pageContext.request.contextPath}/users/delete.do">탈퇴</a>			    
 							</div>
 						</div>
 					</div>

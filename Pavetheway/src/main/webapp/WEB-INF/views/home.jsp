@@ -37,10 +37,9 @@
                     	</c:when>
                     	<c:otherwise>
                     		<form class="d-flex">
-                        		<button class="btn btn-outline-dark" type="submit" onclick="location.href='${pageContext.request.contextPath }/cart/list.do'">
-                            		<i class="bi-cart-fill me-1"></i>
-                           				Cart
-                        		</button>
+                    		<form class="d-flex">
+                        		<a class="w-55 btn btn-outline-dark" href="${pageContext.request.contextPath }/cart/list.do"><i class="bi-cart-fill me-1"></i> Cart</a>
+                    		</form>
                     		</form>
                     		<button class="btn btn-outline-dark" style="margin-left:3px" onclick="location.href='${pageContext.request.contextPath }/users/info.do'">MyInfo</button>
                     		<button class="btn btn-outline-dark" style="margin-left:3px" onclick="location.href='${pageContext.request.contextPath }/users/logout.do'">Logout</button>                    	</c:otherwise>
