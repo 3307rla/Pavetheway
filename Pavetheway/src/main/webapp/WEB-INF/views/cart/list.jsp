@@ -127,8 +127,9 @@
 								</table>
 								<input type="hidden" name="count" value="${map.count }">
 								<div class="col">
-									<button class="w-55 btn btn-outline-dark" type="submit"><a href="${pageContext.request.contextPath }/shop/list.do?category=outer">상품목록</a></button>
-									<button class="w-55 btn btn-outline-dark" type="submit"><a href="${pageContext.request.contextPath }/cart/deleteAll.do">장바구니 비우기</a></button>
+									<a class="w-55 btn btn-outline-dark" href="${pageContext.request.contextPath }/shop/list.do?category=outer">상품목록</a>
+									<a class="w-55 btn btn-outline-dark" href="${pageContext.request.contextPath }/cart/deleteAll.do">장바구니 비우기</a>
+
 								</div>
 								
 							</form>
