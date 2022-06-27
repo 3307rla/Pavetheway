@@ -39,7 +39,7 @@
                     		<form class="d-flex">
                         		<button class="btn btn-outline-dark" type="submit" onclick="location.href='${pageContext.request.contextPath }/cart/list.do'">
                             		<i class="bi-cart-fill me-1"></i>
-                           				Cart
+                           				<a href="${pageContext.request.contextPath }/cart/list.do">Cart</a>
                         		</button>
                     		</form>
                     		<button class="btn btn-outline-dark" style="margin-left:3px" onclick="location.href='${pageContext.request.contextPath }/users/info.do'">MyInfo</button>

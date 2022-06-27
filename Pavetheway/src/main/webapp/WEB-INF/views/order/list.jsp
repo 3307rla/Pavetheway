@@ -73,11 +73,11 @@
         		<div class="col-10">
         		<cneter>
         			<div>
-						<center><h1>Order List</h1></center>
+						<center><h1>주문 정보</h1></center>
 						
 						<c:choose>
 							<c:when test="${map.count == 0 }">
-								장바구니가 비었습니다.
+								
 							</c:when>
 							<c:otherwise>
 							<form name="form1" id="form1" method="post" action="${pageContext.request.contextPath }/order/update.do">
