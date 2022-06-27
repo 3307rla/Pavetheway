@@ -225,9 +225,9 @@
 			        						<option value="${i}">${i}</option>
 			        					</c:forEach>
 			        				</select>&nbsp;개
-			        				<form method="post" action="/kakaoPay">
+			        				
 			        					<button class="w-55 btn btn-outline-dark" type="submit">결제하기</button>
-			        				</form>
+			        				
 			        				
 		        				</form>
         					</td>

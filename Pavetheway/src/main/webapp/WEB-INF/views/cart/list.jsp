@@ -73,7 +73,7 @@
         		<div class="col-10">
         		<cneter>
         			<div>
-						<center><h1>장바구니 확인</h1></center>
+						<center><h1>장바구니</h1></center>
 						
 						<c:choose>
 							<c:when test="${map.count == 0 }">
@@ -127,8 +127,8 @@
 								</table>
 								<input type="hidden" name="count" value="${map.count }">
 								<div class="col">
-									<button class="w-55 btn btn-outline-dark" type="submit" onclick="location.href='${pageContext.request.contextPath }/shop/list.do?category=outer'">상품목록</button>
-									<button class="w-55 btn btn-outline-dark" type="submit" onclick="location.href='${pageContext.request.contextPath }/cart/deleteAll.do'">장바구니 비우기</button>
+									<button class="w-55 btn btn-outline-dark" type="submit"><a href="${pageContext.request.contextPath }/shop/list.do?category=outer">상품목록</a></button>
+									<button class="w-55 btn btn-outline-dark" type="submit"><a href="${pageContext.request.contextPath }/cart/deleteAll.do">장바구니 비우기</a></button>
 								</div>
 								
 							</form>
