@@ -125,8 +125,11 @@
 							</form>
 							</c:otherwise>
 						</c:choose>
-						<button type="button" id="btnList"><a href="${pageContext.request.contextPath }/shop/list.do?category=outer">상품목록</a></button>
-				
+						<%-- <button type="button" id="btnList"><a href="${pageContext.request.contextPath }/shop/list.do?category=outer">상품목록</a></button> --%>
+						                 
+                        <a class="w-55 btn btn-outline-dark" href="${pageContext.request.contextPath }/shop/list.do?category=outer">상품목록</a>
+                    	
+						
 				</div>
 				</cneter>
 				
