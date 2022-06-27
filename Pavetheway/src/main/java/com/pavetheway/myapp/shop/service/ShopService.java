@@ -1,12 +1,13 @@
 package com.pavetheway.myapp.shop.service;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.servlet.ModelAndView;
 
-import com.pavetheway.myapp.inquiry.dto.InquiryCommentDto;
+import com.pavetheway.myapp.shop.dto.OrderDto;
 import com.pavetheway.myapp.shop.dto.ShopCommentDto;
 import com.pavetheway.myapp.shop.dto.ShopDto;
 
@@ -30,5 +31,23 @@ public interface ShopService {
 	public void updateComment(ShopCommentDto dto);//댓글 수정
 	public void moreCommentList(HttpServletRequest request);//댓글 추가 응답
 	public void getData(HttpServletRequest request); //글 수정하기 위해 정보 불러오는 기능
+
+	public List<OrderDto> getList(String id);
+	public List<OrderDto> cartMoney();
+	public void update(int num);
+	//장바구니 상품 insert
+	public void insert(OrderDto dto);
+	//장바구니 상품 개별 delete
+	public void delete(int num, HttpServletRequest request);
+	//장바구니 상품 전체 delete
+	public void deleteAll(String id);
+	//장바구니 총 합계
+	public int sumMoney(String id);
+	//장바구니 상품 갯수
+	public int countCart(String id, int code);
+	//장바구니 수정
+	public void updateCart(OrderDto dto);
+	public void modifyCart(OrderDto dto);
+	
 }
 

@@ -63,16 +63,16 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath }/home.do">Home</a></li>
+                        <li class="nav-item"><a class="nav-link " aria-current="page" href="${pageContext.request.contextPath }/home.do">Home</a></li>
 
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/shop/list.do?category=outer">Shop</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="${pageContext.request.contextPath }/shop/list.do?category=outer">Shop</a></li>
 
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/inquiry/answer_list.do">Q&A</a></li>
                     </ul>
                     <c:choose>
                     	<c:when test="${ empty sessionScope.id}">
-                    		<button class="btn btn-outline-dark"style="margin-left:3px" onclick="location.href='${pageContext.request.contextPath }/users/loginform.do">Login</button>
-                    		<button class="btn btn-outline-dark" style="margin-left:3px" onclick="location.href='${pageContext.request.contextPath }/users/signup_form.do">SignUp</button>
+                    		<button class="btn btn-outline-dark"style="margin-left:3px" onclick="location.href='${pageContext.request.contextPath }/users/loginform.do'">Login</button>
+                    		<button class="btn btn-outline-dark" style="margin-left:3px" onclick="location.href='${pageContext.request.contextPath }/users/signup_form.do'">SignUp</button>
                     	</c:when>
                     	<c:otherwise>
                     		<form class="d-flex">
@@ -99,11 +99,16 @@
         <section class="py-5">
         	<div class="row">
         		<div class="col-2">
-        			  	<div class="flex-shrink-0 p-3 bg-white" style="width: 70px;">
-						    <ul class="list-unstyled ps-0">
-					      	<li class="mb-1 container-fluid">
+        			<div class="b-example-divider"></div>
+					  	<div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+						    <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+						      <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+						      <span class="fs-5 fw-semibold">Menu</span>
+						    </a>
+					    <ul class="list-unstyled ps-0">
+					      	<li class="mb-1">
 						        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true"
-						         style="font-size:17px; font-weight:bold;" href="${pageContext.request.contextPath}/shop/list.do">
+						         href="${pageContext.request.contextPath}/shop/list.do">
 						         Shop
 						        </button>
 					        	<div class="collapse show" id="home-collapse">
@@ -118,10 +123,12 @@
 					    </ul>
 					</div>
         		</div>
-        		<div class="col-9">
+        		<div class="col-8">
 		    <div class="container">
 
-		   	<h3>${dto.category}</h3>
+		   	<center><h1>${category}</h1></center>
+		   	<br />
+		   	<br />
 
 		   	<div class="row">
 				<c:forEach var="tmp" items="${list }">

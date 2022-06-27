@@ -1,9 +1,11 @@
 package com.pavetheway.myapp.shop.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pavetheway.myapp.cart.dto.CartDto;
 import com.pavetheway.myapp.inquiry.dto.InquiryCommentDto;
+import com.pavetheway.myapp.shop.dto.OrderDto;
 import com.pavetheway.myapp.shop.dto.ShopCommentDto;
 import com.pavetheway.myapp.shop.service.ShopService;
 
@@ -81,6 +85,38 @@ public class ShopController {
 		map.put("isSuccess", true);
 		// {"isSuccess":true} 형식의 JSON 문자열이 응답되도록 한다. 
 		return map;
+	}
+	
+	@RequestMapping("/order/insert")
+	public ModelAndView authInsert(OrderDto dto, HttpSession session, HttpServletRequest request) {
+		
+		String id=(String)session.getAttribute("id");		
+	
+		dto.setId(id);
+		
+		service.insert(dto);		
+		return new ModelAndView("redirect:/order/list.do");
+	}
+	
+	@RequestMapping("/order/list")
+	public ModelAndView authGetList(HttpSession session, ModelAndView mview) {
+	      
+	    Map<String, Object> map=new HashMap<String, Object>();
+	    String id=(String)session.getAttribute("id");
+	    List<OrderDto> list=service.getList(id);
+	    int sumMoney=service.sumMoney(id);
+	    int fee=sumMoney >= 50000 ? 0 : 5000;
+	      
+	    map.put("sumMoney", sumMoney);
+	    map.put("fee", fee);
+	    map.put("sum", sumMoney+fee);
+	    map.put("list", list);
+	    map.put("count", list.size());
+	      
+	    mview.setViewName("order/list");  
+	    mview.addObject("map", map);
+	      
+	    return mview;
 	}
 	
 }

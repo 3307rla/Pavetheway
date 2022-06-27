@@ -11,6 +11,7 @@
 		<typeAlias type="com.pavetheway.myapp.inquiry.dto.InquiryCommentDto" alias="inquiryCommentDto"/>
 		<typeAlias type="com.pavetheway.myapp.inquiry.dto.InquiryDto" alias="inquiryDto"/>
 		<typeAlias type="com.pavetheway.myapp.cart.dto.CartDto" alias="cartDto"/>
+		<typeAlias type="com.pavetheway.myapp.shop.dto.OrderDto" alias="orderDto"/>
 	</typeAliases>
 	<!-- 필요한 Mapper xml 등록하기  -->
 	<mappers>
@@ -20,5 +21,6 @@
 		<mapper resource="com/pavetheway/myapp/mybatis/InquiryMapper.xml"/>
 		<mapper resource="com/pavetheway/myapp/mybatis/InquiryCommentMapper.xml"/>
 		<mapper resource="com/pavetheway/myapp/mybatis/CartMapper.xml"/>
+		<mapper resource="com/pavetheway/myapp/mybatis/OrderMapper.xml"/>
 	</mappers>
 </configuration>

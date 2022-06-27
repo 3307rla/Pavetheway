@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -116,14 +117,14 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath }/home.do">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/shop/list.do?category=outer">Shop</a></li>
+                        <li class="nav-item"><a class="nav-link " aria-current="page" href="${pageContext.request.contextPath }/home.do">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="${pageContext.request.contextPath}/shop/list.do?category=outer">Shop</a></li>
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/inquiry/answer_list.do">Q&A</a></li>
                     </ul>
                     <c:choose>
                     	<c:when test="${ empty sessionScope.id}">
-                    		<button class="btn btn-outline-dark" href="${pageContext.request.contextPath}/users/loginform.do">Login</button>
-                    		<button class="btn btn-outline-dark" style="margin-left:3px" href="${pageContext.request.contextPath}/users/signup_form.do">SignUp</button>
+                    		<button class="btn btn-outline-dark" onclick="location.href='${pageContext.request.contextPath }/users/loginform.do'">Login</button>
+                    		<button class="btn btn-outline-dark" style="margin-left:3px" onclick="location.href='${pageContext.request.contextPath }/users/signup_form.do'">SignUp</button>
                     	</c:when>
                     	<c:otherwise>
                     		<form class="d-flex">
@@ -132,8 +133,8 @@
                            				<a href="${pageContext.request.contextPath }/cart/list.do">Cart</a>
                         		</button>
                     		</form>
-                    		<button class="btn btn-outline-dark"><a href="${pageContext.request.contextPath }/users/info.do">MyInfo</a></button>
-                    		<button class="btn btn-outline-dark"><a href="${pageContext.request.contextPath }/users/logout.do">Logout</a></button>
+                    		<button class="btn btn-outline-dark" style="margin-left:3px" onclick="location.href='${pageContext.request.contextPath }/users/info.do'">MyInfo</button>
+                    		<button class="btn btn-outline-dark" style="margin-left:3px"onclick="location.href='${pageContext.request.contextPath }/users/logout.do'">Logout</button>
                     	</c:otherwise>
                     </c:choose>
                     
@@ -178,9 +179,10 @@
         		</div>
         		<div class=col-8>
         			<center><h1>Info</h1></center>
+        			<br />
         			<div class="row">
         				
-        				<div class="col-8">
+        				<div class="col-7">
         					<center>
 	        				<img src="${pageContext.request.contextPath}${dto.imagePath}" width="400px" height="500px"/>
 	        				<br/>
@@ -189,7 +191,7 @@
         				</div>
         				
         				
-        			<div class="col-4 text-center">
+        			<div class="col-5 text-center">
 
 				      
 				        <div class="card mb-4 rounded-3 shadow-sm">
@@ -201,7 +203,7 @@
 				              <li>상품이름 : ${dto.name }</li>
 				              <li>수량 : ${dto.remainCount }</li>
 				              <li>주문자 : ${sessionScope.id }</li>
-				              <li>가격 : ${dto.price }</li>
+				              <li>가격 : ₩<fmt:formatNumber  value="${dto.price }" pattern="#,###"/></li>
 				            </ul>
 				           	<td>
 		        				<form name="form1" method="post" action="${pageContext.request.contextPath}/cart/insert.do">
@@ -211,15 +213,30 @@
 			        						<option value="${i}">${i}</option>
 			        					</c:forEach>
 			        				</select>&nbsp;개
-			        				<input type="submit" value="장바구니담기"/>
+			        				<button class="w-55 btn btn-outline-dark" type="submit">장바구니 담기</button>
 		        				</form>
         					</td>
-				            <button type="button" class="w-100 btn btn-lg btn-outline-primary" onclick="location.href='${pageContext.request.contextPath }/users/info.do'">바로구매</button>
+        					<br />
+				            <td>
+		        				<form name="form1" method="post" action="${pageContext.request.contextPath}/order/insert.do">
+			        				<input type="hidden" name="code" value="${dto.code }"/>
+			        				<select name="amount">
+			        					<c:forEach begin="1" end="10" var="i">
+			        						<option value="${i}">${i}</option>
+			        					</c:forEach>
+			        				</select>&nbsp;개
+			        				<form method="post" action="/kakaoPay">
+			        					<button class="w-55 btn btn-outline-dark" type="submit">결제하기</button>
+			        				</form>
+			        				
+		        				</form>
+        					</td>
 				          </div>
 				        </div>
 
 
         			</div>
+        		</div>
         			
         			
         			<center><h1>Review</h1></center>

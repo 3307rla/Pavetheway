@@ -22,7 +22,7 @@
 	<select id="getDetail" parameterType="int" resultType="shopDto">
 		SELECT *
 		FROM
-			(SELECT num, code, name, imagePath, infoImagePath, 
+			(SELECT num, code, name, imagePath, infoImagePath, price, remainCount,
 				LAG(num, 1, 0) OVER (ORDER BY num DESC) AS prevNum,
 				LEAD(num, 1, 0) OVER (ORDER BY num DESC) AS nextNum
 			FROM shop_list

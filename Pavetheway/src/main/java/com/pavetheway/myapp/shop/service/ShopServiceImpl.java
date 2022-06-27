@@ -13,12 +13,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pavetheway.myapp.cart.dto.CartDto;
 import com.pavetheway.myapp.exception.NotDeleteException;
-import com.pavetheway.myapp.inquiry.dao.InquiryCommentDao;
-import com.pavetheway.myapp.inquiry.dto.InquiryCommentDto;
-import com.pavetheway.myapp.inquiry.dto.InquiryDto;
+import com.pavetheway.myapp.shop.dao.OrderDao;
 import com.pavetheway.myapp.shop.dao.ShopCommentDao;
 import com.pavetheway.myapp.shop.dao.ShopDao;
+import com.pavetheway.myapp.shop.dto.OrderDto;
 import com.pavetheway.myapp.shop.dto.ShopCommentDto;
 import com.pavetheway.myapp.shop.dto.ShopDto;
 
@@ -29,6 +29,9 @@ public class ShopServiceImpl implements ShopService{
 	
 	@Autowired
 	private ShopCommentDao shopCommentDao;
+	
+	@Autowired
+	private OrderDao orderDao;
 
 	@Override
 	//상품 list
@@ -295,6 +298,71 @@ public class ShopServiceImpl implements ShopService{
 	public Map<String, Object> uploadAjaxImage(ShopDto dto, HttpServletRequest request) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+
+	@Override
+	public List<OrderDto> getList(String id) {
+		
+		return orderDao.getList(id);
+	}
+
+	@Override
+	public List<OrderDto> cartMoney() {
+		
+		return null;
+	}
+
+	@Override
+	public void update(int num) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void insert(OrderDto dto) {
+		
+		orderDao.insert(dto); 
+		
+	}
+
+	@Override
+	public void delete(int num, HttpServletRequest request) {
+
+		orderDao.delete(num);
+		
+	}
+
+	@Override
+	public void deleteAll(String id) {
+		
+		orderDao.deleteAll(id);
+		
+	}
+
+	@Override
+	public int sumMoney(String id) {
+		
+		return orderDao.sumMoney(id);
+	}
+
+	@Override
+	public int countCart(String id, int code) {
+		
+		return 0;
+	}
+
+	@Override
+	public void updateCart(OrderDto dto) {
+		
+		orderDao.updateCart(dto);
+	}
+
+	@Override
+	public void modifyCart(OrderDto dto) {
+		
+		orderDao.modifyCart(dto);
 	}
 
 }

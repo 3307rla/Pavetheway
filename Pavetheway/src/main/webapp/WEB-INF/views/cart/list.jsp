@@ -126,12 +126,16 @@
 									</tr>
 								</table>
 								<input type="hidden" name="count" value="${map.count }">
+								<div class="col">
+									<button class="w-55 btn btn-outline-dark" type="submit" onclick="location.href='${pageContext.request.contextPath }/shop/list.do?category=outer'">상품목록</button>
+									<button class="w-55 btn btn-outline-dark" type="submit" onclick="location.href='${pageContext.request.contextPath }/cart/deleteAll.do'">장바구니 비우기</button>
+								</div>
 								
-								<button type="button" id="btnDelete"><a href="${pageContext.request.contextPath }/cart/deleteAll.do">장바구니 비우기</a></button>
 							</form>
 							</c:otherwise>
 						</c:choose>
-						<button type="button" id="btnList"><a href="${pageContext.request.contextPath }/shop/list.do?category=outer">상품목록</a></button>
+						
+						
 				
 				</div>
 				</cneter>

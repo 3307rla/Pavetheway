@@ -141,6 +141,9 @@ h1 {
 							</div>
 							<div class="row">
 							<div class="col d-flex justify-content-end">
+								<a href="${pageContext.request.contextPath}/order/list.do">주문 정보</a>
+							</div>
+							<div class="col d-flex justify-content-end">
 								<a class="update" href="${pageContext.request.contextPath}/users/updateform.do">개인정보 수정</a>
 							</div>
 							<div class="col d-flex justify-content-start">	
