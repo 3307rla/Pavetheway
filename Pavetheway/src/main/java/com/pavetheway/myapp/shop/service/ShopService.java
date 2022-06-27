@@ -49,5 +49,7 @@ public interface ShopService {
 	public void updateCart(OrderDto dto);
 	public void modifyCart(OrderDto dto);
 	
+	public List<OrderDto> getCartList(String id);
+	
 }
 

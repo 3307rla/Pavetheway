@@ -97,7 +97,7 @@ public class ShopController {
 		service.insert(dto);		
 		return new ModelAndView("redirect:/order/list.do");
 	}
-	
+
 	@RequestMapping("/order/list")
 	public ModelAndView authGetList(HttpSession session, ModelAndView mview) {
 	      
@@ -118,5 +118,22 @@ public class ShopController {
 	      
 	    return mview;
 	}
+
+   // 장바구니 전체 결제	
+	@RequestMapping("/order/insertAll")
+	public ModelAndView authInsertAll(HttpSession session, HttpServletRequest request) {
+		Map<String, Object> map=new HashMap<String, Object>();
+	    String id=(String)session.getAttribute("id");
+	    List<OrderDto> list=service.getCartList(id);
+	    System.out.println(list.size());
+	    
+	    
+	    for(OrderDto dto:list) {
+	    	service.insert(dto);
+	    }
+	    
+		return new ModelAndView("redirect:/order/list.do");
+	}
+
 	
 }

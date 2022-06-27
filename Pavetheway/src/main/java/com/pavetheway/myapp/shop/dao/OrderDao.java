@@ -25,4 +25,6 @@ public interface OrderDao {
 	public void modifyCart(OrderDto dto);
 	//글 정보 얻어오기
 	public OrderDto getData(int num);
+	//장바구니 상품목록 조회한 결과
+	public List<OrderDto> getCartList(String id);
 }

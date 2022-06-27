@@ -365,5 +365,10 @@ public class ShopServiceImpl implements ShopService{
 		orderDao.modifyCart(dto);
 	}
 
+	@Override
+	public List<OrderDto> getCartList(String id) {
+		
+		return orderDao.getCartList(id);
+	}
 }
 

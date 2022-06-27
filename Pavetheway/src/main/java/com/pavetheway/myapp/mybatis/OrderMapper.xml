@@ -57,4 +57,12 @@
 		SET amount = amount + #{amount}
 		WHERE num = #{num}
 	</update>
+
+	<select id="getCartList" resultType="orderDto">
+        SELECT c.num, c.id, s.code, s.name, amount, price, (price*amount) money
+        FROM users u, cart c, shop_list s
+        WHERE u.id=c.id and c.code=s.code and c.id=#{id}
+        ORDER BY num   
+    </select>
+    
 </mapper>

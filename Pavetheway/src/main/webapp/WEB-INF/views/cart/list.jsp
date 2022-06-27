@@ -129,7 +129,8 @@
 								<div class="col">
 									<a class="w-55 btn btn-outline-dark" href="${pageContext.request.contextPath }/shop/list.do?category=outer">상품목록</a>
 									<a class="w-55 btn btn-outline-dark" href="${pageContext.request.contextPath }/cart/deleteAll.do">장바구니 비우기</a>
-
+									<a class="w-55 btn btn-outline-dark" href="${pageContext.request.contextPath }/order/insertAll.do">결제하기</a>
+			        				
 								</div>
 								
 							</form>

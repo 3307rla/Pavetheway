@@ -77,4 +77,8 @@ public class OrderDaoImpl implements OrderDao{
 		
 	}
 
+	@Override
+	public List<OrderDto> getCartList(String id) {
+		return session.selectList("order.getCartList", id);
+	}
 }
